@@ -293,7 +293,7 @@ MonoBehaviour:
     m_Bits: 64
   wallLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 128
 --- !u!61 &497433594
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -581,7 +581,7 @@ GameObject:
   - component: {fileID: 1938034789}
   m_Layer: 7
   m_Name: Wall
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -596,7 +596,7 @@ BoxCollider2D:
   m_Enabled: 1
   serializedVersion: 3
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: c94011f181161422bb8e3d8505634230, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
