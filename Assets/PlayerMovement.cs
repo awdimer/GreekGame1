@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private float speed;
+    [SerializeField] private float jumpPower;
     [SerializeField] private LayerMask groundLayer;
     [SerializeField] private LayerMask wallLayer;
     private Rigidbody2D body;
@@ -14,7 +15,7 @@ public class PlayerMovement : MonoBehaviour
 
 private void Awake()
     {
-        ///grabs references for rigidbody from game object
+        ///grabs references for rigidbody from game object, so it can be used in code
         body = GetComponent<Rigidbody2D>();
         boxCollider = GetComponent<BoxCollider2D>();
     }
@@ -24,8 +25,8 @@ private void Awake()
     {
         
         horizontalInput = Input.GetAxis("Horizontal");
-        
-        body.velocity = new Vector2(horizontalInput * speed,body.velocity.y);
+        ///This is player's horozontal 
+        body.linearVelocity = new Vector2(horizontalInput * speed,body.linearVelocity.y);
         
         ///i believe these two things are for turning the sprite left and right
         if(horizontalInput > 0.01f)
@@ -37,6 +38,26 @@ private void Awake()
         {
             transform.localScale = new Vector3(-1,1,1);
         }
+        
+        if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))
+        {
+                Jump();
+        }
+    }
+    
+    private void Jump()
+    {
+        if(isGrounded())
+        {
+            body.linearVelocity = new Vector2(body.linearVelocity.x, jumpPower);
+            anim.SetTrigger("jump");
+        }
+    }
+    private bool isGrounded()
+    {
+        
+        RaycastHit2D raycastHit = Physics2D.BoxCast(boxCollider.bounds.center, boxCollider.bounds.size, 0, Vector2.down, 0.1f, groundLayer);
+        return raycastHit.collider != null;
     }
     
 }
