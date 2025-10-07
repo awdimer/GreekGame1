@@ -50,9 +50,10 @@ private void Awake()
         if(isGrounded())
         {
             body.linearVelocity = new Vector2(body.linearVelocity.x, jumpPower);
-            anim.SetTrigger("jump");
+            
         }
     }
+    
     private bool isGrounded()
     {
         
