@@ -28,6 +28,7 @@ private void Awake()
         ///This is player's horozontal 
         body.linearVelocity = new Vector2(horizontalInput * speed,body.linearVelocity.y);
         
+        
         ///i believe these two things are for turning the sprite left and right
         if(horizontalInput > 0.01f)
         {
@@ -44,6 +45,7 @@ private void Awake()
                 Jump();
         }
     }
+    
     
     private void Jump()
     {
