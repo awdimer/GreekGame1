@@ -1,16 +1,21 @@
 using UnityEngine;
 
+
 public class enemydammage : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
+    [SerializeField] private int damage = 10;
 
-    // Update is called once per frame
-    void Update()
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            // Get the health_player component from the Player object
+            health_player playerHealth = collision.gameObject.GetComponent<health_player>();
+
+            if (playerHealth != null)
+            {
+                playerHealth.TakeDamage(damage);
+            }
+        }
     }
 }
