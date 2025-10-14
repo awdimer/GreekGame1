@@ -13,6 +13,11 @@ public class PlayerMovement : MonoBehaviour
     private BoxCollider2D boxCollider;
     private float horizontalInput;
 
+    //knockback variables
+    [SerializeField] public float KBforce; // (knockback force) how powerfull the knockback is
+    [SerializeField] public float KBcounter;// how much time left on the effect
+    [SerializeField] public float KBtotaltime;// how long the effect lasts
+    public bool knockFromRight;
 private void Awake()
     {
         ///grabs references for rigidbody from game object, so it can be used in code
@@ -23,12 +28,10 @@ private void Awake()
     
     private void Update()
     {
-        
         horizontalInput = Input.GetAxis("Horizontal");
         ///This is player's horozontal 
-        body.linearVelocity = new Vector2(horizontalInput * speed,body.linearVelocity.y);
-        
-        
+    
+    
         ///i believe these two things are for turning the sprite left and right
         if(horizontalInput > 0.01f)
         {
@@ -39,22 +42,30 @@ private void Awake()
         {
             transform.localScale = new Vector3(-1,1,1);
         }
-        
-        if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))
-        {
-                Jump();
-        }
-    }
-    
-    
-    private void Jump()
-    {
-        if(isGrounded())
+        //jump
+        if ((Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow)) && isGrounded())
         {
             body.linearVelocity = new Vector2(body.linearVelocity.x, jumpPower);
-            
+        }
+        if(Input.GetKeyUp(KeyCode.W)||Input.GetKeyUp(KeyCode.UpArrow) ){
+            body.linearVelocity = new Vector2(body.linearVelocity.x,0);
         }
     }
+    void FixedUpdate(){
+        if(KBcounter <=0){
+            body.linearVelocity = new Vector2(horizontalInput * speed,body.linearVelocity.y);
+        }
+        else{
+            if(knockFromRight == true){
+                body.linearVelocity = new Vector2(-KBforce, KBforce);
+            }
+            if(knockFromRight == false){
+                body.linearVelocity = new Vector2(KBforce,KBforce);
+            }
+            KBcounter -= Time.deltaTime;
+        }
+    }
+    
     
     private bool isGrounded()
     {

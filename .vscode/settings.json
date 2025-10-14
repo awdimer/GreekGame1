@@ -60,6 +60,7 @@
         "*.asset": "yaml",
         "*.meta": "yaml",
         "*.prefab": "yaml",
+<<<<<<< Updated upstream
         "*.unity": "yaml"
     },
     "explorer.fileNesting.enabled": true,
@@ -67,4 +68,13 @@
         "*.sln": "*.csproj"
     },
     "dotnet.defaultSolution": "GreekGame1.slnx"
+=======
+        "*.unity": "yaml",
+    },
+    "explorer.fileNesting.enabled": true,
+    "explorer.fileNesting.patterns": {
+        "*.sln": "*.csproj",
+    },
+    "dotnet.defaultSolution": "GreekGame1.sln"
+>>>>>>> Stashed changes
 }

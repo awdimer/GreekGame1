@@ -1,6 +1,5 @@
 using UnityEngine;
 
-
 public class enemydammage : MonoBehaviour
 {
     [SerializeField] private int damage = 10;
@@ -9,13 +8,13 @@ public class enemydammage : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            // Get the health_player component from the Player object
+            PlayerMovement playerMovement = collision.gameObject.GetComponent<PlayerMovement>();
             health_player playerHealth = collision.gameObject.GetComponent<health_player>();
 
-            if (playerHealth != null)
-            {
-                playerHealth.TakeDamage(damage);
-            }
+            playerMovement.KBcounter = playerMovement.KBtotaltime;
+            playerMovement.knockFromRight = collision.transform.position.x <= transform.position.x;
+
+            playerHealth.TakeDamage(damage);
         }
     }
 }
