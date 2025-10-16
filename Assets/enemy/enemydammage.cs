@@ -15,6 +15,8 @@ public class enemydammage : MonoBehaviour
             playerMovement.knockFromRight = collision.transform.position.x <= transform.position.x;
 
             playerHealth.TakeDamage(damage);
+
+            Object.FindFirstObjectByType<Hitstop>().Stop(0.2f);
         }
     }
 }
