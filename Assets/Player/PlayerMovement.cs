@@ -7,7 +7,8 @@ public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private float speed;
     [SerializeField] private float jumpPower;
-    [SerializeField] private float wallJumpPower;
+    [SerializeField] private float wallJumpPowerY;
+    [SerializeField] private float wallJumpPowerX;
     [SerializeField] private LayerMask groundLayer;
     [SerializeField] private LayerMask wallLayer;
     private Rigidbody2D body;
@@ -16,6 +17,10 @@ public class PlayerMovement : MonoBehaviour
     private float horizontalInput;
 
     private float wallJumpCooldown;
+
+    private bool isWallLeft = false;
+
+    private bool isWallRight = false;
 
     //knockback variables
     [SerializeField] public float KBforce; // (knockback force) how powerfull the knockback is
@@ -47,14 +52,14 @@ public class PlayerMovement : MonoBehaviour
             transform.localScale = new Vector3(-1, 1, 1);
         }
         //jump
-        
+
     }
     void FixedUpdate()
     {
         if ((KBcounter <= 0) && wallJumpCooldown > 0.2f)
         {
             body.linearVelocity = new Vector2(horizontalInput * speed, body.linearVelocity.y);
-            
+
             if (onWall() && !isGrounded())
             {
                 body.gravityScale = 0;
@@ -67,17 +72,17 @@ public class PlayerMovement : MonoBehaviour
             {
                 groundJump();
             }
-        if ((Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow) && onWall() && !isGrounded()))
+            if ((Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow) && onWall() && !isGrounded()))
             {
                 wallJump();
             }
         }
-            
-        
+
+
         else
         {
             wallJumpCooldown += Time.deltaTime;
-            
+
             if (knockFromRight == true && isGrounded())
             {
                 body.linearVelocity = new Vector2(-KBforce, KBforce);
@@ -100,10 +105,41 @@ public class PlayerMovement : MonoBehaviour
 
     private bool onWall()
     {
-        RaycastHit2D raycastHit = Physics2D.BoxCast(boxCollider.bounds.center, boxCollider.bounds.size, 0, new Vector2(transform.localScale.x, 0), 0.1f, wallLayer);
-        return raycastHit.collider != null;
-    }
+        bool facingRight = transform.localScale.x > 0;
 
+        if (facingRight)
+        {
+            RaycastHit2D hitRight = Physics2D.BoxCast(
+                boxCollider.bounds.center,
+                boxCollider.bounds.size,
+                0,
+                Vector2.right,
+                0.1f,
+                wallLayer
+            );
+
+            isWallRight = hitRight.collider != null;
+            isWallLeft = false;  // explicitly false, since facing right
+
+            return isWallRight;
+        }
+        else
+        {
+            RaycastHit2D hitLeft = Physics2D.BoxCast(
+                boxCollider.bounds.center,
+                boxCollider.bounds.size,
+                0,
+                Vector2.left,
+                0.1f,
+                wallLayer
+            );
+
+            isWallLeft = hitLeft.collider != null;
+            isWallRight = false;  // explicitly false, since facing left
+
+            return isWallLeft;
+        }
+    }
     private void groundJump()
     {
         if (isGrounded())
@@ -118,16 +154,17 @@ public class PlayerMovement : MonoBehaviour
 
     private void wallJump()
     {
-        if (horizontalInput == 0)
+        if (isWallLeft && wallJumpCooldown > 0.2f)
         {
-            body.linearVelocity = new Vector2(-Mathf.Sign(transform.localScale.x) * 10, 0);
-            transform.localScale = new Vector3(-Mathf.Sign(transform.localScale.x), transform.localScale.y, transform.localScale.z);
+            // Jump right and up if on left wall
+            body.linearVelocity = new Vector2(wallJumpPowerX, wallJumpPowerY);
         }
-        else
+        else if (isWallRight && wallJumpCooldown > 0.2f)
         {
-            body.linearVelocity = new Vector2(-Mathf.Sign(transform.localScale.x) * 3, 6);
-        }
-        wallJumpCooldown = 0;
+            // Jump left and up if on right wall
+            body.linearVelocity = new Vector2(-wallJumpPowerX, wallJumpPowerY);
 
+        }
+                wallJumpCooldown = 0;
     }
 }

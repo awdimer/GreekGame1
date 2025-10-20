@@ -717,7 +717,7 @@ Transform:
   m_GameObject: {fileID: 473852815}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -63.1966, y: 29.8, z: 0}
+  m_LocalPosition: {x: -59.856594, y: 29.8628, z: 0}
   m_LocalScale: {x: 3.5606892, y: 1.1673809, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1253,7 +1253,7 @@ Transform:
   m_GameObject: {fileID: 687122193}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -61.86001, y: 17.8072, z: 0}
+  m_LocalPosition: {x: -58.52, y: 17.87, z: 0}
   m_LocalScale: {x: 0.98659533, y: 25.122658, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2316,7 +2316,7 @@ Transform:
   m_GameObject: {fileID: 1244099140}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -63.08, y: 5.98, z: 0}
+  m_LocalPosition: {x: -59.739994, y: 6.0428014, z: 0}
   m_LocalScale: {x: 3.5606892, y: 1.1673809, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2929,7 +2929,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 15
   jumpPower: 20
-  wallJumpPower: 20
+  wallJumpPowerY: 10
+  wallJumpPowerX: 10
   groundLayer:
     serializedVersion: 2
     m_Bits: 64
@@ -3534,7 +3535,7 @@ Transform:
   m_GameObject: {fileID: 1696155266}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -64.48, y: 17.77, z: 0}
+  m_LocalPosition: {x: -61.139996, y: 17.832802, z: 0}
   m_LocalScale: {x: 0.9865033, y: 24.99609, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
