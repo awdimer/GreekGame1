@@ -332,9 +332,9 @@ GameObject:
   - component: {fileID: 512302371}
   - component: {fileID: 512302370}
   - component: {fileID: 512302369}
-  m_Layer: 6
-  m_Name: Floor (6)
-  m_TagString: Ground
+  m_Layer: 7
+  m_Name: Wall
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -466,9 +466,9 @@ GameObject:
   - component: {fileID: 516118935}
   - component: {fileID: 516118934}
   - component: {fileID: 516118933}
-  m_Layer: 6
-  m_Name: Floor (5)
-  m_TagString: Ground
+  m_Layer: 7
+  m_Name: Wall
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1563,7 +1563,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDamping: 0
   m_AngularDamping: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 5
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -1588,13 +1588,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 15
-  jumpPower: 10
+  jumpPower: 20
   groundLayer:
     serializedVersion: 2
     m_Bits: 64
   wallLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 128
   KBforce: 4
   KBcounter: 0
   KBtotaltime: 0.2
