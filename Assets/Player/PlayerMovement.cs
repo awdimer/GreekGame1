@@ -165,6 +165,9 @@ public class PlayerMovement : MonoBehaviour
             body.linearVelocity = new Vector2(-wallJumpPowerX, wallJumpPowerY);
 
         }
-                wallJumpCooldown = 0;
+        wallJumpCooldown = 0;
     }
+    
+
+    
 }
