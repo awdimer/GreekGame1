@@ -1,6 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
-
+using System.Reflection;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
@@ -11,6 +11,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float wallJumpPowerX;
     [SerializeField] private LayerMask groundLayer;
     [SerializeField] private LayerMask wallLayer;
+     
     private Rigidbody2D body;
     private Animator anim;
     private BoxCollider2D boxCollider;
@@ -32,6 +33,7 @@ public class PlayerMovement : MonoBehaviour
         ///grabs references for rigidbody from game object, so it can be used in code
         body = GetComponent<Rigidbody2D>();
         boxCollider = GetComponent<BoxCollider2D>();
+        anim = GetComponent<Animator>();
     }
 
 
@@ -45,11 +47,21 @@ public class PlayerMovement : MonoBehaviour
         if (horizontalInput > 0.01f)
         {
             transform.localScale = Vector3.one;
+            anim.SetBool("idle", false);
         }
         ////turning left
         else if (horizontalInput < -0.01f)
         {
             transform.localScale = new Vector3(-1, 1, 1);
+            anim.SetBool("idle", false);
+        }
+        else if (isGrounded())
+        {
+            anim.SetBool("idle", true);
+        }
+        else if(!isGrounded())
+        {
+            anim.SetBool("idle", false);
         }
         //jump
 
@@ -57,13 +69,15 @@ public class PlayerMovement : MonoBehaviour
     void FixedUpdate()
     {
         if ((KBcounter <= 0) && wallJumpCooldown > 0.2f)
-        {
+        {   
+            
             body.linearVelocity = new Vector2(horizontalInput * speed, body.linearVelocity.y);
 
             if (onWall() && !isGrounded())
             {
                 body.gravityScale = 0;
                 body.linearVelocity = Vector2.zero;
+                
             }
             else
                 body.gravityScale = 5;

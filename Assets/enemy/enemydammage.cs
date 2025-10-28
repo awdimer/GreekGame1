@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class enemydammage : MonoBehaviour
+public class enemydammage : enemyHealth
 {
     [SerializeField] private int damage = 10;
 
@@ -11,14 +11,21 @@ public class enemydammage : MonoBehaviour
         {
             PlayerMovement playerMovement = collision.gameObject.GetComponent<PlayerMovement>();
             health_player playerHealth = collision.gameObject.GetComponent<health_player>();
-            
+            PlayerCombat playerCombat = collision.gameObject.GetComponent<PlayerCombat>();
 
-            playerMovement.KBcounter = playerMovement.KBtotaltime;
-            playerMovement.knockFromRight = collision.transform.position.x <= transform.position.x;
+            if (playerCombat.isParrying != true)
+            {
+                playerMovement.KBcounter = playerMovement.KBtotaltime;
+                playerMovement.knockFromRight = collision.transform.position.x <= transform.position.x;
 
-            playerHealth.TakeDamage(damage);
+                playerHealth.TakeDamage(damage);
 
-            Object.FindFirstObjectByType<Hitstop>().Stop(0.5f);
+                Object.FindFirstObjectByType<Hitstop>().Stop(0.5f);
+            }
+            else if(playerCombat.isParrying)
+            {
+                base.TakeDamage(playerCombat.SwordDamage);
+            }
         }
     }
 }
