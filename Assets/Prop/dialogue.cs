@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
-
 public class Dialogue : MonoBehaviour
 {
     public TextMeshProUGUI textComponent;
@@ -19,16 +18,19 @@ public class Dialogue : MonoBehaviour
     //Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (!PauseMenu.isPaused)
         {
-            if (textComponent.text == lines[index])
+            if (Input.GetMouseButtonDown(0))
             {
-                NextLine();
-            }
-            else
-            {
-                StopAllCoroutines();
-                textComponent.text = lines[index];
+                if (textComponent.text == lines[index])
+                {
+                    NextLine();
+                }
+                else
+                {
+                    StopAllCoroutines();
+                    textComponent.text = lines[index];
+                }
             }
         }
     }
