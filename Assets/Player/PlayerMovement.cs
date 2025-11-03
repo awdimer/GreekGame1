@@ -11,16 +11,20 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float wallJumpPowerX;
     [SerializeField] private LayerMask groundLayer;
     [SerializeField] private LayerMask wallLayer;
-     
+    /// <summary>
+    /// Combat Stuff
+    /// </summary>
+    [SerializeField] float parryTime ;
+    [SerializeField] float parryCooldown;
+    [SerializeField] public int SwordDamage;
+    public bool isParrying = false;
+    private float nextReadyCooldownTime;
     private Rigidbody2D body;
     private Animator anim;
     private BoxCollider2D boxCollider;
     private float horizontalInput;
-
     private float wallJumpCooldown;
-
     private bool isWallLeft = false;
-
     private bool isWallRight = false;
 
     //knockback variables
@@ -31,6 +35,7 @@ public class PlayerMovement : MonoBehaviour
     private void Awake()
     {
         ///grabs references for rigidbody from game object, so it can be used in code
+        
         body = GetComponent<Rigidbody2D>();
         boxCollider = GetComponent<BoxCollider2D>();
         anim = GetComponent<Animator>();
@@ -47,31 +52,47 @@ public class PlayerMovement : MonoBehaviour
         if (horizontalInput > 0.01f)
         {
             transform.localScale = Vector3.one;
-            anim.SetBool("idle", false);
+            anim.SetBool("isWalking", true);
+
         }
         ////turning left
         else if (horizontalInput < -0.01f)
         {
             transform.localScale = new Vector3(-1, 1, 1);
-            anim.SetBool("idle", false);
+            anim.SetBool("isWalking", true);
+
         }
         else if (isGrounded())
         {
-            anim.SetBool("idle", true);
+            anim.SetBool("isWalking", false);
         }
-        else if(!isGrounded())
+        else if (!isGrounded())
         {
-            anim.SetBool("idle", false);
+            anim.SetBool("isWalking", false);
         }
-        //jump
+
+        if (Input.GetKeyDown(KeyCode.E) && Time.time >= nextReadyCooldownTime)
+        {
+            StartCoroutine(ParryCoroutine());
+            nextReadyCooldownTime = Time.time + parryCooldown;
+        }
+        
+        if (Input.GetMouseButtonDown(0))
+        {
+            anim.SetBool("isAttacking", true);
+        }
+        
 
     }
     void FixedUpdate()
     {
         if ((KBcounter <= 0) && wallJumpCooldown > 0.2f)
         {   
+            if (isParrying == false)
+            {
+                body.linearVelocity = new Vector2(horizontalInput * speed, body.linearVelocity.y);
+            }
             
-            body.linearVelocity = new Vector2(horizontalInput * speed, body.linearVelocity.y);
 
             if (onWall() && !isGrounded())
             {
@@ -180,6 +201,25 @@ public class PlayerMovement : MonoBehaviour
 
         }
         wallJumpCooldown = 0;
+    }
+
+    private IEnumerator ParryCoroutine()
+    {
+        isParrying = true;
+
+        anim.SetBool("isParrying", true);
+
+
+        yield return new WaitForSeconds(parryTime);
+        anim.SetBool("isParrying", false);
+
+
+        isParrying = false;
+    }
+
+    public void endAttack()
+    {
+        anim.SetBool("isAttacking", false);
     }
     
 

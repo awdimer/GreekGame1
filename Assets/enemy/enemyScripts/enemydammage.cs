@@ -11,9 +11,9 @@ public class enemydammage : enemyHealth
         {
             PlayerMovement playerMovement = collision.gameObject.GetComponent<PlayerMovement>();
             health_player playerHealth = collision.gameObject.GetComponent<health_player>();
-            PlayerCombat playerCombat = collision.gameObject.GetComponent<PlayerCombat>();
+            
 
-            if (playerCombat.isParrying != true)
+            if (playerMovement.isParrying != true)
             {
                 playerMovement.KBcounter = playerMovement.KBtotaltime;
                 playerMovement.knockFromRight = collision.transform.position.x <= transform.position.x;
@@ -22,9 +22,9 @@ public class enemydammage : enemyHealth
 
                 Object.FindFirstObjectByType<Hitstop>().Stop(0.5f);
             }
-            else if(playerCombat.isParrying)
+            else if(playerMovement.isParrying)
             {
-                base.TakeDamage(playerCombat.SwordDamage);
+                base.TakeDamage(playerMovement.SwordDamage);
             }
         }
     }
