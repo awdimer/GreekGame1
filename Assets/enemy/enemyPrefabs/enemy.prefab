@@ -136,8 +136,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc524641960c74ac6960b2543adb78b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 0
+  maxHealth: 50
   health: 0
+  currentHealth: 0
   damage: 10
 --- !u!114 &4225332441357441363
 MonoBehaviour:
@@ -214,8 +215,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ef080734c8e848aebf689d5e67d58c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 10
+  maxHealth: 50
   health: 0
+  currentHealth: 0
 --- !u!95 &1665219409264069209
 Animator:
   serializedVersion: 7

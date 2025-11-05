@@ -1,19 +1,25 @@
 using UnityEngine;
 
-public class enemydammage : enemyHealth
+public class enemydammage : MonoBehaviour
 {
     [SerializeField] private int damage = 10;
 
+    private enemyHealth enemyHealth; // cache reference
+
+    private void Awake()
+    {
+        // get the component once when the object loads
+        enemyHealth = GetComponent<enemyHealth>();
+    }
+
     public void OnCollisionEnter2D(Collision2D collision)
     {
-        
         if (collision.gameObject.CompareTag("Player"))
         {
             PlayerMovement playerMovement = collision.gameObject.GetComponent<PlayerMovement>();
             health_player playerHealth = collision.gameObject.GetComponent<health_player>();
-            
 
-            if (playerMovement.isParrying != true)
+            if (!playerMovement.isParrying)
             {
                 playerMovement.KBcounter = playerMovement.KBtotaltime;
                 playerMovement.knockFromRight = collision.transform.position.x <= transform.position.x;
@@ -22,9 +28,10 @@ public class enemydammage : enemyHealth
 
                 Object.FindFirstObjectByType<Hitstop>().Stop(0.5f);
             }
-            else if(playerMovement.isParrying)
+            else
             {
-                base.TakeDamage(playerMovement.SwordDamage);
+                // use the cached reference
+                enemyHealth.TakeDamage(playerMovement.SwordDamage);
             }
         }
     }

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Reflection;
 using UnityEngine;
 
@@ -11,6 +12,10 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float wallJumpPowerX;
     [SerializeField] private LayerMask groundLayer;
     [SerializeField] private LayerMask wallLayer;
+
+    [SerializeField] private GameObject attackPoint;
+    [SerializeField] private float radius;
+    [SerializeField] private LayerMask enemies;
     /// <summary>
     /// Combat Stuff
     /// </summary>
@@ -221,7 +226,21 @@ public class PlayerMovement : MonoBehaviour
     {
         anim.SetBool("isAttacking", false);
     }
+
+    public void attack()
+    {
+        Collider2D[] enemy = Physics2D.OverlapCircleAll(attackPoint.transform.position, radius, enemies);
+
+        foreach (Collider2D enemyGameObject in enemy)
+        {
+            enemyGameObject.GetComponent<enemyHealth>().TakeDamage(SwordDamage);
+        }
+    }
     
+    private void OnDrawGizmos()
+    {
+        Gizmos.DrawWireSphere(attackPoint.transform.position, radius);
+    }
 
     
 }
