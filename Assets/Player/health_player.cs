@@ -1,7 +1,11 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class health_player : MonoBehaviour
 {
+    public static event Action OnPlayerDeath;
     public int maxHealth = 100;
     public int health;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -17,6 +21,8 @@ public void TakeDamage(int damage)
         if(health <=0 )
         {
             Destroy(gameObject);
+            //Display Game Over Screen
+            OnPlayerDeath?.Invoke();
         }
     }
 }
