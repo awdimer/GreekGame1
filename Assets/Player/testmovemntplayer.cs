@@ -13,8 +13,14 @@ public class testPlayerMovement : MonoBehaviour
     [SerializeField] private float decceleration;
     [SerializeField] private float frictionAmount;
     [SerializeField] private float jumpForce;
+    [SerializeField] private float jumpBufferTime;
+    [SerializeField] private float coyoteTime;
+    [SerializeField] private float jumpCutMultiplier;
     [SerializeField] private LayerMask groundLayer;
     private float lastGroundedTime;
+    private float lastJumpTime;
+    private bool isJumping;
+    private bool isFacingRight;
 
     private Vector2 moveInput;
 
@@ -29,14 +35,32 @@ public class testPlayerMovement : MonoBehaviour
     private void Update()
     {
         lastGroundedTime -= Time.deltaTime;
+        lastJumpTime -= Time.deltaTime;
 
         moveInput.x = Input.GetAxisRaw("Horizontal");
-		moveInput.y = Input.GetAxisRaw("Vertical");
+        moveInput.y = Input.GetAxisRaw("Vertical");
+
+        Debug.Log(lastJumpTime);
+        if (isGrounded())
+        {
+            lastGroundedTime = coyoteTime;
+            isJumping = false;
+        }
+        if (Input.GetKeyUp(KeyCode.W)||Input.GetKeyUp(KeyCode.UpArrow))
+        {
+            if(rb.linearVelocity.y > 0 && isJumping)
+            {
+                rb.AddForce(Vector2.down * rb.linearVelocity.y*(1-jumpCutMultiplier), ForceMode2D.Impulse);
+            }
+        }
 
     }
     void FixedUpdate()
     {
-        if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow) && isGrounded())
+        if(Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow)){
+            lastJumpTime = jumpBufferTime;
+        }
+        if (lastJumpTime>0 && !isJumping && lastGroundedTime>0 )
             {
                 jump();
                 Debug.Log("jumping");
@@ -69,7 +93,28 @@ public class testPlayerMovement : MonoBehaviour
     }
     private void jump()
     {
+        isJumping = true;
         rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+
+    }
+    private void TurnCheck()
+    {
+
+    }
+    private void Turn()
+    {
+        if (isFacingRight)
+        {
+            Vector3 rotator = new Vector3(transform.rotation.x, 180f, transform.rotation.z);
+            transform.rotation = Quaternion.Euler(rotator);
+            isFacingRight = !isFacingRight;
+        }
+        else
+        {
+            Vector3 rotator = new Vector3(transform.rotation.x, 0f, transform.rotation.z);
+            transform.rotation = Quaternion.Euler(rotator);
+            isFacingRight = !isFacingRight;
+        }
     }
 
 
