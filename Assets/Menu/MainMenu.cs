@@ -11,8 +11,9 @@ public class MainMenu : MonoBehaviour
         Debug.Log("Game Closed");
     }
     public void StartGame()
-    {   
+    {
         //put level one here when its actually finished lolz
         SceneManager.LoadScene("test");
+        Time.timeScale = 1f;
     }
 }
