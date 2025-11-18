@@ -17,6 +17,10 @@ public class testPlayerMovement : MonoBehaviour
     [SerializeField] private float coyoteTime;
     [SerializeField] private float jumpCutMultiplier;
     [SerializeField] private LayerMask groundLayer;
+    [SerializeField] public float KBforce; 
+    [SerializeField] public float KBcounter;
+    [SerializeField] public float KBtotaltime;
+    public bool knockFromRight;
     private float lastGroundedTime;
     private float lastJumpTime;
     private bool isJumping;
@@ -40,7 +44,6 @@ public class testPlayerMovement : MonoBehaviour
         moveInput.x = Input.GetAxisRaw("Horizontal");
         moveInput.y = Input.GetAxisRaw("Vertical");
 
-        Debug.Log(lastJumpTime);
         if (isGrounded())// coyote time
         {
             lastGroundedTime = coyoteTime;
@@ -64,7 +67,6 @@ public class testPlayerMovement : MonoBehaviour
         if (lastJumpTime>0 && !isJumping && lastGroundedTime>0 )//check if the player can and wants to jump and runs jump
             {
                 jump();
-                Debug.Log("jumping");
             }
         //start of left right movement
         float targetSpeed = moveInput.x * moveSpeed;
@@ -84,9 +86,10 @@ public class testPlayerMovement : MonoBehaviour
         }
 
 
-            TurnCheck();
-        
+        TurnCheck();
 
+        
+    
 
     }
     private bool isGrounded() //checks if the player is on the ground
