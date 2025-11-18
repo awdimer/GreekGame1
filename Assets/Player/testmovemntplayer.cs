@@ -13,18 +13,23 @@ public class testPlayerMovement : MonoBehaviour
     [SerializeField] private float decceleration;
     [SerializeField] private float frictionAmount;
     [SerializeField] private float jumpForce;
+    [SerializeField] private float wallJumpPowerY;
+    [SerializeField] private float wallJumpPowerX;
     [SerializeField] private float jumpBufferTime;
     [SerializeField] private float coyoteTime;
     [SerializeField] private float jumpCutMultiplier;
     [SerializeField] private LayerMask groundLayer;
+    [SerializeField] private LayerMask wallLayer;
     [SerializeField] public float KBforce; 
     [SerializeField] public float KBcounter;
     [SerializeField] public float KBtotaltime;
+    private float wallJumpCooldown;
     public bool knockFromRight;
     private float lastGroundedTime;
     private float lastJumpTime;
     private bool isJumping;
     private bool isFacingRight;
+    private bool isWallRight = false;
 
     private Vector2 moveInput;
 
@@ -60,7 +65,7 @@ public class testPlayerMovement : MonoBehaviour
     }
     void FixedUpdate()
     {
-        
+        //Debug.Log(wallJumpCooldown);
         if(Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow)){// if trying to jump starts a countdown and if the player is grounded during the timer it will start the jump
             lastJumpTime = jumpBufferTime;
         }
@@ -87,7 +92,21 @@ public class testPlayerMovement : MonoBehaviour
 
 
         TurnCheck();
-
+        wallJumpCooldown += Time.deltaTime;
+        if(wallJumpCooldown > 0.2)
+        {
+            if (onWall() && !isGrounded())
+            {
+                rb.gravityScale = 0;
+                rb.linearVelocity = Vector2.zero;
+            }
+            else
+                rb.gravityScale = 5;
+            if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow) && onWall() && !isGrounded())
+            {
+                wallJump();
+            }
+        }
         
     
 
@@ -130,6 +149,58 @@ public class testPlayerMovement : MonoBehaviour
             isFacingRight = !isFacingRight;
         }
     }
+    private bool onWall()
+    {
+        Debug.Log(isWallRight);
+        bool facingRight = transform.localScale.x > 0;
+        if (facingRight)
+        {
+            RaycastHit2D hitRight = Physics2D.BoxCast(
+                boxCollider.bounds.center,
+                boxCollider.bounds.size,
+                0,
+                Vector2.right,
+                0.1f,
+                wallLayer
+            );
+
+            isWallRight = hitRight.collider != null;
+
+            return isWallRight;
+        }
+        else
+        {
+            RaycastHit2D hitLeft = Physics2D.BoxCast(
+                boxCollider.bounds.center,
+                boxCollider.bounds.size,
+                0,
+                Vector2.left,
+                0.1f,
+                wallLayer
+            );
+
+            isWallRight = hitLeft.collider != null;
+            isWallRight = false;  // explicitly false, since facing left
+
+            return isWallRight;
+        }
+    }
+    private void wallJump()
+    {
+        if (!isWallRight && wallJumpCooldown > 0.2f)
+        {
+            // Jump right and up if on left wall
+            rb.linearVelocity = new Vector2(wallJumpPowerX, wallJumpPowerY);
+        }
+        else if (isWallRight && wallJumpCooldown > 0.2f)
+        {
+            // Jump left and up if on right wall
+            rb.linearVelocity = new Vector2(-wallJumpPowerX, wallJumpPowerY);
+
+        }
+        wallJumpCooldown = 0;
+    }
+
 
 
 
