@@ -6706,11 +6706,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   messages:
   - actorId: 0
-    message: 'henlo am sing press space button to advance my text '
+    message: Hello, I am a sign!
   - actorId: 0
-    message: are you good taody
+    message: You can advance text pressing space.
   - actorId: 0
-    message: hooray
+    message: Goodbye!
   actors:
   - name: Sign
     sprite: {fileID: 6465725449022251311, guid: 4364e7ea1715f4f2794bb03b3e386935, type: 3}
