@@ -4787,9 +4787,9 @@ MonoBehaviour:
   enemies:
     serializedVersion: 2
     m_Bits: 512
-  parryTime: 0
+  parryTime: 2
   parryCooldown: 0
-  SwordDamage: 0
+  SwordDamage: 10
   isParrying: 0
   KBforce: 4
   KBcounter: 0
