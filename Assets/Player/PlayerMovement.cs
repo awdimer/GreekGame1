@@ -1,6 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Diagnostics;
+
 using System.Reflection;
 using UnityEngine;
 
@@ -232,8 +232,11 @@ public class PlayerMovement : MonoBehaviour
         Collider2D[] enemy = Physics2D.OverlapCircleAll(attackPoint.transform.position, radius, enemies);
 
         foreach (Collider2D enemyGameObject in enemy)
-        {
+        {   
+            Debug.Log("attack");
             enemyGameObject.GetComponent<enemyHealth>().TakeDamage(SwordDamage);
+            enemyGameObject.GetComponent<enemy_mov>().knockBack();
+            enemyGameObject.GetComponent<enemy_mov>().knockFromRight = transform.position.x <= transform.position.x;
         }
     }
     

@@ -7,6 +7,7 @@ public class enemyHealth : MonoBehaviour
     [SerializeField] private int health;
     [SerializeField] private float currentHealth;
     private Animator anim;
+    
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
