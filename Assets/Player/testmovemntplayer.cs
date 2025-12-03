@@ -22,8 +22,6 @@ public class testPlayerMovement : MonoBehaviour
    [SerializeField] private LayerMask wallLayer;
    [SerializeField] private Transform wallCheck;
    [SerializeField] public float KBforce;
-   [SerializeField] public float KBcounter;
-   [SerializeField] public float KBtotaltime;
    private float wallJumpCooldown;
    public bool knockFromRight;
    private float lastGroundedTime;
@@ -99,16 +97,14 @@ public class testPlayerMovement : MonoBehaviour
         {
             decceleration = startDecceleration;
         }
-        if (KBcounter <= 0)
-            if (knockFromRight == true && isGrounded())
-                {
-                    rb.linearVelocity = new Vector2(-KBforce, KBforce);
-                }
-                if (knockFromRight == false && isGrounded())
-                {
-                    rb.linearVelocity = new Vector2(KBforce, KBforce);
-                }
-                KBcounter -= Time.deltaTime;
+       //if (knockFromRight == true && isGrounded())
+          // {
+        //       rb.Impulse = new Vector2(-KBforce, KBforce);
+         //  }
+        //   if (knockFromRight == false && isGrounded())
+        //   {
+         //      rb.linearVelocity = new Vector2(KBforce, KBforce);
+        //   }
       
        //end of left right movement
 
