@@ -8,23 +8,23 @@
             "defence": 5,
             "vitality": 9   
         },
-        "description": "Mr. Wine if he was evil as fuck yo",
+        "description": "Mr. Wine if he was good as fuck yo",
         "stackable": false,
         "rarity": 5,
-        "slug": "EvilMrWine"
+        "slug": "MrWine"
     },
     {
        "id": 1,
-        "title": "Mr. Wine",
+        "title": "Angry Pussy",
         "value": 3,
         "stats":{
             "power": 87,
             "defence": 1346,
             "vitality": 13478
         },
-        "description": "Mr. Wine if he was good as fuck yo",
+        "description": "meow meow bitch",
         "stackable": false,
         "rarity": 1,
-        "slug": "MrWine"
+        "slug": "AngryPussy"
     }
 ]
