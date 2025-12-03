@@ -44,6 +44,7 @@ public class Item
     public bool Stackable { get; set; }
     public int Rarity { get; set; }
     public string Slug { get; set; }
+    public Sprite Sprite { get; set; }
     public Item(int id, string title, int value, int power, int defence, int vitality, string description, bool stackable, int rarity, string slug)
     {
         this.ID = id;
@@ -55,6 +56,7 @@ public class Item
         this.Stackable = stackable;
         this.Rarity = rarity;
         this.Slug = slug;
+        this.Sprite = Resources.Load<Sprite>("Items/" + slug);
     }
     public Item()
     {
