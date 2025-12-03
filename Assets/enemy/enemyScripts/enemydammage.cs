@@ -5,11 +5,13 @@ public class enemydammage : MonoBehaviour
     [SerializeField] private int damage = 10;
 
     private enemyHealth enemyHealth; // cache reference
+    private enemy_mov enemy_mov;
 
     private void Awake()
     {
         // get the component once when the object loads
         enemyHealth = GetComponent<enemyHealth>();
+        enemy_mov = GetComponent<enemy_mov>();
     }
 
     public void OnCollisionEnter2D(Collision2D collision)
@@ -32,6 +34,7 @@ public class enemydammage : MonoBehaviour
             {
                 // use the cached reference
                 enemyHealth.TakeDamage(playerMovement.SwordDamage);
+                enemy_mov.knockBack();
             }
         }
     }

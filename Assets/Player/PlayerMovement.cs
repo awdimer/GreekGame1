@@ -37,6 +37,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] public float KBcounter;// how much time left on the effect
     [SerializeField] public float KBtotaltime;// how long the effect lasts
     public bool knockFromRight;
+    private bool facingRight;
     private void Awake()
     {
         ///grabs references for rigidbody from game object, so it can be used in code
@@ -58,6 +59,7 @@ public class PlayerMovement : MonoBehaviour
         {
             transform.localScale = Vector3.one;
             anim.SetBool("isWalking", true);
+            facingRight = false;
 
         }
         ////turning left
@@ -65,6 +67,7 @@ public class PlayerMovement : MonoBehaviour
         {
             transform.localScale = new Vector3(-1, 1, 1);
             anim.SetBool("isWalking", true);
+            facingRight = true;
 
         }
         else if (isGrounded())
@@ -236,7 +239,7 @@ public class PlayerMovement : MonoBehaviour
             Debug.Log("attack");
             enemyGameObject.GetComponent<enemyHealth>().TakeDamage(SwordDamage);
             enemyGameObject.GetComponent<enemy_mov>().knockBack();
-            enemyGameObject.GetComponent<enemy_mov>().knockFromRight = transform.position.x <= transform.position.x;
+            enemyGameObject.GetComponent<enemy_mov>().knockFromRight = facingRight;
         }
     }
     
