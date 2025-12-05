@@ -23,7 +23,7 @@
             "vitality": 13478
         },
         "description": "meow meow bitch",
-        "stackable": false,
+        "stackable": true,
         "rarity": 1,
         "slug": "AngryPussy"
     }
