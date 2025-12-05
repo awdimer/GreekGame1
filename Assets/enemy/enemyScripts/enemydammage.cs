@@ -28,7 +28,7 @@ public class enemydammage : MonoBehaviour
 
                 playerHealth.TakeDamage(damage);
 
-                Object.FindFirstObjectByType<Hitstop>().Stop(0.5f);
+                Object.FindFirstObjectByType<Hitstop>().Stop(0.1f);
             }
             else
             {

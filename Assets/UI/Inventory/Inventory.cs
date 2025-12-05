@@ -32,7 +32,7 @@ public class Inventory : MonoBehaviour
     public void AddItem(int id)
     {
         Item itemToAdd = database.FetchItemByID(id);
-        if (itemToAdd.Stackable && CheckIfItemIsInInventory(itemToAdd))
+        if (itemToAdd.Stackable && CheckIfItemIsInInvetory(itemToAdd))
         {
             for(int i = 0; i < items.Count; i++)
             {
@@ -60,10 +60,11 @@ public class Inventory : MonoBehaviour
   bool CheckIfItemIsInInvetory(Item item)
     {
         for(int i = 0; i < items.Count; i++)
-        {
-         if(items[i].ID == item.ID)
+        
+         if(items[i].ID == item.ID){
             return true;
+         }
         return false; 
     }
 }
-}
+

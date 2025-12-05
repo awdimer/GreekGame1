@@ -72,8 +72,6 @@ public class testPlayerMovement : MonoBehaviour
    }
    void FixedUpdate()
    {
-       Debug.Log("the x vel is :"+ rb.linearVelocity.x);
-       Debug.Log("the y vel is :"+ rb.linearVelocity.y);
        if(Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow)){// if trying to jump starts a countdown and if the player is grounded during the timer it will start the jump
            lastJumpTime = jumpBufferTime;
        }
@@ -97,15 +95,7 @@ public class testPlayerMovement : MonoBehaviour
         {
             decceleration = startDecceleration;
         }
-       //if (knockFromRight == true && isGrounded())
-          // {
-        //       rb.Impulse = new Vector2(-KBforce, KBforce);
-         //  }
-        //   if (knockFromRight == false && isGrounded())
-        //   {
-         //      rb.linearVelocity = new Vector2(KBforce, KBforce);
-        //   }
-      
+
        //end of left right movement
 
 
@@ -147,6 +137,25 @@ public class testPlayerMovement : MonoBehaviour
        RaycastHit2D raycastHit = Physics2D.BoxCast(boxCollider.bounds.center, boxCollider.bounds.size, 0, Vector2.down, 0.1f, groundLayer);
        return raycastHit.collider != null;
    }
+   public void OnCollisionEnter2D(Collision2D collision)
+    {
+
+        if (collision.gameObject.CompareTag("enemy"))
+        {
+            knockFromRight = collision.transform.position.x <= transform.position.x;
+            rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+             if (knockFromRight == true)
+            {
+                rb.AddForce(Vector2.right * jumpForce, ForceMode2D.Impulse);
+            }
+            if (knockFromRight == false)
+            {
+                rb.AddForce(Vector2.left * jumpForce, ForceMode2D.Impulse);
+            }
+            
+        }
+
+    }
    private void jump() // applys jump force
    {
        isJumping = true;
