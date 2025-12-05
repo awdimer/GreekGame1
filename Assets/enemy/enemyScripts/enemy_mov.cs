@@ -14,10 +14,17 @@ public class enemy_mov : MonoBehaviour
     private Vector3[] directions = new Vector3[2];
     [SerializeField] private float range;
     [SerializeField] private LayerMask playerLayer;
+
+    [SerializeField] private GameObject enemyAttackPoint;
+    [SerializeField] private float radius;
+    [SerializeField] private LayerMask players;
+    [SerializeField] private int damage;
+
+    private bool attackingplayer = false;
     private bool attacking = false;
 
     private float lostPlayerTimer = 0f;
-    [SerializeField] private float lostPlayerTime = 0.5f;
+    [SerializeField] private float lostPlayerTime = 1f;
 
     // Components
     private Animator anim;
@@ -33,16 +40,21 @@ public class enemy_mov : MonoBehaviour
     public bool knockFromRight;
     private bool isGettingAttacked = false;
 
+    // cache references (unused but keeping because your original script had them)
+    private enemyHealth enemyHealth;
+    private enemydammage enemydammage;
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         box = GetComponent<BoxCollider2D>();
+        anim = GetComponent<Animator>();
     }
 
     void Update()
     {
         // PATROLLING
-        if (isPatrolling && KBcounter <= 0 && isGrounded())
+        if (isPatrolling && KBcounter <= 0 && isGrounded() && lostPlayerTimer <= 0 && !attackingplayer)
         {
             Patrol();
         }
@@ -64,31 +76,35 @@ public class enemy_mov : MonoBehaviour
         attackPlayer();
     }
 
+    // NEW: Automatically face left/right
+    private void FaceDirection(Vector2 direction)
+    {
+        if (direction.x > 0.01f)
+            transform.localScale = new Vector3(1, 1, 1);   // face right
+        else if (direction.x < -0.01f)
+            transform.localScale = new Vector3(-1, 1, 1);  // face left
+    }
+
     private void Patrol()
     {
-        if (patrolDestination == 0)
-        {
-            transform.position = Vector2.MoveTowards(transform.position, patrolPoints[0].position, moveSpeed * Time.deltaTime);
+        Vector2 targetPos = patrolPoints[patrolDestination].position;
+        Vector2 moveDirection = targetPos - (Vector2)transform.position;
 
-            if (Vector2.Distance(transform.position, patrolPoints[0].position) < .2f)
-            {
-                transform.localScale = new Vector3(1, 1, 1);
-                patrolDestination = 1;
-            }
-        }
-        else if (patrolDestination == 1)
-        {
-            transform.position = Vector2.MoveTowards(transform.position, patrolPoints[1].position, moveSpeed * Time.deltaTime);
+        FaceDirection(moveDirection);
 
-            if (Vector2.Distance(transform.position, patrolPoints[1].position) < .2f)
-            {
-                transform.localScale = new Vector3(-1, 1, 1);
-                patrolDestination = 0;
-            }
+        transform.position = Vector2.MoveTowards(
+            transform.position,
+            targetPos,
+            moveSpeed * Time.deltaTime
+        );
+
+        if (Vector2.Distance(transform.position, targetPos) < .2f)
+        {
+            patrolDestination = (patrolDestination == 0 ? 1 : 0);
         }
     }
 
-    // APPLY KNOCKBACK USING AddForce()
+    // APPLY KNOCKBACK
     public void knockBack()
     {
         isPatrolling = false;
@@ -123,14 +139,12 @@ public class enemy_mov : MonoBehaviour
 
         RaycastHit2D hit = Physics2D.Raycast(transform.position, directions[i], range, playerLayer);
 
-        if (hit.collider != null && isGettingAttacked == false)
+        if (hit.collider != null && !isGettingAttacked)
         {
-            Debug.Log("Detected Player");
-
             playerPos = hit.collider.transform.position;
             attacking = true;
             isPatrolling = false;
-            lostPlayerTimer = 0f; // reset timer since we saw player
+            lostPlayerTimer = 0f;
 
             return true;
         }
@@ -138,10 +152,22 @@ public class enemy_mov : MonoBehaviour
         return false;
     }
 
+    // NEW: Use overlap circle to detect if player is in attack radius
+    private bool PlayerInsideAttackRadius()
+    {
+        Collider2D hit = Physics2D.OverlapCircle(
+            enemyAttackPoint.transform.position,
+            radius,
+            players
+        );
+
+        return hit != null;
+    }
+
     private void CalculateDirections()
     {
-        directions[0] = transform.right;          // right
-        directions[1] = -transform.right;         // left
+        directions[0] = transform.right;
+        directions[1] = -transform.right;
     }
 
     private void attackPlayer()
@@ -149,8 +175,9 @@ public class enemy_mov : MonoBehaviour
         CalculateDirections();
 
         bool sawPlayerThisFrame = false;
+        bool playerAttackable = PlayerInsideAttackRadius();
 
-        // Check all directions
+        // Raycasts for sight (chase)
         for (int i = 0; i < directions.Length; i++)
         {
             if (playerInSight(i))
@@ -160,27 +187,63 @@ public class enemy_mov : MonoBehaviour
             }
         }
 
-        // If no player detected this frame
+        // Lost player timer
         if (!sawPlayerThisFrame && attacking)
         {
             lostPlayerTimer += Time.deltaTime;
 
             if (lostPlayerTimer >= lostPlayerTime)
             {
-                Debug.Log("Lost player, returning to patrol.");
                 attacking = false;
                 isPatrolling = true;
             }
         }
 
-        // If still attacking, chase player
-        if (attacking)
+        // If chasing and not in attack radius → move toward player
+        if (attacking && !playerAttackable)
         {
+            Vector2 moveDirection = playerPos - (Vector2)transform.position;
+            FaceDirection(moveDirection);
+
             transform.position = Vector2.MoveTowards(
                 transform.position,
                 playerPos,
                 moveSpeed * Time.deltaTime
             );
         }
+
+        // If player inside attack radius → trigger animation
+        if (playerAttackable)
+        {
+            anim.SetTrigger("attackingPlayer");
+        }
+    }
+
+    // Animation Event — deals damage
+    public void attack()
+    {
+        attackingplayer = true;
+
+        Collider2D[] targets = Physics2D.OverlapCircleAll(
+            enemyAttackPoint.transform.position,
+            radius,
+            players
+        );
+
+        foreach (Collider2D target in targets)
+        {
+            target.GetComponent<health_player>().TakeDamage(damage);
+        }
+    }
+
+    public void endAttack()
+    {
+        attackingplayer = false;
+    }
+
+    private void OnDrawGizmos()
+    {
+        if (enemyAttackPoint != null)
+            Gizmos.DrawWireSphere(enemyAttackPoint.transform.position, radius);
     }
 }

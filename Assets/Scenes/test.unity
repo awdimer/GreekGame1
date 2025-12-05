@@ -7462,8 +7462,8 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4225332441357441363, guid: 8f23f0d532a874a32a9ff9a5d3d1aeb4, type: 3}
-      propertyPath: range
-      value: 5
+      propertyPath: attackRange
+      value: 1000
       objectReference: {fileID: 0}
     - target: {fileID: 4225332441357441363, guid: 8f23f0d532a874a32a9ff9a5d3d1aeb4, type: 3}
       propertyPath: 'patrolPoints.Array.data[0]'

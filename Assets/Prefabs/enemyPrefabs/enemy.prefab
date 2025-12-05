@@ -62,6 +62,37 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2026754773426793735}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &5890880258375592703
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3046633732934857895}
+  m_Layer: 9
+  m_Name: enemyAttackPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3046633732934857895
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5890880258375592703}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.24, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8497362513660571584}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6551099718973725716
 GameObject:
   m_ObjectHideFlags: 0
@@ -128,10 +159,11 @@ Transform:
   m_GameObject: {fileID: 7456895731891630191}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.63, y: -0.08, z: -0.03489465}
+  m_LocalPosition: {x: -1.32, y: -0.08, z: -0.03489465}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 3046633732934857895}
   m_Father: {fileID: 2026754773426793735}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &7797649401743032496
@@ -222,10 +254,18 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 64
-  range: 2
+  range: 5
+  attackRange: 0
   playerLayer:
     serializedVersion: 2
     m_Bits: 256
+  enemyAttackPoint: {fileID: 5890880258375592703}
+  radius: 0.75
+  players:
+    serializedVersion: 2
+    m_Bits: 256
+  damage: 1000
+  lostPlayerTime: 1
   KBforce: 5
   KBtotaltime: 0.5
   gravityForce: 10
