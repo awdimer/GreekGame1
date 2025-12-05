@@ -215,13 +215,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   patrolPoints:
-  - {fileID: 8193877993486409170}
-  - {fileID: 2186786395744502768}
+  - {fileID: 0}
+  - {fileID: 0}
   moveSpeed: 5
   patrolDestination: 0
   groundLayer:
     serializedVersion: 2
     m_Bits: 64
+  range: 2
+  playerLayer:
+    serializedVersion: 2
+    m_Bits: 256
   KBforce: 5
   KBtotaltime: 0.5
   gravityForce: 10
