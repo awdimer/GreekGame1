@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class testPlayerMovement : MonoBehaviour
 {
+#region VARIABLES
    private Rigidbody2D rb;
    private Animator anim;
    private BoxCollider2D boxCollider;
@@ -14,7 +15,8 @@ public class testPlayerMovement : MonoBehaviour
    [SerializeField] private float startDecceleration;
    [SerializeField] private float frictionAmount;
    [SerializeField] private float jumpForce;
-   [SerializeField] private float wallJumpForce;
+   [SerializeField] private float wallJumpForcex;
+   [SerializeField] private float wallJumpForcey;
    [SerializeField] private float jumpBufferTime;
    [SerializeField] private float coyoteTime;
    [SerializeField] private float jumpCutMultiplier;
@@ -32,8 +34,8 @@ public class testPlayerMovement : MonoBehaviour
     private float decceleration;
 
    private Vector2 moveInput;
-
-
+#endregion
+#region AWAKE
    private void Awake()
    {
        ///grabs references for rigidbody from game object, so it can be used in code
@@ -42,15 +44,16 @@ public class testPlayerMovement : MonoBehaviour
    }
 
 
-
-
+#endregion
+#region UPDATES
    private void Update()
    {
-      
+      Debug.Log(wallJumpCooldown);
 
 
        lastGroundedTime -= Time.deltaTime;
        lastJumpTime -= Time.deltaTime;
+       wallJumpCooldown += Time.deltaTime;
 
 
        moveInput.x = Input.GetAxisRaw("Horizontal");
@@ -110,26 +113,25 @@ public class testPlayerMovement : MonoBehaviour
 
 
 
-       TurnCheck();
-       wallJumpCooldown += Time.deltaTime;
-       if(wallJumpCooldown > 0.2)
+       TurnCheck();       
+       if (onWall() && !isGrounded())
        {
-           if (onWall() && !isGrounded())
-           {
-               rb.gravityScale = 0;
-               rb.linearVelocity = Vector2.zero;
-           }
-           else
-               rb.gravityScale = 5;
-           if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow) && onWall() && !isGrounded())
-           {
-               wallJump();
-           }
+           rb.gravityScale = 0;
+           rb.linearVelocity = Vector2.zero;
        }
+       else
+           rb.gravityScale = 5;
+       if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow) && onWall() && !isGrounded()&& wallJumpCooldown > .2)
+       {
+           wallJump();
+       }
+    
       
   
   
    }
+   #endregion
+#region IS GROUNDED CHECK
    private bool isGrounded() //checks if the player is on the ground
    {
 
@@ -137,25 +139,33 @@ public class testPlayerMovement : MonoBehaviour
        RaycastHit2D raycastHit = Physics2D.BoxCast(boxCollider.bounds.center, boxCollider.bounds.size, 0, Vector2.down, 0.1f, groundLayer);
        return raycastHit.collider != null;
    }
+   #endregion
+#region COLLISION
    public void OnCollisionEnter2D(Collision2D collision)
     {
 
         if (collision.gameObject.CompareTag("enemy"))
         {
             knockFromRight = collision.transform.position.x <= transform.position.x;
-            rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+            rb.AddForce(Vector2.up * KBforce, ForceMode2D.Impulse);
              if (knockFromRight == true)
             {
-                rb.AddForce(Vector2.right * jumpForce, ForceMode2D.Impulse);
+                rb.AddForce(Vector2.right * KBforce, ForceMode2D.Impulse);
             }
             if (knockFromRight == false)
             {
-                rb.AddForce(Vector2.left * jumpForce, ForceMode2D.Impulse);
+                rb.AddForce(Vector2.left * KBforce, ForceMode2D.Impulse);
             }
             
         }
+        if (collision.gameObject.CompareTag("Wall"))
+        {
+            wallJumpCooldown = 0;
+        }
 
     }
+    #endregion
+#region JUMP
    private void jump() // applys jump force
    {
        isJumping = true;
@@ -163,6 +173,8 @@ public class testPlayerMovement : MonoBehaviour
 
 
    }
+   #endregion
+#region TURNING 
    private void TurnCheck() // checks if the player needs to turn
    {
        if (moveInput.x > 0 && !isFacingRight)
@@ -189,9 +201,10 @@ public class testPlayerMovement : MonoBehaviour
            isFacingRight = !isFacingRight;
        }
    }
+   #endregion
+#region WALL DETECTION AND JUMP
    private bool onWall()
    {
-      
       return Physics2D.OverlapCircle(wallCheck.position, .02f,wallLayer);
    }
    private void wallJump()
@@ -199,18 +212,19 @@ public class testPlayerMovement : MonoBehaviour
        if (onWall() && !isGrounded())
        {
            isJumping = true;
-           rb.AddForce(Vector2.up * wallJumpForce, ForceMode2D.Impulse);
+           rb.AddForce(Vector2.up * wallJumpForcey, ForceMode2D.Impulse);
            if (isFacingRight)
            {
-               rb.AddForce(Vector2.left * wallJumpForce, ForceMode2D.Impulse);
+               rb.AddForce(Vector2.left * wallJumpForcex, ForceMode2D.Impulse);
            }
            if (!isFacingRight)
            {
-               rb.AddForce(Vector2.right * wallJumpForce, ForceMode2D.Impulse);
+               rb.AddForce(Vector2.right * wallJumpForcex, ForceMode2D.Impulse);
            }
           
        }
    }
+   #endregion
 }
 
 
