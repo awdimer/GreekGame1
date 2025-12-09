@@ -73,7 +73,7 @@ public class enemy_mov : MonoBehaviour
             }
         }
 
-        attackPlayer();
+        detectPlayer();
     }
 
     // NEW: Automatically face left/right
@@ -170,7 +170,7 @@ public class enemy_mov : MonoBehaviour
         directions[1] = -transform.right;
     }
 
-    private void attackPlayer()
+    private void detectPlayer()
     {
         CalculateDirections();
 
@@ -196,6 +196,7 @@ public class enemy_mov : MonoBehaviour
             {
                 attacking = false;
                 isPatrolling = true;
+                lostPlayerTimer = 0;
             }
         }
 
@@ -232,13 +233,24 @@ public class enemy_mov : MonoBehaviour
 
         foreach (Collider2D target in targets)
         {
-            target.GetComponent<health_player>().TakeDamage(damage);
+            PlayerMovement playerMovement = target.gameObject.GetComponent<PlayerMovement>();
+            if(!playerMovement.isParrying)
+            {
+                target.GetComponent<health_player>().TakeDamage(damage);
+            }
+            else
+            {
+                knockBack();
+            }
+            
         }
     }
 
     public void endAttack()
     {
         attackingplayer = false;
+        anim.SetTrigger("attackEnd");
+        
     }
 
     private void OnDrawGizmos()
