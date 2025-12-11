@@ -24,7 +24,7 @@ public class testPlayerMovement : MonoBehaviour
    [SerializeField] private LayerMask wallLayer;
    [SerializeField] private Transform wallCheck;
    [SerializeField] public float KBforce;
-    [SerializeField] private GameObject cameraFollow;
+   [SerializeField] private GameObject cameraFollowGO;
 
    private float wallJumpCooldown;
    public bool knockFromRight;
@@ -34,7 +34,8 @@ public class testPlayerMovement : MonoBehaviour
    public bool isFacingRight = true;
    private bool isOnWall;
     private float decceleration;
-    private cameraFollowScript cameraFollowObject;
+    private CameraFollowObject cameraFollowObject;
+    private float fallSpeedyDampingChangeThreshold;
 
 
    private Vector2 moveInput;
@@ -45,16 +46,21 @@ public class testPlayerMovement : MonoBehaviour
        ///grabs references for rigidbody from game object, so it can be used in code
        rb = GetComponent<Rigidbody2D>();
        boxCollider = GetComponent<BoxCollider2D>();
-       TurnCheck();
-       cameraFollowObject = cameraFollow.GetComponent<cameraFollowScript>();
+       
    }
-
+    
+    void Start()
+    {
+        TurnCheck();
+        cameraFollowObject = cameraFollowGO.GetComponent<CameraFollowObject>();
+        fallSpeedyDampingChangeThreshold = cameramanager.instance.fallSpeedyDampingChangeThreshold;
+    }
 
 #endregion
 #region UPDATES
    private void Update()
    {
-      Debug.Log(wallJumpCooldown);
+
 
 
        lastGroundedTime -= Time.deltaTime;
@@ -78,6 +84,16 @@ public class testPlayerMovement : MonoBehaviour
                rb.AddForce(Vector2.down * rb.linearVelocity.y * (1 - jumpCutMultiplier), ForceMode2D.Impulse);
           }
        }
+       if(rb.linearVelocity.y < fallSpeedyDampingChangeThreshold && !cameramanager.instance.IsLerpingYDamping && !cameramanager.instance.LerpedFromPlayerFalling)
+        {
+            cameramanager.insatnce.LerpYDamping(true);
+
+        }
+        if (rb.linearVelocity.y >= 0f && !cameramanager.instance.IsLerpingYDamping && cameramanager.instance.LerpedFromPlayerFalling)
+        {
+            cameramanager.instance.LerpedFromPlayerFalling = false;
+            cameramanager.instance.LerpYDamping(false);
+        }
    }
    void FixedUpdate()
    {
