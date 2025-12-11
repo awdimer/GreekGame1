@@ -40,10 +40,6 @@ public class enemy_mov : MonoBehaviour
     public bool knockFromRight;
     private bool isGettingAttacked = false;
 
-    // cache references (unused but keeping because your original script had them)
-    private enemyHealth enemyHealth;
-    private enemydammage enemydammage;
-
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();

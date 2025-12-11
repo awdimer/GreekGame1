@@ -16,6 +16,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private GameObject attackPoint;
     [SerializeField] private float radius;
     [SerializeField] private LayerMask enemies;
+    [SerializeField] private GameObject bulletPrefab;
     /// <summary>
     /// Combat Stuff
     /// </summary>
@@ -247,6 +248,16 @@ public class PlayerMovement : MonoBehaviour
     {
         Gizmos.DrawWireSphere(attackPoint.transform.position, radius);
     }
+
+    public void ReflectBullet(Vector2 ogVelocity)
+{
+    // Spawn new bullet
+    GameObject reflected = Instantiate(bulletPrefab, attackPoint.transform.position, Quaternion.identity);
+
+    // Send it exactly opposite
+    PlayerBullet pb = reflected.GetComponent<PlayerBullet>();
+    pb.ShootOut(ogVelocity, 1f); // 1 = same speed; >1 = faster
+}
 
     
 }
