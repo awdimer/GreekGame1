@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections;
-using UnityEngine.UI;
 using TMPro;
+using UnityEngine.UI;
 public class Tooltip : MonoBehaviour
 {
     private Item item;
@@ -31,8 +31,7 @@ public class Tooltip : MonoBehaviour
     }
     public void ConstructDataString()
     {
-        data = "<color=#0473f0><b>" + item.Title + "</b></color>\n\n" + item.Description + "";
+        data = "<color=#0473f0><b>" + item.Title + "</b></color>\n\n" + item.Description + "\nPower: " + item.Power;
         tooltip.transform.GetChild(0).GetComponent<TMP_Text>().text = data;
     }
-
 }

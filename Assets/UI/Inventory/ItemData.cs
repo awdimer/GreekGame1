@@ -39,7 +39,7 @@ public class ItemData : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
         GetComponent<CanvasGroup>().blocksRaycasts = true;
     }
     public void OnPointerDown(PointerEventData eventData)
-    {
+    { 
         if(item != null)
         {
             offset = eventData.position - new Vector2(this.transform.position.x, this.transform.position.y);
