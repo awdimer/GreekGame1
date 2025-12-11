@@ -24,14 +24,18 @@ public class testPlayerMovement : MonoBehaviour
    [SerializeField] private LayerMask wallLayer;
    [SerializeField] private Transform wallCheck;
    [SerializeField] public float KBforce;
+    [SerializeField] private GameObject cameraFollow;
+
    private float wallJumpCooldown;
    public bool knockFromRight;
    private float lastGroundedTime;
    private float lastJumpTime;
    private bool isJumping;
-   private bool isFacingRight = true;
+   public bool isFacingRight = true;
    private bool isOnWall;
     private float decceleration;
+    private cameraFollowScript cameraFollowObject;
+
 
    private Vector2 moveInput;
 #endregion
@@ -41,6 +45,8 @@ public class testPlayerMovement : MonoBehaviour
        ///grabs references for rigidbody from game object, so it can be used in code
        rb = GetComponent<Rigidbody2D>();
        boxCollider = GetComponent<BoxCollider2D>();
+       TurnCheck();
+       cameraFollowObject = cameraFollow.GetComponent<cameraFollowScript>();
    }
 
 
@@ -193,13 +199,18 @@ public class testPlayerMovement : MonoBehaviour
            Vector3 rotator = new Vector3(transform.rotation.x, 180f, transform.rotation.z);
            transform.rotation = Quaternion.Euler(rotator);
            isFacingRight = !isFacingRight;
+
+           cameraFollowObject.callTurn();
        }
        else
        {
            Vector3 rotator = new Vector3(transform.rotation.x, 0f, transform.rotation.z);
            transform.rotation = Quaternion.Euler(rotator);
            isFacingRight = !isFacingRight;
+
+           cameraFollowObject.callTurn();
        }
+
    }
    #endregion
 #region WALL DETECTION AND JUMP
