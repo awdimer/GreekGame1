@@ -3,6 +3,7 @@ using UnityEngine;
 public class PlayerBullet : MonoBehaviour
 {
     [SerializeField] private int damage = 10;
+    [SerializeField] private float lifetime;
 
     private Rigidbody2D rb;
 
@@ -10,6 +11,10 @@ public class PlayerBullet : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         rb.gravityScale = 0; // straight line
+    }
+    void Start()
+    {
+        Destroy(gameObject, lifetime);
     }
 
     // Called when the bullet is reflected

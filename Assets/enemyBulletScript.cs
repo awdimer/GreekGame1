@@ -4,6 +4,7 @@ public class EnemyBulletScript : MonoBehaviour
 {
     [SerializeField] private float force = 10f;
     [SerializeField] private int damage = 10;
+    [SerializeField] private float lifetime;
     [SerializeField] private GameObject reflectedBulletPrefab; // assign PlayerBullet prefab
     private Vector2 initialVelocity;
     private Rigidbody2D rb;
@@ -20,6 +21,8 @@ public class EnemyBulletScript : MonoBehaviour
         Vector3 direction = targetPos - transform.position;
         initialVelocity = direction.normalized * force;
         rb.linearVelocity = initialVelocity;
+
+        Destroy(gameObject, lifetime);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

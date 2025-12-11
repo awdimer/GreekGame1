@@ -131,6 +131,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   force: 5
   damage: 10
+  lifetime: 5
+  reflectedBulletPrefab: {fileID: 0}
 --- !u!61 &6993477456501271540
 BoxCollider2D:
   m_ObjectHideFlags: 0
