@@ -2,11 +2,10 @@ using UnityEngine;
 using System.Collections;
 
 
-public class cameraFollowScript : MonoBehaviour
+public class CameraFollowObject : MonoBehaviour
 {
        [SerializeField] private Transform playerTransform;
-       [SerializeField] private float flipyRotationTime = 0.3f;
-       [SerializeField] private float flipRotationTime = 0.3f;
+       [SerializeField] private float flipyRotationTime = .5f;
        private testPlayerMovement Player;
        private Coroutine turnCoroutine;
        private bool isFacingRight;
@@ -35,15 +34,15 @@ public class cameraFollowScript : MonoBehaviour
     }
     private IEnumerator flipYLerp()
     {
-        float startRotation = playerTransform.localEulerAngles.y;
+        float startRotation = transform.localEulerAngles.y;
         float endRotationAmount = DetermineEndRotation();
         float yRotation = 0f;
         float elapsedTime = 0f;
         while (elapsedTime < flipyRotationTime)
         {
             elapsedTime += Time.deltaTime;
-            yRotation = Mathf.Lerp(startRotation,endRotationAmount, elapsedTime/flipRotationTime);
-            playerTransform.rotation = Quaternion.Euler(0f,yRotation, 0f);
+            yRotation = Mathf.Lerp(startRotation,endRotationAmount, elapsedTime/flipyRotationTime);
+            transform.rotation = Quaternion.Euler(0f,yRotation, 0f);
             yield return null;
         }
 
@@ -53,11 +52,11 @@ public class cameraFollowScript : MonoBehaviour
         isFacingRight = !isFacingRight;
         if (isFacingRight)
         {
-            return 180f;
+            return 0;
         }
         else
         {
-            return 0f;
+            return 180f;
         }
     }
 
