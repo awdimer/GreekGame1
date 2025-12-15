@@ -4460,6 +4460,90 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1284493625
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1284493627}
+  - component: {fileID: 1284493626}
+  m_Layer: 0
+  m_Name: Light 2D
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1284493626
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1284493625}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 073797afb82c5a1438f328866b10b3f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ComponentVersion: 2
+  m_LightType: 4
+  m_BlendStyleIndex: 0
+  m_FalloffIntensity: 0.5
+  m_Color: {r: 1, g: 0.33732823, b: 0, a: 1}
+  m_Intensity: 0.27
+  m_LightVolumeIntensity: 1
+  m_LightVolumeEnabled: 0
+  m_ApplyToSortingLayers: d7a343a4000000000f01d34dff2d1129f9c86e50e36ddf64
+  m_LightCookieSprite: {fileID: 0}
+  m_DeprecatedPointLightCookieSprite: {fileID: 0}
+  m_LightOrder: 0
+  m_AlphaBlendOnOverlap: 0
+  m_OverlapOperation: 0
+  m_NormalMapDistance: 3
+  m_NormalMapQuality: 2
+  m_UseNormalMap: 0
+  m_ShadowsEnabled: 1
+  m_ShadowIntensity: 0.75
+  m_ShadowSoftness: 0.3
+  m_ShadowSoftnessFalloffIntensity: 0.5
+  m_ShadowVolumeIntensityEnabled: 0
+  m_ShadowVolumeIntensity: 0.75
+  m_LocalBounds:
+    m_Center: {x: 0, y: -0.00000011920929, z: 0}
+    m_Extent: {x: 0.9985302, y: 0.99853027, z: 0}
+  m_PointLightInnerAngle: 360
+  m_PointLightOuterAngle: 360
+  m_PointLightInnerRadius: 0
+  m_PointLightOuterRadius: 1
+  m_ShapeLightParametricSides: 5
+  m_ShapeLightParametricAngleOffset: 0
+  m_ShapeLightParametricRadius: 1
+  m_ShapeLightFalloffSize: 0.5
+  m_ShapeLightFalloffOffset: {x: 0, y: 0}
+  m_ShapePath:
+  - {x: -0.5, y: -0.5, z: 0}
+  - {x: 0.5, y: -0.5, z: 0}
+  - {x: 0.5, y: 0.5, z: 0}
+  - {x: -0.5, y: 0.5, z: 0}
+--- !u!4 &1284493627
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1284493625}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.024568945, y: 2.2499123, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1291954565
 GameObject:
   m_ObjectHideFlags: 0
@@ -4892,12 +4976,12 @@ GameObject:
   m_Component:
   - component: {fileID: 1368975977}
   - component: {fileID: 1368975976}
-  - component: {fileID: 1368975974}
   - component: {fileID: 1368975978}
   - component: {fileID: 1368975973}
   - component: {fileID: 1368975972}
   - component: {fileID: 1368975979}
   - component: {fileID: 1368975980}
+  - component: {fileID: 1368975982}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -4954,42 +5038,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &1368975974
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1368975971}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3a4483728587c4d9db8f66e865fdf2c1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 15
-  jumpPower: 20
-  wallJumpPowerY: 7
-  wallJumpPowerX: 7
-  groundLayer:
-    serializedVersion: 2
-    m_Bits: 64
-  wallLayer:
-    serializedVersion: 2
-    m_Bits: 128
-  attackPoint: {fileID: 33627911}
-  radius: 0.75
-  enemies:
-    serializedVersion: 2
-    m_Bits: 512
-  bulletPrefab: {fileID: 2494092887196566002, guid: e0052b53f6af64ee195aee1bd32c74cc, type: 3}
-  parryTime: 2
-  parryCooldown: 0
-  SwordDamage: 10
-  isParrying: 0
-  KBforce: 4
-  KBcounter: 0
-  KBtotaltime: 0.2
-  knockFromRight: 0
 --- !u!212 &1368975976
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -5133,6 +5181,42 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88e39bdd7cc014294a835667ff1dd146, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1368975982
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1368975971}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a4483728587c4d9db8f66e865fdf2c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 15
+  jumpPower: 20
+  wallJumpPowerY: 7
+  wallJumpPowerX: 7
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 64
+  wallLayer:
+    serializedVersion: 2
+    m_Bits: 128
+  attackPoint: {fileID: 33627911}
+  radius: 0.75
+  enemies:
+    serializedVersion: 2
+    m_Bits: 512
+  bulletPrefab: {fileID: 2494092887196566002, guid: e0052b53f6af64ee195aee1bd32c74cc, type: 3}
+  parryTime: 2
+  parryCooldown: 0
+  SwordDamage: 10
+  isParrying: 0
+  KBforce: 0
+  KBcounter: 0
+  KBtotaltime: 0
+  knockFromRight: 0
 --- !u!1 &1370783267
 GameObject:
   m_ObjectHideFlags: 0
@@ -7801,3 +7885,4 @@ SceneRoots:
   - {fileID: 2110190788}
   - {fileID: 1674350018}
   - {fileID: 5736602717478718087}
+  - {fileID: 1284493627}

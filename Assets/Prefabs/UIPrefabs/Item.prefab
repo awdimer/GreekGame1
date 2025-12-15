@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 9117687414123764422}
   - component: {fileID: 3821856371482396875}
   - component: {fileID: 6247898504239803692}
-  - component: {fileID: 4840196461375819383}
   m_Layer: 5
   m_Name: StackAmount
   m_TagString: Untagged
@@ -137,21 +136,6 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!114 &4840196461375819383
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4028520831641298201}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cfabb0440166ab443bba8876756fdfa9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
-  m_EffectDistance: {x: 1, y: -1}
-  m_UseGraphicAlpha: 1
 --- !u!1 &8847321501177381733
 GameObject:
   m_ObjectHideFlags: 0
@@ -166,6 +150,8 @@ GameObject:
   - component: {fileID: 1952922519908230575}
   - component: {fileID: 8274770365155882840}
   - component: {fileID: 8656931773270897355}
+  - component: {fileID: 3077646122158932483}
+  - component: {fileID: 2680084449800361592}
   m_Layer: 5
   m_Name: Item
   m_TagString: Untagged
@@ -277,3 +263,30 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
+--- !u!114 &3077646122158932483
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8847321501177381733}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 445dd7bdf2f7c4eb090f3504532acc28, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2680084449800361592
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8847321501177381733}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfabb0440166ab443bba8876756fdfa9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
+  m_EffectDistance: {x: 2.5, y: -2.5}
+  m_UseGraphicAlpha: 1
