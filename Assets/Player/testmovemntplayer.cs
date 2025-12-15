@@ -53,7 +53,7 @@ public class testPlayerMovement : MonoBehaviour
     {
         TurnCheck();
         cameraFollowObject = cameraFollowGO.GetComponent<CameraFollowObject>();
-        fallSpeedyDampingChangeThreshold = cameramanager.instance.fallSpeedyDampingChangeThreshold;
+        fallSpeedyDampingChangeThreshold = CameraManager.instance.fallSpeedyDampingChangeThreshold;
     }
 
 #endregion
@@ -84,15 +84,15 @@ public class testPlayerMovement : MonoBehaviour
                rb.AddForce(Vector2.down * rb.linearVelocity.y * (1 - jumpCutMultiplier), ForceMode2D.Impulse);
           }
        }
-       if(rb.linearVelocity.y < fallSpeedyDampingChangeThreshold && !cameramanager.instance.IsLerpingYDamping && !cameramanager.instance.LerpedFromPlayerFalling)
+       if(rb.linearVelocity.y < fallSpeedyDampingChangeThreshold && !CameraManager.instance.IsLerpingYDamping && !CameraManager.instance.LerpedFromPlayerFalling)
         {
-            cameramanager.insatnce.LerpYDamping(true);
+            CameraManager.instance.LerpYDamping(true);
 
         }
-        if (rb.linearVelocity.y >= 0f && !cameramanager.instance.IsLerpingYDamping && cameramanager.instance.LerpedFromPlayerFalling)
+        if (rb.linearVelocity.y >= 0f && !CameraManager.instance.IsLerpingYDamping && CameraManager.instance.LerpedFromPlayerFalling)
         {
-            cameramanager.instance.LerpedFromPlayerFalling = false;
-            cameramanager.instance.LerpYDamping(false);
+            CameraManager.instance.LerpedFromPlayerFalling = false;
+            CameraManager.instance.LerpYDamping(false);
         }
    }
    void FixedUpdate()

@@ -44,16 +44,16 @@ public class CameraManager : MonoBehaviour
                 framingTransposer = currentCamera.GetCinemachineComponent<CinemachineFramingTransposer>();
             }
         }
-        normYPanAmount = framingTransposer.Damping.y;
+        normYPanAmount = framingTransposer.m_YDamping;
     }
-    public void LerYdamping(bool isPlayerFalling)
+    public void LerpYDamping(bool isPlayerFalling)
     {
-        lerpYPanCoroutine = startCoroutine(LerpYAction(isPlayerFalling));
+        lerpYPanCoroutine = StartCoroutine(LerpYAction(isPlayerFalling));
     }
     private IEnumerator LerpYAction(bool isPlayerFalling)
     {
         IsLerpingYDamping = true;
-        float startDampAmount = framingTransposer.Damping.y;
+        float startDampAmount = framingTransposer.m_YDamping;
         float endDampAmount = 0f;
         if (isPlayerFalling)
         {
@@ -65,11 +65,11 @@ public class CameraManager : MonoBehaviour
             endDampAmount = normYPanAmount;
         }
         float elapsedTime = 0f;
-        while(elapsedTime< fallYPanAmount)
+        while(elapsedTime< fallYPanTime)
         {
-            elapsedTime += elapsedTime.deltaTime;
+            elapsedTime += Time.deltaTime;
             float LerpedPanAmount = Mathf.Lerp(startDampAmount, endDampAmount, elapsedTime/fallPanAmount);
-            framingTransposer.Damping.y = LerpedPanAmount;
+            framingTransposer.m_YDamping = LerpedPanAmount;
             yield return null;
         }
 
