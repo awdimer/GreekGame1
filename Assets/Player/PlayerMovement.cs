@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 
 using System.Reflection;
+using System.Threading.Tasks;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
@@ -20,10 +21,14 @@ public class PlayerMovement : MonoBehaviour
     /// <summary>
     /// Combat Stuff
     /// </summary>
-    [SerializeField] float parryTime ;
+    [SerializeField] float parryTime;
     [SerializeField] float parryCooldown;
     [SerializeField] public int SwordDamage;
+    [SerializeField] float dodgeTime;
+    [SerializeField] float dodgeCoolDown;
+    [SerializeField] private float dodgePower;
     public bool isParrying = false;
+    public bool isDodging = false;
     private float nextReadyCooldownTime;
     private Rigidbody2D body;
     private Animator anim;
@@ -85,6 +90,11 @@ public class PlayerMovement : MonoBehaviour
             StartCoroutine(ParryCoroutine());
             nextReadyCooldownTime = Time.time + parryCooldown;
         }
+        if (Input.GetKeyDown(KeyCode.Space) && Time.time >= nextReadyCooldownTime)
+        {
+            StartCoroutine(dodgeCoroutine());
+            nextReadyCooldownTime = Time.time + dodgeCoolDown;
+        }
         
         if (Input.GetMouseButtonDown(0))
         {
@@ -97,9 +107,13 @@ public class PlayerMovement : MonoBehaviour
     {
         if ((KBcounter <= 0) && wallJumpCooldown > 0.2f)
         {   
-            if (isParrying == false)
+            if (isParrying == false && isDodging == false)
             {
                 body.linearVelocity = new Vector2(horizontalInput * speed, body.linearVelocity.y);
+            }
+            if(isDodging == true)
+            {
+                dodge();
             }
             
 
@@ -259,5 +273,25 @@ public class PlayerMovement : MonoBehaviour
     pb.ShootOut(ogVelocity, 1f); // 1 = same speed; >1 = faster
 }
 
-    
+    public void dodge()
+    {
+        
+        float dodgeDirection = horizontalInput != 0 ? horizontalInput : transform.localScale.x;
+
+        body.linearVelocity = new Vector2(dodgeDirection * dodgePower, body.linearVelocity.y);
+    }
+
+    private IEnumerator dodgeCoroutine()
+    {
+        isDodging = true;
+
+        anim.SetBool("isDodging", true);
+
+
+        yield return new WaitForSeconds(dodgeTime);
+        anim.SetBool("isDodging", false);
+
+
+        isDodging = false;
+    }
 }

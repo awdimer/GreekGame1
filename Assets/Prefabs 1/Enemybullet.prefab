@@ -129,10 +129,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dbb659704ed4e4c53b8e82192c441430, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  force: 5
+  force: 10
   damage: 10
   lifetime: 5
-  reflectedBulletPrefab: {fileID: 0}
+  reflectedBulletPrefab: {fileID: 2494092887196566002, guid: e0052b53f6af64ee195aee1bd32c74cc, type: 3}
 --- !u!61 &6993477456501271540
 BoxCollider2D:
   m_ObjectHideFlags: 0

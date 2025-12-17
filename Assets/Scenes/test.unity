@@ -4982,6 +4982,7 @@ GameObject:
   - component: {fileID: 1368975979}
   - component: {fileID: 1368975980}
   - component: {fileID: 1368975982}
+  - component: {fileID: 1368975974}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -5038,6 +5039,46 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &1368975974
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1368975971}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a4483728587c4d9db8f66e865fdf2c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 15
+  jumpPower: 20
+  wallJumpPowerY: 7
+  wallJumpPowerX: 7
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 64
+  wallLayer:
+    serializedVersion: 2
+    m_Bits: 128
+  attackPoint: {fileID: 33627911}
+  radius: 0.75
+  enemies:
+    serializedVersion: 2
+    m_Bits: 512
+  bulletPrefab: {fileID: 2494092887196566002, guid: e0052b53f6af64ee195aee1bd32c74cc, type: 3}
+  parryTime: 2
+  parryCooldown: 0
+  SwordDamage: 10
+  dodgeTime: 0.25
+  dodgeCoolDown: 1
+  dodgePower: 20
+  isParrying: 0
+  isDodging: 0
+  KBforce: 4
+  KBcounter: 0
+  KBtotaltime: 0.2
+  knockFromRight: 0
 --- !u!212 &1368975976
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -5212,7 +5253,11 @@ MonoBehaviour:
   parryTime: 2
   parryCooldown: 0
   SwordDamage: 10
+  dodgeTime: 0.25
+  dodgeCoolDown: 2
+  dodgePower: 20
   isParrying: 0
+  isDodging: 0
   KBforce: 0
   KBcounter: 0
   KBtotaltime: 0
