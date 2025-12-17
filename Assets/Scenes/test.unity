@@ -4982,6 +4982,7 @@ GameObject:
   - component: {fileID: 1368975979}
   - component: {fileID: 1368975980}
   - component: {fileID: 1368975982}
+  - component: {fileID: 1368975974}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -5252,7 +5253,11 @@ MonoBehaviour:
   parryTime: 2
   parryCooldown: 0
   SwordDamage: 10
+  dodgeTime: 0.25
+  dodgeCoolDown: 2
+  dodgePower: 20
   isParrying: 0
+  isDodging: 0
   KBforce: 0
   KBcounter: 0
   KBtotaltime: 0
