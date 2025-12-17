@@ -4,7 +4,7 @@ using System.Collections;
 public class CameraManager : MonoBehaviour
 {
     public static CameraManager instance;
-    [SerializeField] private CinemachineVirtualCamera[] allVirtualCameras;
+    [SerializeField] public CinemachineCamera[] allVirtualCameras;
 
     [SerializeField] private float fallPanAmount = .25f;
     [SerializeField] private float fallYPanTime = .35f;
@@ -14,7 +14,7 @@ public class CameraManager : MonoBehaviour
     public bool LerpedFromPlayerFalling {get;set;}
 
     private Coroutine lerpYPanCoroutine;
-    private CinemachineVirtualCamera currentCamera;
+    private CinemachineVirtualCameraBase currentCamera;
     private CinemachineFramingTransposer framingTransposer;
     private float normYPanAmount;
 
@@ -41,7 +41,8 @@ public class CameraManager : MonoBehaviour
             {
                 currentCamera = allVirtualCameras[i];
 
-                framingTransposer = currentCamera.GetCinemachineComponent<CinemachineFramingTransposer>();
+                framingTransposer =
+                currentCamera.GetCinemachineComponent(CinemachineCore.Stage.Body)as CinemachineFramingTransposer;
             }
         }
         normYPanAmount = framingTransposer.m_YDamping;
