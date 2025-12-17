@@ -4985,7 +4985,11 @@ MonoBehaviour:
   parryTime: 2
   parryCooldown: 0
   SwordDamage: 10
+  dodgeTime: 0.25
+  dodgeCoolDown: 1
+  dodgePower: 20
   isParrying: 0
+  isDodging: 0
   KBforce: 4
   KBcounter: 0
   KBtotaltime: 0.2
