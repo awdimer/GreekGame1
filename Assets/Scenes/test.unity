@@ -3740,7 +3740,11 @@ Transform:
   m_GameObject: {fileID: 887395721}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -4.85, y: 0.3, z: 0}
+<<<<<<< Updated upstream
+  m_LocalPosition: {x: -4.91, y: 0.16, z: 0}
+=======
+  m_LocalPosition: {x: -4.98, y: 0.25, z: 0}
+>>>>>>> Stashed changes
   m_LocalScale: {x: 0.70541567, y: 4.347837, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -9138,6 +9142,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: enemy
       objectReference: {fileID: 0}
+    - target: {fileID: 7797649401743032496, guid: 8f23f0d532a874a32a9ff9a5d3d1aeb4, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -889739676950766307, guid: 3a207aed33d5b0540874641f511fa8fa, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

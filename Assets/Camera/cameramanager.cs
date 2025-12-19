@@ -41,8 +41,7 @@ public class CameraManager : MonoBehaviour
             {
                 currentCamera = allVirtualCameras[i];
 
-                framingTransposer =
-                currentCamera.GetCinemachineComponent(CinemachineCore.Stage.Body)as CinemachineFramingTransposer;
+                framingTransposer = currentCamera.GetCinemachineComponent(CinemachineCore.Stage.Body)as CinemachineFramingTransposer;
             }
         }
         normYPanAmount = framingTransposer.m_YDamping;
@@ -69,7 +68,7 @@ public class CameraManager : MonoBehaviour
         while(elapsedTime< fallYPanTime)
         {
             elapsedTime += Time.deltaTime;
-            float LerpedPanAmount = Mathf.Lerp(startDampAmount, endDampAmount, elapsedTime/fallPanAmount);
+            float LerpedPanAmount = Mathf.Lerp(startDampAmount, endDampAmount, 0);
             framingTransposer.m_YDamping = LerpedPanAmount;
             yield return null;
         }
