@@ -68,7 +68,7 @@ public class CameraManager : MonoBehaviour
         while(elapsedTime< fallYPanTime)
         {
             elapsedTime += Time.deltaTime;
-            float LerpedPanAmount = Mathf.Lerp(startDampAmount, endDampAmount, 0);
+            float LerpedPanAmount = Mathf.Lerp(startDampAmount, endDampAmount, elapsedTime/fallPanAmount);
             framingTransposer.m_YDamping = LerpedPanAmount;
             yield return null;
         }
