@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 2c3176f1a248444e196ec9613b4edcbf
+guid: 9bb20a844b95f44e8b024f1f288c1299
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -2277038684353269545
-    second: monochrome_packed_0
+      213: -2911904328909398075
+    second: ringle_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,23 +100,23 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: monochrome_packed_0
+      name: ringle_0
       rect:
         serializedVersion: 2
-        x: 578
-        y: 336
-        width: 12
-        height: 16
-      alignment: 9
-      pivot: {x: 0.2610179, y: 0.46522903}
+        x: 202
+        y: 218
+        width: 701
+        height: 624
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 7d0fc4f71655660e0800000000000000
-      internalID: -2277038684353269545
+      spriteID: 5cfde67d076d697d0800000000000000
+      internalID: -2911904328909398075
       vertices: []
       indices: 
       edges: []
@@ -125,7 +125,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 61aada995b6ae4e8a9ef9a7471349e14
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      monochrome_packed_0: -2277038684353269545
+      ringle_0: -2911904328909398075
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

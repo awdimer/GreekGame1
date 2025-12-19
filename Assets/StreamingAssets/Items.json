@@ -26,5 +26,19 @@
         "stackable": true,
         "rarity": 1,
         "slug": "AngryPussy"
+    },
+    {
+        "id": 2,
+        "title": "AK-47",
+        "value": 4000,
+        "stats":{
+            "power": 9999,
+            "defence": 0,
+            "vitality": 0
+        },
+        "description": "African Warlord Simulator Machine",
+        "stackable": false,
+        "rarity": 10,
+        "slug": "AK47"
     }
 ]
