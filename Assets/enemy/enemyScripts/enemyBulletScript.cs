@@ -30,23 +30,28 @@ public class EnemyBulletScript : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Player"))
-        {
-            PlayerMovement playerMovement = collision.gameObject.GetComponent<PlayerMovement>();
+       if (!collision.gameObject.CompareTag("Player")) return;
 
-            if (!playerMovement.isParrying)
-            {
-                Physics.IgnoreLayerCollision(player,bullet);
-                // Damage player
-                collision.gameObject.GetComponent<health_player>().TakeDamage(damage);
-                return;
-            }
-            else
-            {
-                // Parried! Spawn reflected bullet
-                playerMovement.ReflectBullet(initialVelocity);
-            }
-            Destroy(gameObject);
-        }
+    PlayerMovement playerMovement =
+        collision.gameObject.GetComponent<PlayerMovement>();
+
+    if (!playerMovement.isParrying)
+    {
+        Physics2D.IgnoreCollision(
+            collision.collider,
+            GetComponent<Collider2D>()
+        );
+
+        collision.gameObject
+            .GetComponent<health_player>()
+            .TakeDamage(damage);
+
+        Destroy(gameObject);
+    }
+    else
+    {
+        playerMovement.ReflectBullet(initialVelocity);
+        Destroy(gameObject);
+    }
     }
 }
