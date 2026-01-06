@@ -19,12 +19,15 @@ public class testPlayerMovement : MonoBehaviour
    [SerializeField] private float wallJumpForcey;
    [SerializeField] private float jumpBufferTime;
    [SerializeField] private float coyoteTime;
-   [SerializeField] private float jumpCutMultiplier;
+   [SerializeField] private float jumpCutMultipliery;
+   [SerializeField] private float jumpCutMultiplierx;
+
    [SerializeField] private LayerMask groundLayer;
    [SerializeField] private LayerMask wallLayer;
    [SerializeField] private Transform wallCheck;
    [SerializeField] public float KBforce;
    [SerializeField] private GameObject cameraFollowGO;
+   [SerializeField] public Animator animator;
 
    private float wallJumpCooldown;
    public bool knockFromRight;
@@ -36,6 +39,7 @@ public class testPlayerMovement : MonoBehaviour
     private float decceleration;
     private CameraFollowObject cameraFollowObject;
     private float fallSpeedyDampingChangeThreshold;
+    
 
 
    private Vector2 moveInput;
@@ -53,14 +57,15 @@ public class testPlayerMovement : MonoBehaviour
     {
         TurnCheck();
         cameraFollowObject = cameraFollowGO.GetComponent<CameraFollowObject>();
-        fallSpeedyDampingChangeThreshold = CameraManager.instance.fallSpeedyDampingChangeThreshold;
+        
     }
 
 #endregion
 #region UPDATES
    private void Update()
    {
-
+        animator.SetBool("grounded",isGrounded());
+        animator.SetFloat("speed", Mathf.Abs(rb.linearVelocity.x));
 
 
        lastGroundedTime -= Time.deltaTime;
@@ -81,19 +86,18 @@ public class testPlayerMovement : MonoBehaviour
        {
            if (rb.linearVelocity.y > 0 && isJumping)
            {
-               rb.AddForce(Vector2.down * rb.linearVelocity.y * (1 - jumpCutMultiplier), ForceMode2D.Impulse);
+               rb.AddForce(Vector2.down * rb.linearVelocity.y * (1 - jumpCutMultipliery), ForceMode2D.Impulse);
+                if (isFacingRight)
+                {
+                    rb.AddForce(Vector2.right * rb.linearVelocity.x * (1 - jumpCutMultiplierx), ForceMode2D.Impulse);
+                }
+                else
+                {
+                    rb.AddForce(Vector2.left * rb.linearVelocity.x * (1 - jumpCutMultiplierx), ForceMode2D.Impulse);
+                }
           }
        }
-       if(rb.linearVelocity.y < fallSpeedyDampingChangeThreshold && !CameraManager.instance.IsLerpingYDamping && !CameraManager.instance.LerpedFromPlayerFalling)
-        {
-            CameraManager.instance.LerpYDamping(true);
-
-        }
-        if (rb.linearVelocity.y >= 0f && !CameraManager.instance.IsLerpingYDamping && CameraManager.instance.LerpedFromPlayerFalling)
-        {
-            CameraManager.instance.LerpedFromPlayerFalling = false;
-            CameraManager.instance.LerpYDamping(false);
-        }
+       
    }
    void FixedUpdate()
    {

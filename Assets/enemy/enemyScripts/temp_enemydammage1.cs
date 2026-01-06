@@ -3,8 +3,8 @@ using UnityEngine;
 public class temp_enemydammage : MonoBehaviour
 {
     [SerializeField] private int damage = 10;
-
-    private health_player playerHealth; // cache reference
+    [SerializeField] private float hitStopTime = 10f;
+    private health_player playerHealth;
 
 
 
@@ -17,7 +17,7 @@ public class temp_enemydammage : MonoBehaviour
 
             
             playerHealth.TakeDamage(10);
-            Object.FindFirstObjectByType<Hitstop>().Stop(0.5f);
+            Object.FindFirstObjectByType<Hitstop>().Stop(10f);
             
         }
     }
