@@ -9,11 +9,14 @@ public class EnemyBulletScript : MonoBehaviour
     private Vector2 initialVelocity;
     private Rigidbody2D rb;
     private GameObject player;
+    [SerializeField] private GameObject bullet;
+    
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         rb.gravityScale = 0; // ensures straight flight
+       
 
         player = GameObject.FindGameObjectWithTag("Player");
 
@@ -33,16 +36,17 @@ public class EnemyBulletScript : MonoBehaviour
 
             if (!playerMovement.isParrying)
             {
+                Physics.IgnoreLayerCollision(player,bullet);
                 // Damage player
                 collision.gameObject.GetComponent<health_player>().TakeDamage(damage);
-                Destroy(gameObject);
+                return;
             }
             else
             {
                 // Parried! Spawn reflected bullet
                 playerMovement.ReflectBullet(initialVelocity);
-                Destroy(gameObject);
             }
+            Destroy(gameObject);
         }
     }
 }
