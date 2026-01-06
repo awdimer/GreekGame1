@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 7c9e4b19c1c5944d1a2f3727af9e7791
+guid: 1de5b69c70ced49e283a1fec96cf31b0
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 6844682786314461312
-    second: placeholderbtton_0
+      213: 5245629773492535930
+    second: stupidstar_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: placeholderbtton_0
+      name: stupidstar_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 2048
-        height: 2048
+        width: 512
+        height: 511
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 080218ebab23dfe50800000000000000
-      internalID: 6844682786314461312
+      spriteID: a724c388c783cc840800000000000000
+      internalID: 5245629773492535930
       vertices: []
       indices: 
       edges: []
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      placeholderbtton_0: 6844682786314461312
+      stupidstar_0: 5245629773492535930
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
