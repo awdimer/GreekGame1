@@ -3138,7 +3138,7 @@ GameObject:
   m_Component:
   - component: {fileID: 311540962}
   m_Layer: 8
-  m_Name: particals
+  m_Name: particles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -27796,7 +27796,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2099791277}
   m_Layer: 0
-  m_Name: particals
+  m_Name: particles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
