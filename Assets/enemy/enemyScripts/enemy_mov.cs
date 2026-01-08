@@ -229,8 +229,8 @@ public class enemy_mov : MonoBehaviour
 
         foreach (Collider2D target in targets)
         {
-            PlayerMovement playerMovement = target.gameObject.GetComponent<PlayerMovement>();
-            if(!playerMovement.isParrying)
+            testPlayerMovement TestPlayerMovement = target.gameObject.GetComponent<testPlayerMovement>();
+            if(!TestPlayerMovement.isParrying)
             {
                 target.GetComponent<health_player>().TakeDamage(damage);
             }

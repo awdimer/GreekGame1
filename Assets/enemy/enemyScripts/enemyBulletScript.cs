@@ -32,8 +32,7 @@ public class EnemyBulletScript : MonoBehaviour
     {
        if (!collision.gameObject.CompareTag("Player")) return;
 
-    PlayerMovement playerMovement =
-        collision.gameObject.GetComponent<PlayerMovement>();
+    testPlayerMovement playerMovement = collision.gameObject.GetComponent<testPlayerMovement>();
 
     if (!playerMovement.isParrying)
     {

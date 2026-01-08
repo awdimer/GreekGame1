@@ -2,6 +2,7 @@ using UnityEngine;
 using System.Collections;
 
 
+
 public class CameraFollowObject : MonoBehaviour
 {
        [SerializeField] private Transform playerTransform;
@@ -25,7 +26,10 @@ public class CameraFollowObject : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {
+    {   
+        if (playerTransform == null)
+        return;
+        
         transform.position = playerTransform.position;
     }
     public void callTurn()

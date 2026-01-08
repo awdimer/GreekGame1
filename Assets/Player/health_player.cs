@@ -7,20 +7,20 @@ using UnityEngine;
 public class health_player : MonoBehaviour
 {
     public static event Action OnPlayerDeath;
-    private PlayerMovement playerMovement;
+    private testPlayerMovement TestPlayerMovement;
     public int maxHealth = 100;
     public int health;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         health = maxHealth;
-        playerMovement = GetComponent<PlayerMovement>();
+        TestPlayerMovement = GetComponent<testPlayerMovement>();
     }
 
 
     public void TakeDamage(int damage)
     {
-        if (playerMovement.isDodging)
+        if (TestPlayerMovement.isDodging)
         {
             Debug.Log("Player Dodged!");
             return; // exit before damage is applied

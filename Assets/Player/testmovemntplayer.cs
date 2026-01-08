@@ -1,7 +1,7 @@
 
 
 using UnityEngine;
-
+using System.Collections;
 
 public class testPlayerMovement : MonoBehaviour
 {
@@ -41,7 +41,24 @@ public class testPlayerMovement : MonoBehaviour
     private float fallSpeedyDampingChangeThreshold;
     
 
-
+    [SerializeField] private GameObject attackPoint;
+    [SerializeField] private float radius;
+    [SerializeField] private LayerMask enemies;
+    [SerializeField] private GameObject bulletPrefab;
+    /// <summary>
+    /// Combat Stuff
+    /// </summary>
+    [SerializeField] float parryTime;
+    [SerializeField] float parryCooldown;
+    [SerializeField] public int SwordDamage;
+    [SerializeField] float dodgeTime;
+    [SerializeField] float dodgeCoolDown;
+    [SerializeField] private float dodgePower;
+    public bool isParrying = false;
+    public bool isDodging = false;
+    private float nextReadyCooldownTime;
+    
+    private float horizontalInput;
    private Vector2 moveInput;
 #endregion
 #region AWAKE
@@ -66,6 +83,11 @@ public class testPlayerMovement : MonoBehaviour
    {
         animator.SetBool("grounded",isGrounded());
         animator.SetFloat("speed", Mathf.Abs(rb.linearVelocity.x));
+
+        bool walking = Mathf.Abs(moveInput.x) > 0.01f && isGrounded();
+        animator.SetBool("isWalking", walking);
+
+        horizontalInput = Input.GetAxis("Horizontal");
 
 
        lastGroundedTime -= Time.deltaTime;
@@ -97,7 +119,21 @@ public class testPlayerMovement : MonoBehaviour
                 }
           }
        }
-       
+       if (Input.GetKeyDown(KeyCode.E) && Time.time >= nextReadyCooldownTime)
+        {
+            StartCoroutine(ParryCoroutine());
+            nextReadyCooldownTime = Time.time + parryCooldown;
+        }
+        if (Input.GetKeyDown(KeyCode.Space) && Time.time >= nextReadyCooldownTime)
+        {
+            StartCoroutine(dodgeCoroutine());
+            nextReadyCooldownTime = Time.time + dodgeCoolDown;
+        }
+        
+        if (Input.GetMouseButtonDown(0))
+        {
+            animator.SetBool("isAttacking", true);
+        }
    }
    void FixedUpdate()
    {
@@ -109,13 +145,15 @@ public class testPlayerMovement : MonoBehaviour
                jump();
            }
        //start of left right movement
-       
-       float targetSpeed = moveInput.x * moveSpeed;
-       float SpeedDif = targetSpeed - rb.linearVelocity.x;
-       float accelRate = (Mathf.Abs(targetSpeed) > 0.01f) ? acceleration : decceleration;
-       float deccelRate = decceleration;
-       float movement = Mathf.Pow(Mathf.Abs(SpeedDif) * accelRate, velPower) * Mathf.Sign(SpeedDif);
-       rb.AddForce(movement * Vector2.right);
+       if( isParrying == false && isDodging == false)
+       {
+        float targetSpeed = moveInput.x * moveSpeed;
+        float SpeedDif = targetSpeed - rb.linearVelocity.x;
+        float accelRate = (Mathf.Abs(targetSpeed) > 0.01f) ? acceleration : decceleration;
+        float deccelRate = decceleration;
+        float movement = Mathf.Pow(Mathf.Abs(SpeedDif) * accelRate, velPower) * Mathf.Sign(SpeedDif);
+        rb.AddForce(movement * Vector2.right);
+       }
         if (!isGrounded())
         {
             decceleration = 1;
@@ -129,12 +167,19 @@ public class testPlayerMovement : MonoBehaviour
 
 
 
-       if (isGrounded() && Mathf.Abs(moveInput.x) < 0.01f)
+       if (isGrounded() && Mathf.Abs(moveInput.x) < 0.01f )
        {
            float amount = Mathf.Min(Mathf.Abs(rb.linearVelocity.x), Mathf.Abs(frictionAmount));
            amount *= Mathf.Sign(rb.linearVelocity.x);
            rb.AddForce(Vector2.right * -amount, ForceMode2D.Impulse);
+          
        }
+
+       if(isDodging == true)
+        {
+            dodge();
+        }
+       
 
 
 
@@ -151,6 +196,10 @@ public class testPlayerMovement : MonoBehaviour
        {
            wallJump();
        }
+
+       
+
+        
     
       
   
@@ -256,6 +305,82 @@ public class testPlayerMovement : MonoBehaviour
        }
    }
    #endregion
+
+   private IEnumerator ParryCoroutine()
+    {
+        isParrying = true;
+
+        animator.SetBool("isParrying", true);
+
+
+        yield return new WaitForSeconds(parryTime);
+        animator.SetBool("isParrying", false);
+
+
+        isParrying = false;
+    }
+
+    public void endAttack()
+    {
+        animator.SetBool("isAttacking", false);
+    }
+
+    public void attack()
+    {
+        Collider2D[] enemy = Physics2D.OverlapCircleAll(attackPoint.transform.position, radius, enemies);
+
+        foreach (Collider2D enemyGameObject in enemy)
+        {   
+            Debug.Log("attack");
+            enemyGameObject.GetComponent<enemyHealth>().TakeDamage(SwordDamage);
+            enemyGameObject.GetComponent<enemy_mov>().knockBack();
+            enemyGameObject.GetComponent<enemy_mov>().knockFromRight = isFacingRight;
+        }
+    }
+    
+    private void OnDrawGizmos()
+    {
+        Gizmos.DrawWireSphere(attackPoint.transform.position, radius);
+    }
+
+    public void ReflectBullet(Vector2 ogVelocity)
+{
+    // Spawn new bullet
+    GameObject reflected = Instantiate(bulletPrefab, attackPoint.transform.position, Quaternion.identity);
+
+    // Send it exactly opposite
+    PlayerBullet pb = reflected.GetComponent<PlayerBullet>();
+    pb.ShootOut(ogVelocity, 1f); // 1 = same speed; >1 = faster
+}
+
+    public void dodge()
+    {
+        float dodgeDirection = 0;
+        if (isFacingRight)
+           {
+            dodgeDirection = 1;
+           }
+           if (!isFacingRight)
+           {
+            dodgeDirection = -1;
+           }
+        rb.linearVelocity = new Vector2(dodgeDirection * dodgePower, rb.linearVelocity.y);
+    }
+
+    private IEnumerator dodgeCoroutine()
+    {
+        isDodging = true;
+    animator.SetBool("isDodging", true);
+    animator.SetBool("isWalking",false);
+
+    
+
+    yield return new WaitForSeconds(dodgeTime);
+
+    animator.SetBool("isDodging", false);
+    animator.SetBool("isWalking",true);
+    isDodging = false;
+    }
 }
 
 
