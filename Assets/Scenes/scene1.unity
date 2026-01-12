@@ -28148,14 +28148,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5226303696899037633, guid: 13d2ad30bb9e64dc4bccb68621736f8b, type: 3}
-      propertyPath: m_IsTrigger
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5719506068834806537, guid: 13d2ad30bb9e64dc4bccb68621736f8b, type: 3}
-      propertyPath: ambushPrefab
-      value: 
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
