@@ -1,13 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
+
 public class FireMenu : MonoBehaviour
 {
     public GameObject firePopUp;
     public static bool isMenu;
     public static bool isRest;
-
+    public int heaf;
+    public int maxHealth;
+    bool playerInside;
+    
     void Start()
     {
         firePopUp.SetActive(false);
@@ -17,13 +20,29 @@ public class FireMenu : MonoBehaviour
 
     void Update()
     {
-
-        if (Input.GetKeyDown(KeyCode.E))
+        // Only allow E when player is inside the box
+        if (playerInside && Input.GetKeyDown(KeyCode.E))
         {
             if (isMenu)
                 LeaveFire();
             else
                 popUp();
+        }
+    }
+
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Player"))
+        {
+            playerInside = true;
+        }
+    }
+
+    void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Player"))
+        {
+            playerInside = false;
         }
     }
 
@@ -33,18 +52,16 @@ public class FireMenu : MonoBehaviour
         Time.timeScale = 0f;
         isMenu = true;
     }
+
     public void Rest()
     {
-        firePopUp.SetActive(true);
-        Time.timeScale = 0f;
-        isMenu = true;
         LeaveFire();
     }
 
-  public void LeaveFire()
-{
-    firePopUp.SetActive(false);
-    isMenu = false;
-    Time.timeScale = 1f;
-}
+    public void LeaveFire()
+    {
+        firePopUp.SetActive(false);
+        isMenu = false;
+        Time.timeScale = 1f;
+    }
 }
