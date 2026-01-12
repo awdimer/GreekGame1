@@ -145,7 +145,7 @@ GameObject:
   - component: {fileID: 8279265215306457569}
   m_Layer: 9
   m_Name: enemy
-  m_TagString: Untagged
+  m_TagString: enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -263,7 +263,7 @@ MonoBehaviour:
   players:
     serializedVersion: 2
     m_Bits: 256
-  damage: 1000
+  damage: 25
   lostPlayerTime: 1
   KBforce: 5
   KBtotaltime: 0.5

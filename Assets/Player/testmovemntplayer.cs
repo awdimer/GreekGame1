@@ -327,6 +327,7 @@ public class testPlayerMovement : MonoBehaviour
 
     public void attack()
     {
+        Debug.Log("attack atempted");
         Collider2D[] enemy = Physics2D.OverlapCircleAll(attackPoint.transform.position, radius, enemies);
 
         foreach (Collider2D enemyGameObject in enemy)
