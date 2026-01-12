@@ -12,6 +12,7 @@ public class Inventory : MonoBehaviour
     public GameObject inventorySlot;
     public GameObject inventoryItem;
     int slotAmount;
+    int plages;
     public List<Item> items = new List<Item>();
     public List<GameObject> slots = new List<GameObject>();
 
