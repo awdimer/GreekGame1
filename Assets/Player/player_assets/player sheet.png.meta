@@ -181,12 +181,12 @@ TextureImporter:
       name: player sheet_0
       rect:
         serializedVersion: 2
-        x: 359
-        y: 10603
-        width: 642
-        height: 1190
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 0
+        y: 10500
+        width: 1850
+        height: 1750
+      alignment: 9
+      pivot: {x: 0.33978376, y: 0.08285714}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -203,12 +203,12 @@ TextureImporter:
       name: player sheet_1
       rect:
         serializedVersion: 2
-        x: 2178
-        y: 10601
-        width: 585
-        height: 1409
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 1850
+        y: 10500
+        width: 1850
+        height: 1750
+      alignment: 9
+      pivot: {x: 0.35935134, y: 0.06942857}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -225,12 +225,12 @@ TextureImporter:
       name: player sheet_2
       rect:
         serializedVersion: 2
-        x: 3973
-        y: 10614
-        width: 667
-        height: 1403
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 3700
+        y: 10500
+        width: 1850
+        height: 1750
+      alignment: 9
+      pivot: {x: 0.3634054, y: 0.073942855}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -247,12 +247,12 @@ TextureImporter:
       name: player sheet_3
       rect:
         serializedVersion: 2
-        x: 5557
-        y: 10594
-        width: 846
-        height: 1251
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 5550
+        y: 10500
+        width: 1850
+        height: 1750
+      alignment: 9
+      pivot: {x: 0.35967568, y: 0.06794286}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -269,12 +269,12 @@ TextureImporter:
       name: player sheet_4
       rect:
         serializedVersion: 2
-        x: 8052
-        y: 10591
-        width: 736
-        height: 1453
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 7400
+        y: 10500
+        width: 1850
+        height: 1750
+      alignment: 9
+      pivot: {x: 0.53837836, y: 0.07617143}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -291,12 +291,12 @@ TextureImporter:
       name: player sheet_5
       rect:
         serializedVersion: 2
-        x: 9949
-        y: 10577
-        width: 791
-        height: 1596
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 9250
+        y: 10500
+        width: 1850
+        height: 1750
+      alignment: 9
+      pivot: {x: 0.5592757, y: 0.06737143}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -313,12 +313,12 @@ TextureImporter:
       name: player sheet_6
       rect:
         serializedVersion: 2
-        x: 11767
-        y: 10600
-        width: 1155
-        height: 1480
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 11100
+        y: 10500
+        width: 1850
+        height: 1750
+      alignment: 9
+      pivot: {x: 0.5756486, y: 0.07708571}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -335,12 +335,12 @@ TextureImporter:
       name: player sheet_7
       rect:
         serializedVersion: 2
-        x: 13629
-        y: 10579
-        width: 711
-        height: 784
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 12950
+        y: 10500
+        width: 1850
+        height: 1750
+      alignment: 9
+      pivot: {x: 0.5804865, y: 0.06417714}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -357,12 +357,12 @@ TextureImporter:
       name: player sheet_8
       rect:
         serializedVersion: 2
-        x: 605
-        y: 9047
-        width: 552
-        height: 1194
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 0
+        y: 8750
+        width: 1850
+        height: 1750
+      alignment: 9
+      pivot: {x: 0.45524326, y: 0.18040001}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -379,12 +379,12 @@ TextureImporter:
       name: player sheet_9
       rect:
         serializedVersion: 2
-        x: 543
-        y: 7236
-        width: 476
-        height: 954
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 0
+        y: 7000
+        width: 1850
+        height: 1750
+      alignment: 9
+      pivot: {x: 0.4215135, y: 0.14371428}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -401,12 +401,12 @@ TextureImporter:
       name: player sheet_10
       rect:
         serializedVersion: 2
-        x: 2374
-        y: 7215
-        width: 690
-        height: 931
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 1850
+        y: 7000
+        width: 1850
+        height: 1750
+      alignment: 9
+      pivot: {x: 0.43135136, y: 0.14697143}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -423,12 +423,12 @@ TextureImporter:
       name: player sheet_11
       rect:
         serializedVersion: 2
-        x: 4246
-        y: 7233
-        width: 879
-        height: 946
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 3700
+        y: 7000
+        width: 1850
+        height: 1750
+      alignment: 9
+      pivot: {x: 0.41940543, y: 0.15097144}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -445,12 +445,12 @@ TextureImporter:
       name: player sheet_12
       rect:
         serializedVersion: 2
-        x: 5962
-        y: 7246
-        width: 968
-        height: 996
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 5550
+        y: 7000
+        width: 1850
+        height: 1750
+      alignment: 9
+      pivot: {x: 0.4132973, y: 0.15074284}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -467,12 +467,12 @@ TextureImporter:
       name: player sheet_13
       rect:
         serializedVersion: 2
-        x: 7814
-        y: 7237
-        width: 608
-        height: 1373
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 7400
+        y: 7000
+        width: 1850
+        height: 1750
+      alignment: 9
+      pivot: {x: 0.42832434, y: 0.14286858}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -489,12 +489,12 @@ TextureImporter:
       name: player sheet_14
       rect:
         serializedVersion: 2
-        x: 525
-        y: 5292
-        width: 655
-        height: 1321
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 0
+        y: 5250
+        width: 1850
+        height: 1750
+      alignment: 9
+      pivot: {x: 0.4864865, y: 0.14285715}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -511,12 +511,12 @@ TextureImporter:
       name: player sheet_15
       rect:
         serializedVersion: 2
-        x: 2328
-        y: 5450
-        width: 814
-        height: 1126
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 1850
+        y: 5250
+        width: 1850
+        height: 1750
+      alignment: 9
+      pivot: {x: 0.4864865, y: 0.14285715}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -533,12 +533,12 @@ TextureImporter:
       name: player sheet_16
       rect:
         serializedVersion: 2
-        x: 4035
-        y: 5622
-        width: 826
-        height: 1204
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 3700
+        y: 5250
+        width: 1850
+        height: 1750
+      alignment: 9
+      pivot: {x: 0.44102705, y: 0.23067428}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -555,12 +555,12 @@ TextureImporter:
       name: player sheet_17
       rect:
         serializedVersion: 2
-        x: 493
-        y: 3914
-        width: 851
-        height: 814
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 0
+        y: 3500
+        width: 1850
+        height: 1750
+      alignment: 9
+      pivot: {x: 0.56108105, y: 0.24257143}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -577,12 +577,12 @@ TextureImporter:
       name: player sheet_18
       rect:
         serializedVersion: 2
-        x: 2406
-        y: 3931
-        width: 739
-        height: 831
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 1850
+        y: 3500
+        width: 1850
+        height: 1750
+      alignment: 9
+      pivot: {x: 0.5735135, y: 0.25425142}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -599,12 +599,12 @@ TextureImporter:
       name: player sheet_19
       rect:
         serializedVersion: 2
-        x: 4202
-        y: 3884
-        width: 756
-        height: 903
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 3700
+        y: 3500
+        width: 1850
+        height: 1750
+      alignment: 9
+      pivot: {x: 0.5315676, y: 0.22611429}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -621,12 +621,12 @@ TextureImporter:
       name: player sheet_20
       rect:
         serializedVersion: 2
-        x: 6109
-        y: 3907
-        width: 732
-        height: 879
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 5550
+        y: 3500
+        width: 1850
+        height: 1750
+      alignment: 9
+      pivot: {x: 0.575946, y: 0.23628572}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -643,12 +643,12 @@ TextureImporter:
       name: player sheet_21
       rect:
         serializedVersion: 2
-        x: 7954
-        y: 3909
-        width: 852
-        height: 848
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 7400
+        y: 3500
+        width: 1850
+        height: 1750
+      alignment: 9
+      pivot: {x: 0.55708104, y: 0.24782857}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -665,12 +665,12 @@ TextureImporter:
       name: player sheet_22
       rect:
         serializedVersion: 2
-        x: 9761
-        y: 3913
-        width: 924
-        height: 849
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 9250
+        y: 3500
+        width: 1850
+        height: 1750
+      alignment: 9
+      pivot: {x: 0.55675673, y: 0.23657143}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -687,12 +687,12 @@ TextureImporter:
       name: player sheet_23
       rect:
         serializedVersion: 2
-        x: 686
-        y: 2146
-        width: 474
-        height: 954
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 0
+        y: 1750
+        width: 1850
+        height: 1750
+      alignment: 9
+      pivot: {x: 0.5, y: 0.23714286}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -709,12 +709,12 @@ TextureImporter:
       name: player sheet_24
       rect:
         serializedVersion: 2
-        x: 2537
-        y: 2146
-        width: 474
-        height: 954
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 1869
+        y: 1750
+        width: 1850
+        height: 1750
+      alignment: 9
+      pivot: {x: 0.5, y: 0.23714286}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -731,12 +731,12 @@ TextureImporter:
       name: player sheet_25
       rect:
         serializedVersion: 2
-        x: 4384
-        y: 2146
-        width: 474
-        height: 954
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 3700
+        y: 1750
+        width: 1850
+        height: 1750
+      alignment: 9
+      pivot: {x: 0.5, y: 0.23714286}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -753,12 +753,12 @@ TextureImporter:
       name: player sheet_26
       rect:
         serializedVersion: 2
-        x: 691
-        y: 253
-        width: 546
-        height: 1233
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 0
+        y: 0
+        width: 1850
+        height: 1750
+      alignment: 9
+      pivot: {x: 0.4864865, y: 0.14285715}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -775,7 +775,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: e40e2f1544f794effa0b50cae7c04033
     internalID: 0
     vertices: []
     indices: 
