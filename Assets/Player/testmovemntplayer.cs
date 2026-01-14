@@ -63,6 +63,8 @@ public class testPlayerMovement : MonoBehaviour
    private double previousY;
    private double currentY;
    private bool isFalling;
+
+   private bool isAttacking;
 #endregion
 #region AWAKE
    private void Awake()
@@ -146,6 +148,7 @@ public class testPlayerMovement : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             animator.SetBool("isAttacking", true);
+            isAttacking = true;
         }
    }
    void FixedUpdate()
@@ -158,7 +161,7 @@ public class testPlayerMovement : MonoBehaviour
                jump();
            }
        //start of left right movement
-       if( isParrying == false && isDodging == false)
+       if( isParrying == false && isDodging == false && isAttacking == false)
        {
         float targetSpeed = moveInput.x * moveSpeed;
         float SpeedDif = targetSpeed - rb.linearVelocity.x;
@@ -337,10 +340,14 @@ public class testPlayerMovement : MonoBehaviour
     public void endAttack()
     {
         animator.SetBool("isAttacking", false);
+        isAttacking = false;
+
     }
 
     public void attack()
     {
+        isAttacking = true;
+
         Debug.Log("attack atempted");
         Collider2D[] enemy = Physics2D.OverlapCircleAll(attackPoint.transform.position, radius, enemies);
 
@@ -370,6 +377,7 @@ public class testPlayerMovement : MonoBehaviour
 
     public void dodge()
     {
+        
         float dodgeDirection = 0;
         if (isFacingRight)
            {
