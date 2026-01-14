@@ -60,6 +60,9 @@ public class testPlayerMovement : MonoBehaviour
     
     private float horizontalInput;
    private Vector2 moveInput;
+   private double previousY;
+   private double currentY;
+   private bool isFalling;
 #endregion
 #region AWAKE
    private void Awake()
@@ -98,6 +101,16 @@ public class testPlayerMovement : MonoBehaviour
        moveInput.x = Input.GetAxisRaw("Horizontal");
        moveInput.y = Input.GetAxisRaw("Vertical");
 
+        StartCoroutine(CheckFalling());
+
+        if (isFalling)
+        {
+            animator.SetBool("isFalling",true);
+        }
+        if(!isFalling)
+        {
+            animator.SetBool("isFalling",false);
+        }
 
        if (isGrounded())// coyote time
        {
@@ -244,6 +257,7 @@ public class testPlayerMovement : MonoBehaviour
    private void jump() // applys jump force
    {
        isJumping = true;
+       animator.SetTrigger("jump");
        rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
 
 
@@ -382,6 +396,19 @@ public class testPlayerMovement : MonoBehaviour
     animator.SetBool("isWalking",true);
     isDodging = false;
     }
+
+   
+
+    private IEnumerator CheckFalling()
+{
+    float previousY = transform.position.y;
+    yield return new WaitForSeconds(0.1f);
+    float currentY = transform.position.y;
+    Debug.Log("previous y = " + previousY + "  current y is = " + currentY);
+    isFalling = currentY < previousY;
 }
+   
+}
+
 
 
