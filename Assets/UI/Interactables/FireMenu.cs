@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class FireMenu : MonoBehaviour
 {
+    public health_player playerHealth;
     public GameObject firePopUp;
     public static bool isMenu;
     public static bool isRest;
-    public int heaf;
-    public int maxHealth;
     bool playerInside;
+
     
     void Start()
     {
@@ -21,7 +21,7 @@ public class FireMenu : MonoBehaviour
     void Update()
     {
         // Only allow E when player is inside the box
-        if (playerInside && Input.GetKeyDown(KeyCode.E))
+        if (playerInside && Input.GetKeyDown(KeyCode.Tab))
         {
             if (isMenu)
                 LeaveFire();
@@ -34,6 +34,7 @@ public class FireMenu : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
+            Debug.Log("uahdfgo");
             playerInside = true;
         }
     }
@@ -55,6 +56,8 @@ public class FireMenu : MonoBehaviour
 
     public void Rest()
     {
+        playerHealth = GameObject.FindWithTag("Player")?.GetComponent<health_player>();
+        playerHealth.health = playerHealth.maxHealth;
         LeaveFire();
     }
 
