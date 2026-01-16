@@ -4248,6 +4248,7 @@ GameObject:
   - component: {fileID: 452568787}
   - component: {fileID: 452568789}
   - component: {fileID: 452568788}
+  - component: {fileID: 452568790}
   m_Layer: 5
   m_Name: InventoryPanel
   m_TagString: Untagged
@@ -4268,7 +4269,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2049529242}
-  - {fileID: 811043961}
   m_Father: {fileID: 2037427572}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
@@ -4314,6 +4314,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 452568786}
   m_CullTransparentMesh: 1
+--- !u!114 &452568790
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 452568786}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a73861f264c8c4e3d9c9822a4e3b1e27, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  InventoryPanel: {fileID: 452568786}
 --- !u!1 &455530878
 GameObject:
   m_ObjectHideFlags: 0
@@ -13120,18 +13133,18 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 811043960}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1919476769}
-  m_Father: {fileID: 452568787}
+  m_Father: {fileID: 2037427572}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 126.149994, y: 342.70004}
-  m_SizeDelta: {x: -252.302, y: -628.8768}
+  m_AnchoredPosition: {x: 861.15015, y: 460.7}
+  m_SizeDelta: {x: -1722.302, y: -1059.3335}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &811043962
 MonoBehaviour:
@@ -13176,7 +13189,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 811043963}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 811043965}
+        m_TargetAssemblyTypeName: InventoryYesNo, Assembly-CSharp
+        m_MethodName: ToggleInventory
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &811043963
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13669,7 +13694,7 @@ Transform:
   m_GameObject: {fileID: 849948745}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.0005168915, y: 4.725548, z: 0}
+  m_LocalPosition: {x: -0.00041866302, y: 4.7255583, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -30420,6 +30445,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 452568787}
+  - {fileID: 811043961}
   - {fileID: 965349278}
   - {fileID: 67474962}
   - {fileID: 1920604261}
