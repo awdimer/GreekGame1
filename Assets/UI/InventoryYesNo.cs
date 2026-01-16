@@ -10,28 +10,19 @@ public class InventoryYesNo : MonoBehaviour
     void Start()
     {
         InventoryPanel.SetActive(true);
+        isOpen = true;
     }
     //Update is called once per frame
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.P))
-        {
-           ToggleInventory();
-        }
 
-    }
-
-    public void ToggleInventory()
+    public void InventoryOn()
     {
-        if(isOpen = true)
-        {
-            isOpen = false;
-            InventoryPanel.SetActive(false);
-        }
         if(isOpen = false)
         {
-            isOpen = true;
-            InventoryPanel.SetActive(true);
+            
         }
+    }
+    public void InventoryOff()
+    {
+        
     }
 }
