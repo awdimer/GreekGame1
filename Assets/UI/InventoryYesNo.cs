@@ -6,7 +6,7 @@ public class InventoryYesNo : MonoBehaviour
 {
     public GameObject InventoryPanel;
     public static bool isOpen = true;
-public void ToggleInventory()
+    public void ToggleInventory()
     {
         isOpen = !isOpen;
         InventoryPanel.SetActive(isOpen);
