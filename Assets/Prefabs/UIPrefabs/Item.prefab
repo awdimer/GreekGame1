@@ -150,7 +150,6 @@ GameObject:
   - component: {fileID: 1952922519908230575}
   - component: {fileID: 8274770365155882840}
   - component: {fileID: 8656931773270897355}
-  - component: {fileID: 3077646122158932483}
   - component: {fileID: 2680084449800361592}
   m_Layer: 5
   m_Name: Item
@@ -203,7 +202,7 @@ MonoBehaviour:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
+  m_Maskable: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -263,18 +262,6 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
---- !u!114 &3077646122158932483
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8847321501177381733}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 445dd7bdf2f7c4eb090f3504532acc28, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &2680084449800361592
 MonoBehaviour:
   m_ObjectHideFlags: 0

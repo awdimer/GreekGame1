@@ -4,6 +4,8 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 public class UIManager : MonoBehaviour
 {
+    public GameObject player;
+    public GameObject respawnPoint;
     public GameObject gameOverMenu;
     private void OnEnable()
     {
@@ -17,9 +19,13 @@ public class UIManager : MonoBehaviour
     {
         gameOverMenu.SetActive(true);
     }
-    public void RestartLevel()
+    public void RestartLevel(Collider2D other)
     {
-        SceneManager.LoadScene("scene1");
+        //SceneManager.LoadScene("scene1");
+        if (other.gameObject.CompareTag("Player"))
+        {
+            player.transform.position = respawnPoint.transform.position;
+        }
         Time.timeScale = 1f;
     }
     public void GoToMainMenu()

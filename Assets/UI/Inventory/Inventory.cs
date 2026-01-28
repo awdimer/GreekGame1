@@ -12,7 +12,6 @@ public class Inventory : MonoBehaviour
     public GameObject inventorySlot;
     public GameObject inventoryItem;
     int slotAmount;
-    int plages;
     public List<Item> items = new List<Item>();
     public List<GameObject> slots = new List<GameObject>();
 
@@ -30,14 +29,8 @@ public class Inventory : MonoBehaviour
             slots[i].transform.SetParent(slotPanel.transform, false);
         } 
         
-        AddItem(0);
-        AddItem(1); 
         AddItem(1);
-        AddItem(1);
-        AddItem(1);
-        AddItem(1);
-        AddItem(1);
-        AddItem(2);
+ 
         
     }
     
@@ -60,8 +53,6 @@ public class Inventory : MonoBehaviour
         else{
             for(int i = 0; i < items.Count; i++)
             {
-                if(items[i].ID == -1)
-                {
                     items[i] = itemToAdd;
                     GameObject itemObj = Instantiate(inventoryItem);
                     itemObj.transform.SetParent(slots[i].transform, false);
@@ -71,7 +62,6 @@ public class Inventory : MonoBehaviour
                     itemObj.name = itemToAdd.Title; 
                     itemObj.transform.localPosition = Vector2.zero;
                     break; 
-                }
             }
         }
     }
