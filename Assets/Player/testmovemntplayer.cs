@@ -2,6 +2,8 @@
 
 using UnityEngine;
 using System.Collections;
+using UnityEngine.InputSystem;
+
 
 public class testPlayerMovement : MonoBehaviour
 {
@@ -11,6 +13,7 @@ public class testPlayerMovement : MonoBehaviour
    private BoxCollider2D boxCollider;
    [SerializeField] private float velPower;
    [SerializeField] private float moveSpeed;
+   [SerializeField] private float Sprintspeed;
    [SerializeField] private float acceleration;
    [SerializeField] private float startDecceleration;
    [SerializeField] private float frictionAmount;
@@ -100,7 +103,6 @@ public class testPlayerMovement : MonoBehaviour
        wallJumpCooldown += Time.deltaTime;
 
 
-       moveInput.x = Input.GetAxisRaw("Horizontal");
        moveInput.y = Input.GetAxisRaw("Vertical");
 
         StartCoroutine(CheckFalling());
@@ -153,9 +155,7 @@ public class testPlayerMovement : MonoBehaviour
    }
    void FixedUpdate()
    {
-       if(Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow)){// if trying to jump starts a countdown and if the player is grounded during the timer it will start the jump
-           lastJumpTime = jumpBufferTime;
-       }
+    
        if (lastJumpTime>0 && !isJumping && lastGroundedTime>0 )//check if the player can and wants to jump and runs jump
            {
                jump();
@@ -163,7 +163,7 @@ public class testPlayerMovement : MonoBehaviour
        //start of left right movement
        if( isParrying == false && isDodging == false && isAttacking == false)
        {
-        float targetSpeed = moveInput.x * moveSpeed;
+        float targetSpeed = moveInput.x * (moveSpeed+ Sprintspeed);
         float SpeedDif = targetSpeed - rb.linearVelocity.x;
         float accelRate = (Mathf.Abs(targetSpeed) > 0.01f) ? acceleration : decceleration;
         float deccelRate = decceleration;
@@ -221,6 +221,10 @@ public class testPlayerMovement : MonoBehaviour
   
   
    }
+   public void Move(InputAction.CallbackContext context)
+    {
+        moveInput.x = context.ReadValue<Vector2>().x;
+    }
    #endregion
 #region IS GROUNDED CHECK
    private bool isGrounded() //checks if the player is on the ground
@@ -265,6 +269,13 @@ public class testPlayerMovement : MonoBehaviour
 
 
    }
+   public void jumpinput(InputAction.CallbackContext context)
+    {
+        if (context.started || context.performed)
+        {
+            lastJumpTime = jumpBufferTime;
+        }
+    }
    #endregion
 #region TURNING 
    private void TurnCheck() // checks if the player needs to turn
@@ -348,12 +359,10 @@ public class testPlayerMovement : MonoBehaviour
     {
         isAttacking = true;
 
-        Debug.Log("attack atempted");
         Collider2D[] enemy = Physics2D.OverlapCircleAll(attackPoint.transform.position, radius, enemies);
 
         foreach (Collider2D enemyGameObject in enemy)
         {   
-            Debug.Log("attack");
             enemyGameObject.GetComponent<enemyHealth>().TakeDamage(SwordDamage);
             enemyGameObject.GetComponent<enemy_mov>().knockBack();
             enemyGameObject.GetComponent<enemy_mov>().knockFromRight = isFacingRight;
@@ -412,7 +421,6 @@ public class testPlayerMovement : MonoBehaviour
     float previousY = transform.position.y;
     yield return new WaitForSeconds(0.1f);
     float currentY = transform.position.y;
-    Debug.Log("previous y = " + previousY + "  current y is = " + currentY);
     isFalling = currentY < previousY;
 }
    

@@ -124,12 +124,12 @@ TextureImporter:
       name: walk sheet_0
       rect:
         serializedVersion: 2
-        x: 469
-        y: 562
-        width: 732
-        height: 967
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 0
+        y: 0
+        width: 1850
+        height: 1750
+      alignment: 9
+      pivot: {x: 0.36043242, y: 0.32638285}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -146,12 +146,12 @@ TextureImporter:
       name: walk sheet_1
       rect:
         serializedVersion: 2
-        x: 2445
-        y: 558
-        width: 666
-        height: 977
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 1850
+        y: 0
+        width: 1850
+        height: 1750
+      alignment: 9
+      pivot: {x: 0.43816215, y: 0.32954288}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -168,12 +168,12 @@ TextureImporter:
       name: walk sheet_2
       rect:
         serializedVersion: 2
-        x: 4301
-        y: 560
-        width: 681
-        height: 932
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 3700
+        y: 0
+        width: 1850
+        height: 1750
+      alignment: 9
+      pivot: {x: 0.47524324, y: 0.33394286}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -190,12 +190,12 @@ TextureImporter:
       name: walk sheet_3
       rect:
         serializedVersion: 2
-        x: 6171
-        y: 561
-        width: 824
-        height: 951
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 5550
+        y: 0
+        width: 1850
+        height: 1750
+      alignment: 9
+      pivot: {x: 0.4930811, y: 0.3225143}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -212,12 +212,12 @@ TextureImporter:
       name: walk sheet_4
       rect:
         serializedVersion: 2
-        x: 8259
-        y: 565
-        width: 766
-        height: 967
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 7400
+        y: 0
+        width: 1850
+        height: 1750
+      alignment: 9
+      pivot: {x: 0.59243244, y: 0.32565716}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -234,12 +234,12 @@ TextureImporter:
       name: walk sheet_5
       rect:
         serializedVersion: 2
-        x: 10204
-        y: 567
-        width: 844
-        height: 949
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 9250
+        y: 0
+        width: 1850
+        height: 1750
+      alignment: 9
+      pivot: {x: 0.6816216, y: 0.32965717}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -256,12 +256,12 @@ TextureImporter:
       name: walk sheet_6
       rect:
         serializedVersion: 2
-        x: 12106
-        y: 560
-        width: 782
-        height: 960
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 11100
+        y: 0
+        width: 1850
+        height: 1750
+      alignment: 9
+      pivot: {x: 0.6891892, y: 0.33091426}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -278,12 +278,12 @@ TextureImporter:
       name: walk sheet_7
       rect:
         serializedVersion: 2
-        x: 13932
-        y: 582
-        width: 803
-        height: 937
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 12950
+        y: 0
+        width: 1850
+        height: 1750
+      alignment: 9
+      pivot: {x: 0.70972973, y: 0.33668572}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -300,7 +300,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 5d9a61da86ca242b6bc9f16f878fec69
     internalID: 0
     vertices: []
     indices: 
