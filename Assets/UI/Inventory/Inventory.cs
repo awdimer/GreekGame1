@@ -20,7 +20,7 @@ public class Inventory : MonoBehaviour
     {
         database = GetComponent<ItemDatabase>();
         slotAmount = 24;
-        inventoryPanel = GameObject.Find("Inventory Panel");
+        inventoryPanel = GameObject.Find("InventoryPanel");
         slotPanel = inventoryPanel.transform.Find("Slot Panel").gameObject;
         for(int i = 0; i < slotAmount; i++)
         {
@@ -29,7 +29,7 @@ public class Inventory : MonoBehaviour
             slots[i].GetComponent<Slot>().id = i;
             slots[i].transform.SetParent(slotPanel.transform, false);
         } 
-           AddItem(2);
+        
         AddItem(0);
         AddItem(1); 
         AddItem(1);
@@ -40,6 +40,7 @@ public class Inventory : MonoBehaviour
         AddItem(2);
         
     }
+    
     public void AddItem(int id)
     {
         Item itemToAdd = database.FetchItemByID(id);

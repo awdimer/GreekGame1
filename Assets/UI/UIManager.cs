@@ -19,7 +19,7 @@ public class UIManager : MonoBehaviour
     }
     public void RestartLevel()
     {
-        SceneManager.LoadScene("test");
+        SceneManager.LoadScene("scene1");
         Time.timeScale = 1f;
     }
     public void GoToMainMenu()
