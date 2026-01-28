@@ -121,12 +121,12 @@ TextureImporter:
       name: roll sheet_0
       rect:
         serializedVersion: 2
-        x: 510
-        y: 240
-        width: 963
-        height: 969
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 0
+        y: 0
+        width: 1850
+        height: 1750
+      alignment: 9
+      pivot: {x: 0.406, y: 0.14285715}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -143,12 +143,12 @@ TextureImporter:
       name: roll sheet_1
       rect:
         serializedVersion: 2
-        x: 2291
-        y: 331
-        width: 1300
-        height: 738
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 1850
+        y: 0
+        width: 1850
+        height: 1750
+      alignment: 9
+      pivot: {x: 0.49497297, y: 0.14285715}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -165,12 +165,12 @@ TextureImporter:
       name: roll sheet_2
       rect:
         serializedVersion: 2
-        x: 3978
-        y: 529
-        width: 1327
-        height: 486
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 3700
+        y: 0
+        width: 1850
+        height: 1750
+      alignment: 9
+      pivot: {x: 0.49422702, y: 0.14285715}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -187,12 +187,12 @@ TextureImporter:
       name: roll sheet_3
       rect:
         serializedVersion: 2
-        x: 5804
-        y: 401
-        width: 1235
-        height: 730
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 5550
+        y: 0
+        width: 1850
+        height: 1750
+      alignment: 9
+      pivot: {x: 0.49575678, y: 0.14285715}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -209,12 +209,12 @@ TextureImporter:
       name: roll sheet_4
       rect:
         serializedVersion: 2
-        x: 7961
-        y: 207
-        width: 590
-        height: 1125
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 7400
+        y: 0
+        width: 1850
+        height: 1750
+      alignment: 9
+      pivot: {x: 0.5036324, y: 0.14285715}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -231,12 +231,12 @@ TextureImporter:
       name: roll sheet_5
       rect:
         serializedVersion: 2
-        x: 9583
-        y: 464
-        width: 1455
-        height: 553
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 9250
+        y: 0
+        width: 1850
+        height: 1750
+      alignment: 9
+      pivot: {x: 0.72324324, y: 0.2674857}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -253,12 +253,12 @@ TextureImporter:
       name: roll sheet_6
       rect:
         serializedVersion: 2
-        x: 11416
-        y: 391
-        width: 1223
-        height: 929
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 11100
+        y: 0
+        width: 1850
+        height: 1750
+      alignment: 9
+      pivot: {x: 0.59675676, y: 0.23394285}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -275,7 +275,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 7019dbb74879446599dc7e1ce49f9bc6
     internalID: 0
     vertices: []
     indices: 
