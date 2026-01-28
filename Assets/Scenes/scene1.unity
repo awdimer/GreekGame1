@@ -25200,7 +25200,7 @@ MonoBehaviour:
   parryCooldown: 2
   SwordDamage: 10
   dodgeTime: 0.25
-  dodgeCoolDown: 5
+  dodgeCoolDown: 1.5
   dodgePower: 20
   isParrying: 0
   isDodging: 0
@@ -25309,6 +25309,38 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 33166702-8683-40b1-bc64-f778427c744f
     m_ActionName: UI/TrackedDeviceOrientation
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1368975981}
+        m_TargetAssemblyTypeName: testPlayerMovement, Assembly-CSharp
+        m_MethodName: attackinput
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 22239fae-f0fc-490e-afe3-04e9556411e5
+    m_ActionName: 'Player/attack[/Keyboard/z]'
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1368975981}
+        m_TargetAssemblyTypeName: testPlayerMovement, Assembly-CSharp
+        m_MethodName: dodgeinput
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 0fff5781-b3eb-4c63-a620-b94e7cde2183
+    m_ActionName: 'Player/dodge[/Keyboard/x]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: Keyboard&Mouse
   m_DefaultActionMap: Player

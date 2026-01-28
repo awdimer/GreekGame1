@@ -147,11 +147,7 @@ public class testPlayerMovement : MonoBehaviour
             nextReadyCooldownTime = Time.time + dodgeCoolDown;
         }
         
-        if (Input.GetMouseButtonDown(0))
-        {
-            animator.SetBool("isAttacking", true);
-            isAttacking = true;
-        }
+        
    }
    void FixedUpdate()
    {
@@ -271,9 +267,24 @@ public class testPlayerMovement : MonoBehaviour
    }
    public void jumpinput(InputAction.CallbackContext context)
     {
-        if (context.started || context.performed)
+        if (context.performed)
         {
             lastJumpTime = jumpBufferTime;
+        }
+    }
+    public void attackinput(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            animator.SetBool("isAttacking", true);
+            isAttacking = true;
+        }
+    }
+    public void dodgeinput(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            
         }
     }
    #endregion
