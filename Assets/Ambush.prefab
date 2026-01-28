@@ -26,7 +26,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 156.7306, y: 3.44, z: -0.18754548}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 1.0125, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 273831191344464724}
@@ -59,8 +59,8 @@ Transform:
   m_GameObject: {fileID: 6792502297246097171}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 0.34843, z: 0}
+  m_LocalScale: {x: 1, y: 1.4125, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7448103063178873607}
@@ -124,11 +124,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3c2771265c824a159c8eabfa7b0ddb7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ambushPrefab: {fileID: 0}
-  playerLayer:
-    serializedVersion: 2
-    m_Bits: 0
-  spawnPos: {fileID: 7491643215268929679}
+  ambushPrefab: {fileID: 3469879350963416984, guid: 0a9b5b55ea7fd4c29ade47e1ef4637df, type: 3}
+  spawnPos: {fileID: 7448103063178873607}
 --- !u!1 &7491643215268929679
 GameObject:
   m_ObjectHideFlags: 0

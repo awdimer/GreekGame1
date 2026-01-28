@@ -129,7 +129,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
@@ -157,13 +157,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42b4229da1f954d2da3450e9a3936993, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  doorSpawnPoint1: {fileID: 2531288158560864189}
-  doorSpawnPoint2: {fileID: 2894479688613489383}
-  enemySpawnPoint1: {fileID: 7563667167102659048}
-  enemySpawnPoint2: {fileID: 5583365375604950612}
-  enemyAmount: 0
+  doorSpawnPoint1: {fileID: 5058936955482820838}
+  doorSpawnPoint2: {fileID: 1194666371293322536}
+  enemySpawnPoint1: {fileID: 4532508013286035207}
+  enemySpawnPoint2: {fileID: 2588375520927849503}
+  enemyAmount: 5
   ambushTime: 0
-  enemyPrefab: {fileID: 6551099718973725716, guid: 8f23f0d532a874a32a9ff9a5d3d1aeb4, type: 3}
+  enemyPrefab: {fileID: 6602708445493373045, guid: dec8a86060ba547e4b8c8e636726e821, type: 3}
   doorPrefab: {fileID: 2874642501707939991, guid: 690e0fd19b0854f82ad90ee5141b1947, type: 3}
 --- !u!1 &5583365375604950612
 GameObject:
@@ -191,7 +191,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -11.2599945, y: -4, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.5993, y: 1.7159, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1325718750183081654}
@@ -222,7 +222,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 6.199997, y: -3.88, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.5993, y: 1.7159, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1325718750183081654}
