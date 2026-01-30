@@ -308,7 +308,7 @@
                     "path": "<Keyboard>/x",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": ";Keyboard&Mouse",
                     "action": "dodge",
                     "isComposite": false,
                     "isPartOfComposite": false

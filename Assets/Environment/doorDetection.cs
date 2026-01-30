@@ -22,6 +22,7 @@ public class doorDetection : MonoBehaviour
         {
             Instantiate(Door, doorSpawnPoint.transform.position, Quaternion.identity);
             doorSpawned = true;
+            
         }
     }
 }
