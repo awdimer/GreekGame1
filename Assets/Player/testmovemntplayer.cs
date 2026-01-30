@@ -12,7 +12,7 @@ public class testPlayerMovement : MonoBehaviour
    private Animator anim;
    private BoxCollider2D boxCollider;
    [SerializeField] private float velPower;
-   [SerializeField] private float moveSpeed;
+   [SerializeField] private float walkSpeed;
    [SerializeField] private float Sprintspeed;
    [SerializeField] private float acceleration;
    [SerializeField] private float startDecceleration;
@@ -33,9 +33,11 @@ public class testPlayerMovement : MonoBehaviour
    [SerializeField] public Animator animator;
 
    private float wallJumpCooldown;
+   private float moveSpeed;
    public bool knockFromRight;
    private float lastGroundedTime;
    private float lastJumpTime;
+   private bool isSprinting;
    private bool isJumping;
    public bool isFacingRight = true;
    private bool isOnWall;
@@ -151,6 +153,15 @@ public class testPlayerMovement : MonoBehaviour
    }
    void FixedUpdate()
    {
+    if(isSprinting==true)
+        {
+            moveSpeed = walkSpeed + Sprintspeed;
+        }
+        else
+        {
+            moveSpeed = walkSpeed;
+        }
+
     
        if (lastJumpTime>0 && !isJumping && lastGroundedTime>0 )//check if the player can and wants to jump and runs jump
            {
@@ -159,7 +170,7 @@ public class testPlayerMovement : MonoBehaviour
        //start of left right movement
        if( isParrying == false && isDodging == false && isAttacking == false)
        {
-        float targetSpeed = moveInput.x * (moveSpeed+ Sprintspeed);
+        float targetSpeed = moveInput.x * moveSpeed ;
         float SpeedDif = targetSpeed - rb.linearVelocity.x;
         float accelRate = (Mathf.Abs(targetSpeed) > 0.01f) ? acceleration : decceleration;
         float deccelRate = decceleration;
@@ -217,10 +228,7 @@ public class testPlayerMovement : MonoBehaviour
   
   
    }
-   public void Move(InputAction.CallbackContext context)
-    {
-        moveInput.x = context.ReadValue<Vector2>().x;
-    }
+   
    #endregion
 #region IS GROUNDED CHECK
    private bool isGrounded() //checks if the player is on the ground
@@ -265,6 +273,10 @@ public class testPlayerMovement : MonoBehaviour
 
 
    }
+   public void Move(InputAction.CallbackContext context)
+    {
+        moveInput.x = context.ReadValue<Vector2>().x;
+    }
    public void jumpinput(InputAction.CallbackContext context)
     {
         if (context.performed)
@@ -287,6 +299,20 @@ public class testPlayerMovement : MonoBehaviour
             
         }
     }
+    public void sprintinput(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            isSprinting = true; 
+        }
+
+
+        if (context.canceled)
+        {
+            isSprinting = false; 
+        }
+    }
+    
    #endregion
 #region TURNING 
    private void TurnCheck() // checks if the player needs to turn

@@ -34,7 +34,6 @@ public class FireMenu : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            Debug.Log("uahdfgo");
             playerInside = true;
         }
     }

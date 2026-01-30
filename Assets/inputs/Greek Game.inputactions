@@ -59,6 +59,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "sprint",
+                    "type": "Button",
+                    "id": "e0f3e0f3-4aba-4a8e-9422-42a28787afee",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -301,6 +310,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "dodge",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "1596aa24-7e11-45c4-bf67-ee27e9d14470",
+                    "path": "<Keyboard>/v",
+                    "interactions": "Hold(duration=1.401298E-45,pressPoint=0.5)",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse",
+                    "action": "sprint",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
