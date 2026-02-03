@@ -34,4 +34,5 @@ public class health_player : MonoBehaviour
             OnPlayerDeath?.Invoke();
         }
     }
+
 }
