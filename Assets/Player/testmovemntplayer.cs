@@ -3,6 +3,7 @@
 using UnityEngine;
 using System.Collections;
 using UnityEngine.InputSystem;
+using System.Diagnostics;
 
 
 public class testPlayerMovement : MonoBehaviour
@@ -155,10 +156,13 @@ public class testPlayerMovement : MonoBehaviour
    {
     if(isSprinting==true)
         {
+            animator.SetBool("isWalking", false);
+            
             moveSpeed = walkSpeed + Sprintspeed;
         }
         else
         {
+            
             moveSpeed = walkSpeed;
         }
 
@@ -276,6 +280,7 @@ public class testPlayerMovement : MonoBehaviour
    public void Move(InputAction.CallbackContext context)
     {
         moveInput.x = context.ReadValue<Vector2>().x;
+        
     }
    public void jumpinput(InputAction.CallbackContext context)
     {
@@ -303,13 +308,17 @@ public class testPlayerMovement : MonoBehaviour
     {
         if (context.performed)
         {
+            UnityEngine.Debug.Log("is running");
             isSprinting = true; 
+            animator.SetBool("isRunning", true);
         }
 
 
         if (context.canceled)
         {
+            UnityEngine.Debug.Log("no longer running");
             isSprinting = false; 
+            animator.SetBool("isRunning", false);
         }
     }
     
@@ -438,6 +447,7 @@ public class testPlayerMovement : MonoBehaviour
 
     private IEnumerator dodgeCoroutine()
     {
+        animator.SetTrigger("beginDodge");
         isDodging = true;
     animator.SetBool("isDodging", true);
     animator.SetBool("isWalking",false);
