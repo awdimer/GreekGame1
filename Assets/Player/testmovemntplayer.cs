@@ -3,7 +3,7 @@
 using UnityEngine;
 using System.Collections;
 using UnityEngine.InputSystem;
-using System.Diagnostics;
+
 
 
 public class testPlayerMovement : MonoBehaviour
@@ -108,16 +108,10 @@ public class testPlayerMovement : MonoBehaviour
 
        moveInput.y = Input.GetAxisRaw("Vertical");
 
-        StartCoroutine(CheckFalling());
+        bool falling = rb.linearVelocity.y < -0.1f && !isGrounded();
+        animator.SetBool("isFalling", falling);
 
-        if (isFalling)
-        {
-            animator.SetBool("isFalling",true);
-        }
-        if(!isFalling)
-        {
-            animator.SetBool("isFalling",false);
-        }
+        
 
        if (isGrounded())// coyote time
        {
@@ -406,7 +400,7 @@ public class testPlayerMovement : MonoBehaviour
         isAttacking = true;
 
         Collider2D[] enemy = Physics2D.OverlapCircleAll(attackPoint.transform.position, radius, enemies);
-
+        Debug.Log("Hit count: " + enemy.Length);
         foreach (Collider2D enemyGameObject in enemy)
         {   
             enemyGameObject.GetComponent<enemyHealth>().TakeDamage(SwordDamage);
@@ -463,13 +457,7 @@ public class testPlayerMovement : MonoBehaviour
 
    
 
-    private IEnumerator CheckFalling()
-{
-    float previousY = transform.position.y;
-    yield return new WaitForSeconds(0.1f);
-    float currentY = transform.position.y;
-    isFalling = currentY < previousY;
-}
+    
    
 }
 
