@@ -448,6 +448,7 @@ public class testPlayerMovement : MonoBehaviour
         isDodging = true;
     animator.SetBool("isDodging", true);
     animator.SetBool("isWalking",false);
+    
 
     
 
