@@ -97,6 +97,7 @@ public class testPlayerMovement : MonoBehaviour
 
         bool walking = Mathf.Abs(moveInput.x) > 0.01f && isGrounded();
         animator.SetBool("isWalking", walking);
+        animator.SetBool("isRunning", isSprinting && Mathf.Abs(moveInput.x) > 0.01f);
 
         horizontalInput = Input.GetAxis("Horizontal");
 
@@ -281,6 +282,7 @@ public class testPlayerMovement : MonoBehaviour
         if (context.performed)
         {
             lastJumpTime = jumpBufferTime;
+            
         }
     }
     public void attackinput(InputAction.CallbackContext context)
@@ -302,17 +304,18 @@ public class testPlayerMovement : MonoBehaviour
     {
         if (context.performed)
         {
-            UnityEngine.Debug.Log("is running");
+            
             isSprinting = true; 
-            animator.SetBool("isRunning", true);
+            
         }
+            
 
 
         if (context.canceled)
         {
-            UnityEngine.Debug.Log("no longer running");
+           
             isSprinting = false; 
-            animator.SetBool("isRunning", false);
+            
         }
     }
     
