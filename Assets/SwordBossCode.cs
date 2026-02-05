@@ -2,32 +2,32 @@ using UnityEngine;
 
 public class SwordBossCode : MonoBehaviour
 {
+    [Header("Detection")]
     [SerializeField] private float detectionRadius;
-    [SerializeField] private float attackRadius;
     [SerializeField] private LayerMask playerLayer;
-    [SerializeField] private float xRangeForUpAttack;
+
+    [Header("Attack Ranges")]
     [SerializeField] private float shortRange;
     [SerializeField] private float mediumRange;
-    
-
-    private Vector2 distanceFromPlayer;
-    private float attackCooldownTime;
+    [SerializeField] private float longRange;
+    [SerializeField] private float xRangeForUpAttack;
+    //attackCoolDowns will be specific per attack
+    private float attackCooldownTimer;
 
     void Update()
     {
-        // Only run logic if player is inside detection radius
+        attackCooldownTimer -= Time.deltaTime;
+
         if (DetectPlayer(out Vector2 playerPos))
         {
-            distanceFromPlayer = CalculateDistanceFromPlayer(playerPos);
-
-            Debug.Log("X distance: " + distanceFromPlayer.x +"  Y distance: " + distanceFromPlayer.y);
+            Vector2 distance = CalculateDistanceFromPlayer(playerPos);
+            AttackLogic(distance);
         }
     }
 
-    // Detects player ONLY if inside radius
     public bool DetectPlayer(out Vector2 playerPos)
     {
-        Collider2D hit = Physics2D.OverlapCircle(transform.position, detectionRadius, playerLayer);
+        Collider2D hit = Physics2D.OverlapCircle(transform.position,detectionRadius,playerLayer);
 
         if (hit != null)
         {
@@ -39,69 +39,78 @@ public class SwordBossCode : MonoBehaviour
         return false;
     }
 
-    // Calculates distance from boss to player
     public Vector2 CalculateDistanceFromPlayer(Vector2 playerPos)
     {
-        return (Vector2)transform.position - playerPos;
+        return playerPos - (Vector2)transform.position;
     }
 
-    // Visualize detection radius in Scene view
-    
-    
-    private void AttackLogic(Vector2 distanceFromPlayer)
+    private void AttackLogic(Vector2 distance)
     {
-        if(distanceFromPlayer.y <= 20 )
+        if (attackCooldownTimer > 0)
+            return;
+//returns abolute distance, meaning it can't be negative.
+        float absX = Mathf.Abs(distance.x);
+        float absY = Mathf.Abs(distance.y);
+
+        // Up attack first (priority attack)
+        if (absY > 1.5f && absX <= xRangeForUpAttack)
         {
-            if(distanceFromPlayer.x <=shortRange)
-            {
-                shortRangeAttack();
-            }
-            else if(distanceFromPlayer.x <= mediumRange)
-            {
-                mediumRangeAttack();
-            }
-            else if(distanceFromPlayer.x > mediumRange)
-            {
-                longRangeAttack();
-            }
+            upAttack();
         }
-        else if(distanceFromPlayer.y <= 20 && distanceFromPlayer.x <= xRangeForUpAttack)
+        else if (absX <= shortRange)
         {
-           upAttack(); 
+            shortRangeAttack();
+        }
+        else if (absX <= mediumRange)
+        {
+            mediumRangeAttack();
+        }
+        else if (absX <= longRange)
+        {
+            longRangeAttack();
         }
     }
 
     private void shortRangeAttack()
     {
-        
+        Debug.Log("Short Range Attack");
     }
+
     private void mediumRangeAttack()
     {
-        
+        Debug.Log("Medium Range Attack");
     }
+
     private void longRangeAttack()
     {
-        
+        Debug.Log("Long Range Attack");
     }
-    
-    
-    private void jumpAttack()
-    {
-        
-    }
-    private void comboAttack()
-    {
-        
-    }
+
     private void upAttack()
     {
-        
+        Debug.Log("Up Attack");
     }
-    
-    
+
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, radius);
+        Gizmos.DrawWireSphere(transform.position, detectionRadius);
+
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireSphere(transform.position, shortRange);
+        
+        Gizmos.color = Color.green;
+        Gizmos.DrawWireSphere(transform.position, mediumRange);
+        
+        Gizmos.color = Color.blue;
+        Gizmos.DrawWireSphere(transform.position, longRange);
+
+        Gizmos.color = Color.purple;
+
+        // Draw a ray upward from the boss
+        Vector3 start = transform.position;
+        Vector3 end = transform.position + Vector3.up * xRangeForUpAttack;
+
+        Gizmos.DrawLine(start, end);
     }
 }
