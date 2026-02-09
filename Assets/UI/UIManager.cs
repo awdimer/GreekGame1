@@ -5,31 +5,26 @@ using UnityEngine.SceneManagement;
 public class UIManager : MonoBehaviour
 {
     public GameObject player;
-    public GameObject respawnPoint;
     public GameObject gameOverMenu;
-    private void OnEnable()
-    {
-        health_player.OnPlayerDeath += EnableGameOverMenu;
-    }
-    private void OnDisable()
-    {
-        health_player.OnPlayerDeath -= EnableGameOverMenu;
-    }
-    public void EnableGameOverMenu()
-    {
-        gameOverMenu.SetActive(true);
-    }
-    public void RestartLevel(Collider2D other)
-    {
+    //private void OnEnable()
+    //{
+      //  health_player.OnPlayerDeath += EnableGameOverMenu;
+    //}
+    //private void OnDisable()
+    //{
+      //  health_player.OnPlayerDeath -= EnableGameOverMenu;
+    //}
+    //public void EnableGameOverMenu()
+    //{
+      //  gameOverMenu.SetActive(true);
+    //}
+    //public void RestartLevel(Collider2D other)
+    //{
         //SceneManager.LoadScene("scene1");
-        if (other.gameObject.CompareTag("Player"))
-        {
-            player.transform.position = respawnPoint.transform.position;
-        }
-        Time.timeScale = 1f;
-    }
-    public void GoToMainMenu()
-    {
-        SceneManager.LoadScene("Main Menu");
-    }
+      //  Time.timeScale = 1f;
+    //}
+    //public void GoToMainMenu()
+    //{
+      //  SceneManager.LoadScene("Main Menu");
+    //}
 }
