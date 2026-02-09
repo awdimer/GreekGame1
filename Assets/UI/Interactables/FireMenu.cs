@@ -9,6 +9,7 @@ public class FireMenu : MonoBehaviour
     public static bool isMenu;
     public static bool isRest;
     bool playerInside;
+    bool discorvered;
 
     
     void Start()

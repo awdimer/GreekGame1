@@ -7,11 +7,13 @@ public class ItemDatabase : MonoBehaviour
 {
     private List<Item> database = new List<Item>();
     JsonData itemData;
-    void Start()
-    {
-        itemData = JsonMapper.ToObject(File.ReadAllText(Application.dataPath + "/StreamingAssets/Items.json"));
-        ConstructItemDatabase();
-    }
+void Awake()
+{
+    itemData = JsonMapper.ToObject(
+        File.ReadAllText(Application.dataPath + "/StreamingAssets/Items.json")
+    );
+    ConstructItemDatabase();
+}
     public Item FetchItemByID(int id)
     {
         for(int i = 0; i < database.Count; i++)
