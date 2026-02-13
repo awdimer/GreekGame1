@@ -1,0 +1,9 @@
+using UnityEngine;
+public class DiscoveryMenu : MonoBehaviour
+{
+    public  bool hasDiscovered;
+    void Start()
+    {
+        
+    }
+}

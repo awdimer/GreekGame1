@@ -6,7 +6,7 @@ public class Slot : MonoBehaviour, IDropHandler
 {
     public int id;
     private Inventory inv;
-    void Start()
+    void Awake()
     {
         inv = GameObject.Find("FakeInventory").GetComponent<Inventory>();
     }

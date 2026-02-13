@@ -9,14 +9,17 @@ public class FireMenu : MonoBehaviour
     public static bool isMenu;
     public static bool isRest;
     bool playerInside;
-    bool discorvered;
-
-    
+    public DiscoveryMenu discoveryMenu;
+    public GameObject discoveryPopUp;
+    public static bool isDiscoverMenu;
     void Start()
     {
         firePopUp.SetActive(false);
         isRest = false;
         isMenu = false;
+        discoveryMenu = FindObjectOfType<DiscoveryMenu>();
+        //discoveryMenu.SetActive(false);
+
     }
 
     void Update()
@@ -24,10 +27,18 @@ public class FireMenu : MonoBehaviour
         // Only allow E when player is inside the box
         if (playerInside && Input.GetKeyDown(KeyCode.Tab))
         {
-            if (isMenu)
-                LeaveFire();
+            if (discoveryMenu != null && discoveryMenu.hasDiscovered) //if is true
+            {
+                
+                if (isMenu)
+                    LeaveFire();
+                else
+                    popUp();
+            }
             else
-                popUp();
+            {
+                discoverPopUp();
+            }
         }
     }
 
@@ -66,5 +77,17 @@ public class FireMenu : MonoBehaviour
         firePopUp.SetActive(false);
         isMenu = false;
         Time.timeScale = 1f;
+    }
+    public void discoverPopUp()
+    {
+        discoveryPopUp.SetActive(true);
+    }
+    public void Discover()
+    {
+        if (discoveryMenu != null)
+        {
+            discoveryMenu.hasDiscovered = true;
+        }
+        popUp();
     }
 }

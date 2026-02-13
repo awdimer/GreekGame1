@@ -9,6 +9,7 @@ public class CheckpointScript : MonoBehaviour
     {
         respawn = GameObject.FindGameObjectWithTag("Respawn").GetComponent<RespawnScript>();
     }
+    
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.CompareTag("Player"))
