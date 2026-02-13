@@ -8,7 +8,7 @@ public class Inventory : MonoBehaviour
 {
     GameObject inventoryPanel;
     GameObject slotPanel;
-    ItemDatabase database;
+    public ItemDatabase database;
     public GameObject inventorySlot;
     public GameObject inventoryItem;
     int slotAmount;
@@ -17,7 +17,7 @@ public class Inventory : MonoBehaviour
 
     void Start()
     {
-        database = GetComponent<ItemDatabase>();
+        database = FindObjectOfType<ItemDatabase>(true);
         slotAmount = 24;
         inventoryPanel = GameObject.Find("InventoryPanel");
         slotPanel = inventoryPanel.transform.Find("Slot Panel").gameObject;
@@ -30,10 +30,15 @@ public class Inventory : MonoBehaviour
         } 
         
         AddItem(1);
+        AddItem(2);
+        AddItem(2);
+        AddItem(0);
+        AddItem(1);
  
         
     }
-    
+
+                
     public void AddItem(int id)
     {
         Item itemToAdd = database.FetchItemByID(id);
@@ -76,3 +81,4 @@ public class Inventory : MonoBehaviour
     }
 }
 
+//fuck my stupid chud life
