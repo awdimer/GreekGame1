@@ -1,6 +1,5 @@
 using System.Data;
 using UnityEngine;
-
 public class BossHealthCode : MonoBehaviour
 {
     [SerializeField] private int maxHealth;
@@ -24,6 +23,11 @@ public class BossHealthCode : MonoBehaviour
 
     void Update()
     {
+        
+    }
+
+    public void UpdateMethod()
+    {
         timer += Time.deltaTime; // Add the time since last frame
 
         if (timer >= 1f) // 1 second passed
@@ -39,11 +43,11 @@ public class BossHealthCode : MonoBehaviour
         if (health < currentHealth)
         {
             currentHealth = health;
-            anim.SetTrigger("attacked");
+//            anim.SetTrigger("attacked");
         }
         if (health <= 0)
         {
-            anim.SetTrigger("die");
+            die();
         }
     }
 

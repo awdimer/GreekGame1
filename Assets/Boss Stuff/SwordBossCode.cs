@@ -1,10 +1,14 @@
 using UnityEngine;
 
 public class SwordBossCode : BossCode
+
 {
+    [SerializeField] private float moveSpeed;
+    private Vector2 playerPos;
     void Update()
     {
-        UpdateMethod();
+        //detects which range player is in whilst also getting player position
+        playerPos = UpdateMethod();
 
         if (isInShortRange == true)
         {
@@ -22,9 +26,19 @@ public class SwordBossCode : BossCode
         {
             upAttack();
         }
+        else
+        {
+            Debug.Log("Player Outside of range!");
+            moveTowardsPlayer(playerPos);
+        }
+    }
+    //if player out of range, move towards player until it is in range
+    private void moveTowardsPlayer(Vector2 playerPos)
+    {
+        transform.position = Vector2.MoveTowards(transform.position,playerPos,moveSpeed * Time.deltaTime);
     }
 
-    
+
     private void shortRangeAttack()
     {
         Debug.Log("Short Range Attack");
@@ -42,11 +56,13 @@ public class SwordBossCode : BossCode
 
     private void mediumRangeAttack()
     {
+        int randomInt = Random.Range(0, 1);
         Debug.Log("Medium Range Attack");
     }
 
     private void longRangeAttack()
     {
+        int randomInt = Random.Range(0, 1);
         Debug.Log("Long Range Attack");
     }
 
@@ -55,6 +71,8 @@ public class SwordBossCode : BossCode
         Debug.Log("Up Attack");
     }
 
+    
+    
     private void jumpAttack()
     {
         

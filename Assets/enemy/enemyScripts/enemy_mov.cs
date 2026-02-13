@@ -101,19 +101,18 @@ public class enemy_mov : MonoBehaviour
     }
 
     // APPLY KNOCKBACK
-    public void knockBack()
+    public void knockBack(Vector2 attackerPosition)
     {
         isPatrolling = false;
-        isGettingAttacked = true;
-        attacking = false;
+    isGettingAttacked = true;
+    attacking = false;
 
-        KBcounter = KBtotaltime;
+    KBcounter = KBtotaltime;
+    rb.linearVelocity = Vector2.zero;
 
-        rb.linearVelocity = Vector2.zero;
+    float direction = transform.position.x > attackerPosition.x ? 1 : -1;
 
-        Vector2 direction = knockFromRight ? Vector2.left : Vector2.right;
-
-        rb.AddForce(new Vector2(direction.x * KBforce, KBforce), ForceMode2D.Impulse);
+    rb.AddForce(new Vector2(direction * KBforce, KBforce),ForceMode2D.Impulse);
     }
 
     private bool isGrounded()
@@ -211,36 +210,48 @@ public class enemy_mov : MonoBehaviour
 
         // If player inside attack radius → trigger animation
         if (playerAttackable)
-        {
+        { 
+            Vector2 moveDirection = playerPos - (Vector2)transform.position;
+            FaceDirection(moveDirection);
             anim.SetTrigger("attackingPlayer");
         }
     }
 
     // Animation Event — deals damage
     public void attack()
+{
+    attackingplayer = true;
+
+    Collider2D[] targets = Physics2D.OverlapCircleAll(
+        enemyAttackPoint.transform.position,
+        radius,
+        players
+    );
+
+    foreach (Collider2D target in targets)
     {
-        attackingplayer = true;
+        testPlayerMovement player =
+            target.GetComponent<testPlayerMovement>();
 
-        Collider2D[] targets = Physics2D.OverlapCircleAll(
-            enemyAttackPoint.transform.position,
-            radius,
-            players
-        );
+        if (player == null)
+            continue;
 
-        foreach (Collider2D target in targets)
+        if (!player.isParrying)
         {
-            testPlayerMovement TestPlayerMovement = target.gameObject.GetComponent<testPlayerMovement>();
-            if(!TestPlayerMovement.isParrying)
-            {
-                target.GetComponent<health_player>().TakeDamage(damage);
-            }
-            else
-            {
-                knockBack();
-            }
-            
+            health_player health =
+                target.GetComponent<health_player>();
+
+            if (health != null)
+                health.TakeDamage(damage);
+        }
+        else
+        {
+            // Player parried → knock enemy back away from player
+            knockBack(player.transform.position);
         }
     }
+}
+
 
     public void endAttack()
     {

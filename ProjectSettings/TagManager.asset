@@ -9,6 +9,7 @@ TagManager:
   - enemy
   - bullet
   - CheckPoint
+  - Boss
   layers:
   - Default
   - TransparentFX
@@ -21,7 +22,7 @@ TagManager:
   - Player
   - Enemy
   - bullet
-  - 
+  - Boss
   - 
   - 
   - 

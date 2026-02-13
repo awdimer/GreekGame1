@@ -50,6 +50,7 @@ public class testPlayerMovement : MonoBehaviour
     [SerializeField] private GameObject attackPoint;
     [SerializeField] private float radius;
     [SerializeField] private LayerMask enemies;
+    [SerializeField] private LayerMask bosses;
     [SerializeField] private GameObject bulletPrefab;
     /// <summary>
     /// Combat Stuff
@@ -399,18 +400,40 @@ public class testPlayerMovement : MonoBehaviour
     }
 
     public void attack()
-    {
-        isAttacking = true;
+{
+    isAttacking = true;
 
-        Collider2D[] enemy = Physics2D.OverlapCircleAll(attackPoint.transform.position, radius, enemies);
-        Debug.Log("Hit count: " + enemy.Length);
-        foreach (Collider2D enemyGameObject in enemy)
-        {   
-            enemyGameObject.GetComponent<enemyHealth>().TakeDamage(SwordDamage);
-            enemyGameObject.GetComponent<enemy_mov>().knockBack();
-            enemyGameObject.GetComponent<enemy_mov>().knockFromRight = isFacingRight;
-        }
+    // -------- ENEMIES --------
+    Collider2D[] enemiesHit = Physics2D.OverlapCircleAll(attackPoint.transform.position,radius,enemies);
+
+    Debug.Log("Enemy hit count: " + enemiesHit.Length);
+
+    foreach (Collider2D enemyCollider in enemiesHit)
+    {
+        enemyHealth health = enemyCollider.GetComponent<enemyHealth>();
+        enemy_mov enemyScript = enemyCollider.GetComponent<enemy_mov>();
+
+        if (health != null)
+            health.TakeDamage(SwordDamage);
+
+        if (enemyScript != null)
+            enemyScript.knockBack(transform.position); // pass attacker position
     }
+
+    // -------- BOSSES --------
+    Collider2D[] bossesHit = Physics2D.OverlapCircleAll(attackPoint.transform.position,radius,bosses);
+
+    Debug.Log("Boss hit count: " + bossesHit.Length);
+
+    foreach (Collider2D bossCollider in bossesHit)
+    {
+        BossHealthCode bossHealth = bossCollider.GetComponent<BossHealthCode>();
+
+        if (bossHealth != null)
+            bossHealth.TakeDamage(SwordDamage);
+    }
+}
+
     
     private void OnDrawGizmos()
     {

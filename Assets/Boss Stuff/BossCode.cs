@@ -17,14 +17,18 @@ public class BossCode : MonoBehaviour
     private protected bool isInMediumRange;
     private protected bool isInLongRange;
     private protected bool isAbove;
-
+    private Vector3[] directions = new Vector3[2];
+    void Start()
+    {
+        Debug.Log("Boss started");
+    }
     void Update()
     {
         
     }
 
 
-    public void UpdateMethod()
+    public Vector2 UpdateMethod()
     {
         attackCooldownTimer -= Time.deltaTime;
 
@@ -32,11 +36,17 @@ public class BossCode : MonoBehaviour
         {
             Vector2 distance = CalculateDistanceFromPlayer(playerPos);
             AttackLogic(distance);
+            return playerPos;
         }
+    return Vector2.zero;
+
     }
 
     public bool DetectPlayer(out Vector2 playerPos)
     {
+
+        CalculateDirections();
+
         Collider2D hit = Physics2D.OverlapCircle(transform.position,detectionRadius,playerLayer);
 
         if (hit != null)
@@ -47,6 +57,13 @@ public class BossCode : MonoBehaviour
 
         playerPos = Vector2.zero;
         return false;
+    }
+
+
+    private void CalculateDirections()
+    {
+        directions[0] = transform.right;
+        directions[1] = -transform.right;
     }
 
     public Vector2 CalculateDistanceFromPlayer(Vector2 playerPos)
@@ -90,6 +107,13 @@ public class BossCode : MonoBehaviour
             isInShortRange = false;
             isInMediumRange = false;
             isInLongRange = true;
+        }
+        else
+        {
+            isAbove = false;
+            isInShortRange = false;
+            isInMediumRange = false;
+            isInLongRange = false;
         }
     }
 
