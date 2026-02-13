@@ -1,6 +1,8 @@
 using UnityEngine;
 using Unity.Cinemachine;
 using System.Collections;
+using System.Collections.Generic;
+
 public class CameraManager : MonoBehaviour
 {
     public static CameraManager instance;
@@ -12,6 +14,7 @@ public class CameraManager : MonoBehaviour
 
     public bool IsLerpingYDamping {get;private set;}
     public bool LerpedFromPlayerFalling {get;set;}
+    public List<Transform> targets;
 
     private Coroutine lerpYPanCoroutine;
     private CinemachineVirtualCameraBase currentCamera;
@@ -25,9 +28,27 @@ public class CameraManager : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void LateUpdate()
     {
+        if (targets.Count == 0)
+            return;
         
+        Vector3 centerPoint = GetCenterPoint();
+        transform.position = centerPoint;
+
+    }
+    Vector3 GetCenterPoint()
+    {
+        if(targets.Count == 1)
+        {
+            return targets[0].position;
+        }
+        var bounds = new Bounds(targets[0].position,Vector3.zero);
+        for(int i = 0; i < targets.Count; i++)
+        {
+            bounds.Encapsulate(targets[i].position);
+        }
+        return bounds.center;
     }
     private void Awake()
     {
