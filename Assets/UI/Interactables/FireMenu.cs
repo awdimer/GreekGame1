@@ -19,6 +19,7 @@ public class FireMenu : MonoBehaviour
         isMenu = false;
         discoveryMenu = FindObjectOfType<DiscoveryMenu>();
         //discoveryMenu.SetActive(false);
+        discoveryPopUp.SetActive(false);
 
     }
 
@@ -87,6 +88,7 @@ public class FireMenu : MonoBehaviour
         if (discoveryMenu != null)
         {
             discoveryMenu.hasDiscovered = true;
+            discoveryPopUp.gameObject.SetActive(false);
         }
         popUp();
     }
