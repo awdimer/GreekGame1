@@ -50,6 +50,9 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: fire
+    uniqueID: 647592689
+    locked: 0
   - name: ground
     uniqueID: 1305673999
     locked: 0
