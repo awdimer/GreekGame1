@@ -2753,7 +2753,7 @@ Transform:
   m_GameObject: {fileID: 849948745}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.0006980896, y: 4.725652, z: 0}
+  m_LocalPosition: {x: -0.0004930496, y: 4.725652, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4576,8 +4576,9 @@ GameObject:
   - component: {fileID: 1186609801}
   - component: {fileID: 1186609800}
   - component: {fileID: 1186609799}
+  - component: {fileID: 1186609803}
   m_Layer: 0
-  m_Name: FireOneRespawnPoint (1)
+  m_Name: BossRespawnPointTrigger
   m_TagString: CheckPoint
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4670,6 +4671,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1186609803
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1186609798}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 034b37ee22e79430bb85776d50d8d0c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1201452803
 PrefabInstance:
   m_ObjectHideFlags: 0
