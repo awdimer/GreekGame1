@@ -222,24 +222,18 @@ public class enemy_mov : MonoBehaviour
 {
     attackingplayer = true;
 
-    Collider2D[] targets = Physics2D.OverlapCircleAll(
-        enemyAttackPoint.transform.position,
-        radius,
-        players
-    );
+    Collider2D[] targets = Physics2D.OverlapCircleAll(enemyAttackPoint.transform.position,radius,players);
 
     foreach (Collider2D target in targets)
     {
-        testPlayerMovement player =
-            target.GetComponent<testPlayerMovement>();
+        testPlayerMovement player = target.GetComponent<testPlayerMovement>();
 
         if (player == null)
             continue;
 
         if (!player.isParrying)
         {
-            health_player health =
-                target.GetComponent<health_player>();
+            health_player health = target.GetComponent<health_player>();
 
             if (health != null)
                 health.TakeDamage(damage);

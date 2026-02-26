@@ -3,7 +3,7 @@ using UnityEngine;
 public class BossHealthCode : MonoBehaviour
 {
     [SerializeField] private int maxHealth;
-    [SerializeField] private int health;
+    [SerializeField] public int health;
     [SerializeField] private float currentHealth;
     [SerializeField] private int maxStamina;
     [SerializeField] private int stamina;
@@ -45,10 +45,6 @@ public class BossHealthCode : MonoBehaviour
             currentHealth = health;
 //            anim.SetTrigger("attacked");
         }
-        if (health <= 0)
-        {
-            die();
-        }
     }
 
      public void DrainStamina(int damage)
@@ -60,7 +56,7 @@ public class BossHealthCode : MonoBehaviour
         }
         if (stamina <= 0)
         {
-            anim.SetTrigger("stunned");
+            StunnedState();
         }
     }
 
@@ -71,6 +67,16 @@ public class BossHealthCode : MonoBehaviour
             stamina += staminaRegen;
         }
        
+    }
+
+    public virtual void StunnedState()
+    {
+        
+    }
+
+    public virtual void healthMonitor()
+    {
+        
     }
     
     public void die()

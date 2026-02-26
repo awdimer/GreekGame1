@@ -118,6 +118,12 @@ public class BossCode : MonoBehaviour
     }
 
 
+    private bool isGrounded() //checks if the player is on the ground
+   {
+       RaycastHit2D raycastHit = Physics2D.BoxCast(boxCollider.bounds.center, boxCollider.bounds.size, 0, Vector2.down, 0.1f, groundLayer);
+       return raycastHit.collider != null;
+   }
+
     public void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
