@@ -1,5 +1,9 @@
-using System.Data;
+
+
 using UnityEngine;
+using System.Collections;
+using UnityEngine.InputSystem;
+
 public class BossHealthCode : MonoBehaviour
 {
     [SerializeField] private int maxHealth;
@@ -9,12 +13,14 @@ public class BossHealthCode : MonoBehaviour
     [SerializeField] private int stamina;
     [SerializeField] private float currentStamina;
     [SerializeField] private int staminaRegen;
-    private Animator anim;
+    public bool isStunned = false;
+    [SerializeField] public int stunnedTime;
+    private Animator animator;
     private float timer = 0f;
 
   void Start()
     {
-        anim = GetComponent<Animator>();
+        animator = GetComponent<Animator>();
         health = maxHealth;
         currentHealth = health;
         stamina = maxStamina;
@@ -71,9 +77,21 @@ public class BossHealthCode : MonoBehaviour
 
     public virtual void StunnedState()
     {
-        
+        Debug.Log("stunnedState caused");
+        isStunned = true;
+        StartCoroutine(stunCoroutine(stunnedTime));
     }
 
+
+
+    private IEnumerator stunCoroutine(int stunnedTime)
+    {
+        animator.SetBool("isStunned",true);
+        yield return new WaitForSeconds(stunnedTime);
+        isStunned = false;
+        stamina = maxStamina;
+        animator.SetBool("isStunned",false);
+    }
     public virtual void healthMonitor()
     {
         

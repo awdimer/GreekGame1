@@ -3375,6 +3375,10 @@ PrefabInstance:
       propertyPath: attackPoint
       value: 
       objectReference: {fileID: 665570029}
+    - target: {fileID: 6943622880868593342, guid: e0807cf9932c1465a929271f17ce6d3e, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8031567491734391223, guid: e0807cf9932c1465a929271f17ce6d3e, type: 3}
       propertyPath: m_Name
       value: SwordBoss
@@ -3382,13 +3386,74 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8031567491734391223, guid: e0807cf9932c1465a929271f17ce6d3e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 398444863}
+    - targetCorrespondingSourceObject: {fileID: 8031567491734391223, guid: e0807cf9932c1465a929271f17ce6d3e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 398444862}
   m_SourcePrefab: {fileID: 100100000, guid: e0807cf9932c1465a929271f17ce6d3e, type: 3}
+--- !u!1 &398444860 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8031567491734391223, guid: e0807cf9932c1465a929271f17ce6d3e, type: 3}
+  m_PrefabInstance: {fileID: 398444859}
+  m_PrefabAsset: {fileID: 0}
 --- !u!95 &398444861 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 3760574896771413169, guid: e0807cf9932c1465a929271f17ce6d3e, type: 3}
   m_PrefabInstance: {fileID: 398444859}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &398444862
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 398444860}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69de19c14fd10454d85a22dca13e2ecd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 100
+  health: 0
+  currentHealth: 0
+  maxStamina: 10
+  stamina: 0
+  currentStamina: 0
+  staminaRegen: 0
+  isStunned: 0
+  stunnedTime: 5
+--- !u!114 &398444863
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 398444860}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f48f1e99ed306481cbcea020c26b39f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  detectionRadius: 30
+  playerLayer:
+    serializedVersion: 2
+    m_Bits: 256
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 64
+  shortRange: 5
+  mediumRange: 10
+  longRange: 20
+  xRangeForUpAttack: 2
+  moveSpeed: 5
+  attackPoint: {fileID: 665570029}
+  radius: 30
+  damage: 20
+  stunTime: 5
+  animator: {fileID: 398444861}
 --- !u!1 &403790633
 GameObject:
   m_ObjectHideFlags: 0
@@ -24584,3 +24649,4 @@ SceneRoots:
   - {fileID: 1187045449}
   - {fileID: 448285363}
   - {fileID: 398444859}
+  - {fileID: 2144858175}

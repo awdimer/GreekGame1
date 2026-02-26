@@ -31,6 +31,6 @@ public class CheckpointScript : MonoBehaviour
     private void Discover()
     {
         
-        FindObjectOfType<YourPopupManager>().discoverPopUp();
+        //FindObjectOfType<YourPopupManager>().discoverPopUp();
     }
 }

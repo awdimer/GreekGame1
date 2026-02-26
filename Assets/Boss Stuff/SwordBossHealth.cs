@@ -16,11 +16,7 @@ public class SwordBossHealth : BossHealthCode
     }
 
 
-    public override void StunnedState()
-    {
-        bossMov.stunned();
-        Debug.Log("stunned");
-    }
+    
 
     public override void healthMonitor()
     {

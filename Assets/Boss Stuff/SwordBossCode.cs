@@ -1,3 +1,4 @@
+
 using UnityEngine;
 
 public class SwordBossCode : BossCode
@@ -27,7 +28,7 @@ public class SwordBossCode : BossCode
     {
         //detects which range player is in whilst also getting player position
         playerPos = UpdateMethod();
-        if(!isStunned)
+        if(!isStunned && !isAttacking)
         {
             if (isInShortRange == true)
             {
@@ -53,12 +54,12 @@ public class SwordBossCode : BossCode
         }
         else
         {
-            stunTimer += Time.deltaTime;
-            if (stunTimer >= stunTime)
-            {
-                isStunned = false;
-                stunTimer = 0f;
-            }
+            //stunTimer += Time.deltaTime;
+            //if (stunTimer >= stunTime)
+            //{
+           //     isStunned = false;
+            //    stunTimer = 0f;
+            //}
         }
         
     }
@@ -82,24 +83,24 @@ public class SwordBossCode : BossCode
         //{
         //    bigSwordAttack();
         //}
-       shortRangeAttack();
+       animator.SetTrigger("shortRangeAttack");
     }
 
     private void mediumRangeAttack()
     {
         int randomInt = Random.Range(0, 1);
-        Debug.Log("Medium Range Attack");
+        
     }
 
     private void longRangeAttack()
     {
         int randomInt = Random.Range(0, 1);
-        Debug.Log("Long Range Attack");
+        
     }
 
     private void upAttack()
     {
-        Debug.Log("Up Attack");
+        
     }
 
     private void jumpAttack()
@@ -125,7 +126,7 @@ public class SwordBossCode : BossCode
     public void shortRangeAttack()
 {
     isAttacking = true;
-    animator.SetTrigger("shortRangeAttack");
+    
 
     Collider2D[] targets = Physics2D.OverlapCircleAll(attackPoint.transform.position,radius,playerLayer);
 
@@ -149,6 +150,7 @@ public class SwordBossCode : BossCode
         {
             // Player parried → knock enemy back away from player
             bossHealth.DrainStamina(staminaDamage);
+            Debug.Log("Stamina Drained " + staminaDamage);
         }
     }
 }
@@ -158,13 +160,13 @@ public class SwordBossCode : BossCode
             isAttacking = false;
         }
 
-    public void stunned()
-    {
-        animator.SetBool("isStunned",true);
-        isStunned = true;
+   // public void stunned()
+    //{
+    //    animator.SetBool("isStunned",true);
+    //    isStunned = true;
 
 
-    }
+    //}
 }
 
 

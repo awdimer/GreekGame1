@@ -1,3 +1,4 @@
+using System.Linq.Expressions;
 using UnityEngine;
 
 public class BossCode : MonoBehaviour
@@ -5,6 +6,7 @@ public class BossCode : MonoBehaviour
     [Header("Detection")]
     [SerializeField] protected float detectionRadius;
     [SerializeField] protected LayerMask playerLayer;
+    [SerializeField] protected LayerMask groundLayer;
 
     [Header("Attack Ranges")]
     [SerializeField] protected float shortRange;
@@ -18,8 +20,10 @@ public class BossCode : MonoBehaviour
     private protected bool isInLongRange;
     private protected bool isAbove;
     private Vector3[] directions = new Vector3[2];
+    private BoxCollider2D boxCollider;
     void Start()
     {
+        boxCollider = GetComponent<BoxCollider2D>();
         Debug.Log("Boss started");
     }
     void Update()
