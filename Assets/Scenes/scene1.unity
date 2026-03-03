@@ -3321,7 +3321,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2278190549092688691, guid: e0807cf9932c1465a929271f17ce6d3e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -5.8
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 2278190549092688691, guid: e0807cf9932c1465a929271f17ce6d3e, type: 3}
       propertyPath: m_LocalPosition.y
@@ -3448,6 +3448,9 @@ MonoBehaviour:
   mediumRange: 10
   longRange: 20
   xRangeForUpAttack: 2
+  jumpHeight: 6
+  jumpDuration: 0.5
+  timeTillJump: 5
   moveSpeed: 5
   attackPoint: {fileID: 665570029}
   radius: 30

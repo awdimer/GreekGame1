@@ -76,50 +76,49 @@ public class BossCode : MonoBehaviour
     }
 
     public void AttackLogic(Vector2 distance)
-    {
-        if (attackCooldownTimer > 0)
-            return;
-//returns abolute distance, meaning it can't be negative.
-        float absX = Mathf.Abs(distance.x);
-        float absY = Mathf.Abs(distance.y);
+{
+    if (attackCooldownTimer > 0)
+        return;
 
-        // Up attack first (priority attack)
-        if (absY > 1.5f && absX <= xRangeForUpAttack)
-        {
-            isAbove = true;
-            isInShortRange = false;
-            isInMediumRange = false;
-            isInLongRange = false;
-        }
-        else if (absX <= shortRange)
-        {
-            isAbove = false;
-            isInShortRange = true;
-            isInMediumRange = false;
-            isInLongRange = false;
-        }
-        else if (absX <= mediumRange)
-        {
-            isAbove = false;
-            isInShortRange = false;
-            isInMediumRange = true;
-            isInLongRange = false;
-        }
-        else if (absX <= longRange)
-        {
-            isAbove = false;
-            isInShortRange = false;
-            isInMediumRange = false;
-            isInLongRange = true;
-        }
-        else
-        {
-            isAbove = false;
-            isInShortRange = false;
-            isInMediumRange = false;
-            isInLongRange = false;
-        }
+    float absX = Mathf.Abs(distance.x);
+    float absY = Mathf.Abs(distance.y);
+
+    if (absY > 1.5f && absX <= xRangeForUpAttack)
+    {
+        isAbove = true;
+        isInShortRange = false;
+        isInMediumRange = false;
+        isInLongRange = false;
     }
+    else if (absX <= shortRange)
+    {
+        isAbove = false;
+        isInShortRange = true;
+        isInMediumRange = false;
+        isInLongRange = false;
+    }
+    else if (absX <= mediumRange)
+    {
+        isAbove = false;
+        isInShortRange = false;
+        isInMediumRange = true;
+        isInLongRange = false;
+    }
+    else if (absX <= longRange)
+    {
+        isAbove = false;
+        isInShortRange = false;
+        isInMediumRange = false;
+        isInLongRange = true;
+    }
+    else
+    {
+        isAbove = false;
+        isInShortRange = false;
+        isInMediumRange = false;
+        isInLongRange = false;
+    }
+}
 
 
     private bool isGrounded() //checks if the player is on the ground

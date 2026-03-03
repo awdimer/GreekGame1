@@ -4,6 +4,17 @@ using UnityEngine;
 public class SwordBossCode : BossCode
 
 {
+
+    [SerializeField] private float jumpHeight;
+    [SerializeField] private float jumpDuration;
+    [SerializeField] private float timeTillJump;
+    private float timePassed = 0;
+
+    private Vector2 jumpStartPos;
+    private Vector2 jumpTargetPos;
+    private float jumpTimer;
+    private bool isJumping;
+
     [SerializeField] private float moveSpeed;
     [SerializeField] private GameObject attackPoint;
     [SerializeField] private float radius;
@@ -28,19 +39,29 @@ public class SwordBossCode : BossCode
     {
         //detects which range player is in whilst also getting player position
         playerPos = UpdateMethod();
+        Debug.Log("Jumping: " + isJumping + " Attacking: " + isAttacking);
+
+        if (isJumping)
+        {
+            HandleJump();
+            return;
+        }
         if(!isStunned && !isAttacking)
         {
             if (isInShortRange == true)
             {
                 shortRangeAnimBegin();
+                timePassed = 0;
             }
             else if (isInMediumRange == true)
             {
                 mediumRangeAttack();
+                timePassed = 0;
             }
             else if (isInLongRange == true)
             {
                 longRangeAttack();
+                moveTowardsPlayer(playerPos);
             }
             else if (isAbove == true)
             {
@@ -83,18 +104,31 @@ public class SwordBossCode : BossCode
         //{
         //    bigSwordAttack();
         //}
-       animator.SetTrigger("shortRangeAttack");
+
+
+
+       //animator.SetTrigger("shortRangeAttack");
     }
 
     private void mediumRangeAttack()
     {
-        int randomInt = Random.Range(0, 1);
+        //int randomInt = Random.Range(0, 1);
         
     }
 
     private void longRangeAttack()
     {
-        int randomInt = Random.Range(0, 1);
+        //int randomInt = Random.Range(0, 1);
+        if (!isAttacking && !isJumping)
+        {
+            timePassed += Time.deltaTime;
+            if(timePassed >= timeTillJump)
+            {
+                jumpAttack();
+                timePassed = 0;
+            }
+            
+        }
         
     }
 
@@ -105,7 +139,17 @@ public class SwordBossCode : BossCode
 
     private void jumpAttack()
     {
-        
+    
+    if (isJumping) return;
+
+    
+    isJumping = true;
+
+    jumpStartPos = transform.position;
+    jumpTargetPos = playerPos;   // Player position already stored in Update()
+    jumpTimer = 0f;
+
+    //animator.SetTrigger("jumpAttack"); /
     }
 
     private void bigSwordAttack()
@@ -167,6 +211,33 @@ public class SwordBossCode : BossCode
 
 
     //}
+
+
+    private void HandleJump()
+{
+    jumpTimer += Time.deltaTime;
+    float progress = jumpTimer / jumpDuration;
+
+    if (progress >= 1f)
+    {
+        transform.position = jumpTargetPos;
+        isJumping = false;
+        
+
+        // You can trigger damage here if it's a slam attack
+        
+
+        return;
+    }
+
+    // Horizontal movement (linear)
+    Vector2 horizontalPos = Vector2.Lerp(jumpStartPos, jumpTargetPos, progress);
+
+    // Vertical arc (parabola)
+    float height = 4 * jumpHeight * progress * (1 - progress);
+
+    transform.position = horizontalPos + Vector2.up * height;
+}
 }
 
 
