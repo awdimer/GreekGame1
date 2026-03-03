@@ -2373,7 +2373,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 692776629}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 97cd82c55177e49e991275188c88cc77, type: 3}
   m_Name: 
@@ -2394,7 +2394,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b303f53b7ec4c4f1593ac470bd991b04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hasDiscovered: 0
 --- !u!114 &692776636
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2402,7 +2401,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 692776629}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ae876a1c8b2de4e629750c7d53e6278e, type: 3}
   m_Name: 
@@ -2754,7 +2753,7 @@ Transform:
   m_GameObject: {fileID: 849948745}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.00023460388, y: 4.725652, z: 0}
+  m_LocalPosition: {x: -0.0004930496, y: 4.725652, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4055,7 +4054,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1089757316}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 97cd82c55177e49e991275188c88cc77, type: 3}
   m_Name: 
@@ -4576,7 +4575,6 @@ GameObject:
   - component: {fileID: 1186609802}
   - component: {fileID: 1186609801}
   - component: {fileID: 1186609800}
-  - component: {fileID: 1186609799}
   - component: {fileID: 1186609803}
   m_Layer: 0
   m_Name: BossRespawnPointTrigger
@@ -4585,19 +4583,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1186609799
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1186609798}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b303f53b7ec4c4f1593ac470bd991b04, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hasDiscovered: 0
 --- !u!61 &1186609800
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -4668,7 +4653,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 230.7, y: 0.06, z: 0}
-  m_LocalScale: {x: 1, y: 64, z: 1}
+  m_LocalScale: {x: 333, y: 64, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -4685,6 +4670,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 034b37ee22e79430bb85776d50d8d0c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  respawn: {fileID: 1795287519}
 --- !u!1001 &1201452803
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5401,7 +5387,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ab63aa42c41245309c1f232494c3a3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
+  maxHealth: 1
   health: 0
 --- !u!61 &1368975979
 BoxCollider2D:
@@ -6763,7 +6749,7 @@ MonoBehaviour:
   m_Intensity: 0.61
   m_LightVolumeIntensity: 1
   m_LightVolumeEnabled: 0
-  m_ApplyToSortingLayers: d7a343a4000000000f01d34dff2d1129f9c86e50e36ddf64
+  m_ApplyToSortingLayers: d7a343a4000000000f01d34dff2d1129f9c86e50e36ddf6463fbbf59
   m_LightCookieSprite: {fileID: 0}
   m_DeprecatedPointLightCookieSprite: {fileID: 0}
   m_LightOrder: 0
@@ -7215,6 +7201,114 @@ MonoBehaviour:
     MaxWindowSize: 0
     Padding: 0
   m_LegacyMaxWindowSize: -2
+--- !u!1 &1795287515
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1795287520}
+  - component: {fileID: 1795287519}
+  - component: {fileID: 1795287518}
+  - component: {fileID: 1795287522}
+  m_Layer: 0
+  m_Name: SecondAreaLevelPoint
+  m_TagString: Move
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!61 &1795287518
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1795287515}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
+--- !u!114 &1795287519
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1795287515}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b128211184c1346b4b0235df85b9d519, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 1368975971}
+  respawnPoint: {fileID: 1795287515}
+--- !u!4 &1795287520
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1795287515}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 550, y: 0.06, z: 0}
+  m_LocalScale: {x: 1, y: 64, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1795287522
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1795287515}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b128211184c1346b4b0235df85b9d519, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 1368975971}
+  respawnPoint: {fileID: 1795287515}
 --- !u!1 &1805417326
 GameObject:
   m_ObjectHideFlags: 0
@@ -7242,7 +7336,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1805417326}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 97cd82c55177e49e991275188c88cc77, type: 3}
   m_Name: 
@@ -7631,7 +7725,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b303f53b7ec4c4f1593ac470bd991b04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hasDiscovered: 0
 --- !u!61 &1889205264
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -7994,7 +8087,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b303f53b7ec4c4f1593ac470bd991b04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hasDiscovered: 0
 --- !u!61 &1951414283
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -8466,7 +8558,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3998fa68e356d4e8c97e1b12a320a1cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
+  player: {fileID: 1368975971}
   gameOverMenu: {fileID: 923071481}
 --- !u!114 &2037427576
 MonoBehaviour:
@@ -8869,5 +8961,6 @@ SceneRoots:
   - {fileID: 1695013935}
   - {fileID: 1951414281}
   - {fileID: 1186609802}
+  - {fileID: 1795287520}
   - {fileID: 1889205266}
   - {fileID: 1495872090}
