@@ -24,7 +24,7 @@ public class SwordBossCode : BossCode
     private float stunTimer = 0f;
     private Vector2 playerPos;
     private bool isAttacking;
-    private bool isStunned;
+   
 
     private SwordBossHealth bossHealth;
     private Animator anim;
@@ -47,8 +47,8 @@ public class SwordBossCode : BossCode
             HandleJump();
             return;
         }
-        if(!isStunned && !isAttacking)
-        {
+        if (bossHealth.isStunned || isAttacking)
+        return;
             if (isInShortRange == true)
             {
                 shortRangeAnimBegin();
@@ -73,18 +73,10 @@ public class SwordBossCode : BossCode
                 Debug.Log("Player Outside of range!");
                 moveTowardsPlayer(playerPos);
             }
-        }
-        else
-        {
-            //stunTimer += Time.deltaTime;
-            //if (stunTimer >= stunTime)
-            //{
-           //     isStunned = false;
-            //    stunTimer = 0f;
-            //}
-        }
-        
     }
+
+        
+    
     //if player out of range, move towards player until it is in range
     private void moveTowardsPlayer(Vector2 playerPos)
     {
@@ -105,10 +97,11 @@ public class SwordBossCode : BossCode
         //{
         //    bigSwordAttack();
         //}
+    if (isAttacking)
+        return;
 
-
-
-       //animator.SetTrigger("shortRangeAttack");
+    isAttacking = true;
+    animator.SetTrigger("shortRangeAttack");
     }
 
     private void mediumRangeAttack()
@@ -170,7 +163,7 @@ public class SwordBossCode : BossCode
 
     public void shortRangeAttack()
 {
-    isAttacking = true;
+    
     
 
     Collider2D[] targets = Physics2D.OverlapCircleAll(attackPoint.transform.position,radius,playerLayer);
@@ -202,7 +195,7 @@ public class SwordBossCode : BossCode
 
     public void endShortRangeAttack()
         {
-            isAttacking = false;
+            StartCoroutine(attackCooldown(1));
         }
 
    // public void stunned()
@@ -243,7 +236,7 @@ public class SwordBossCode : BossCode
     public IEnumerator attackCooldown(int cooldownTime)
     {
         yield return new WaitForSeconds(cooldownTime);
-
+        animator.SetTrigger("attackEnd");
         isAttacking = false;
     }
 
@@ -273,6 +266,12 @@ public class SwordBossCode : BossCode
 
     transform.position = horizontalPos + Vector2.up * height;
 }
+
+public void ResetAttackState()
+{
+    isAttacking = false;
+}
+
 }
 
 

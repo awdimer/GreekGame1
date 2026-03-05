@@ -29,7 +29,7 @@ public class BossHealthCode : MonoBehaviour
 
     void Update()
     {
-        
+        UpdateMethod();
     }
 
     public void UpdateMethod()
@@ -91,6 +91,12 @@ public class BossHealthCode : MonoBehaviour
         isStunned = false;
         stamina = maxStamina;
         animator.SetBool("isStunned",false);
+
+        SwordBossCode bossAI = GetComponent<SwordBossCode>();
+        if(bossAI != null)
+        {
+            bossAI.ResetAttackState();
+        }
     }
     public virtual void healthMonitor()
     {

@@ -3879,6 +3879,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5119481985959789743, guid: e0807cf9932c1465a929271f17ce6d3e, type: 3}
+      propertyPath: jumpAttackCoolDown
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5119481985959789743, guid: e0807cf9932c1465a929271f17ce6d3e, type: 3}
+      propertyPath: shortAttackCooldown
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6658000051023176513, guid: e0807cf9932c1465a929271f17ce6d3e, type: 3}
+      propertyPath: staminaRegen
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 8031567491734391223, guid: e0807cf9932c1465a929271f17ce6d3e, type: 3}
       propertyPath: m_Name
       value: SwordBoss
@@ -12459,10 +12471,8 @@ Transform:
   - {fileID: 1840307408}
   - {fileID: 1523758502}
   - {fileID: 1680615996}
-  - {fileID: 2122734077}
   - {fileID: 1538105112}
   - {fileID: 1256100809}
-  - {fileID: 706090204}
   - {fileID: 72624990}
   - {fileID: 2057142244}
   - {fileID: 524280556}
