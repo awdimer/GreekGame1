@@ -1,6 +1,6 @@
 
 using UnityEngine;
-
+using System.Collections;
 public class SwordBossCode : BossCode
 
 {
@@ -8,6 +8,7 @@ public class SwordBossCode : BossCode
     [SerializeField] private float jumpHeight;
     [SerializeField] private float jumpDuration;
     [SerializeField] private float timeTillJump;
+    [SerializeField] private float jumpAttackCoolDown;
     private float timePassed = 0;
 
     private Vector2 jumpStartPos;
@@ -39,7 +40,7 @@ public class SwordBossCode : BossCode
     {
         //detects which range player is in whilst also getting player position
         playerPos = UpdateMethod();
-        Debug.Log("Jumping: " + isJumping + " Attacking: " + isAttacking);
+        Debug.Log("Jumping: " + isJumping + " Attacking: " + isAttacking + " time count " + timePassed);
 
         if (isJumping)
         {
@@ -211,6 +212,40 @@ public class SwordBossCode : BossCode
 
 
     //}
+
+    public void jumpSmashAttack()
+        {
+        
+        isAttacking = true;
+        
+
+        Collider2D[] targets = Physics2D.OverlapCircleAll(attackPoint.transform.position,radius,playerLayer);
+
+        foreach (Collider2D target in targets)
+            {
+                testPlayerMovement player = target.GetComponent<testPlayerMovement>();
+                int staminaDamage = player.SwordDamage;
+                if (player == null)
+                {
+                    continue;
+                }
+
+
+                health_player health = target.GetComponent<health_player>();
+
+                if (health != null)
+                    health.TakeDamage(damage);
+                
+            }
+            StartCoroutine(attackCooldown(1));
+        }
+
+    public IEnumerator attackCooldown(int cooldownTime)
+    {
+        yield return new WaitForSeconds(cooldownTime);
+
+        isAttacking = false;
+    }
 
 
     private void HandleJump()

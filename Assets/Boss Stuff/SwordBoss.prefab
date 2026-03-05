@@ -44,6 +44,8 @@ GameObject:
   - component: {fileID: 5029897911509217777}
   - component: {fileID: 4519523471521685369}
   - component: {fileID: 3760574896771413169}
+  - component: {fileID: 5119481985959789743}
+  - component: {fileID: 6658000051023176513}
   m_Layer: 11
   m_Name: SwordBoss
   m_TagString: Boss
@@ -217,3 +219,56 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &5119481985959789743
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8031567491734391223}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f48f1e99ed306481cbcea020c26b39f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  detectionRadius: 30
+  playerLayer:
+    serializedVersion: 2
+    m_Bits: 256
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 64
+  shortRange: 5
+  mediumRange: 10
+  longRange: 20
+  xRangeForUpAttack: 2
+  jumpHeight: 6
+  jumpDuration: 0.5
+  timeTillJump: 5
+  moveSpeed: 5
+  attackPoint: {fileID: 3245590118533091274}
+  radius: 30
+  damage: 20
+  stunTime: 5
+  animator: {fileID: 3760574896771413169}
+--- !u!114 &6658000051023176513
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8031567491734391223}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69de19c14fd10454d85a22dca13e2ecd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 100
+  health: 0
+  currentHealth: 0
+  maxStamina: 10
+  stamina: 0
+  currentStamina: 0
+  staminaRegen: 0
+  isStunned: 0
+  stunnedTime: 5
