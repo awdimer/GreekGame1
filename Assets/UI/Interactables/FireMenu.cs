@@ -17,9 +17,9 @@ public class FireMenu : MonoBehaviour
         firePopUp.SetActive(false);
         isRest = false;
         isMenu = false;
-        discoveryMenu = FindObjectOfType<DiscoveryMenu>();
+        //discoveryMenu = FindObjectOfType<DiscoveryMenu>();
         //discoveryMenu.SetActive(false);
-        discoveryPopUp.SetActive(false);
+        //discoveryPopUp.SetActive(false);
 
     }
 
@@ -28,20 +28,21 @@ public class FireMenu : MonoBehaviour
         // Only allow E when player is inside the box
         if (playerInside && Input.GetKeyDown(KeyCode.Tab))
         {
-            if (discoveryMenu != null && discoveryMenu.hasDiscovered) //if is true
-            {
+            //if (discoveryMenu != null && discoveryMenu.hasDiscovered) //if is true
+            //{
                 
                 if (isMenu)
                     LeaveFire();
-                else
-                    popUp();
-            }
-            else
-            {
-                discoverPopUp();
-            }
+                //åelse
+                    //popUp();
         }
-    }
+            //}
+            //else
+            //{
+                //discoverPopUp();
+            //}
+        }
+    
 
     void OnTriggerEnter2D(Collider2D collision)
     {
@@ -56,16 +57,16 @@ public class FireMenu : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             playerInside = false;
-            leaveDiscover();
+            //leaveDiscover();
         }
     }
 
-    public void popUp()
-    {
-        firePopUp.SetActive(true);
-        Time.timeScale = 0f;
-        isMenu = true;
-    }
+  //  public void popUp()
+    //{
+      //  firePopUp.SetActive(true);
+        //Time.timeScale = 0f;
+        //isMenu = true;
+   // }
 
     public void Rest()
     {
@@ -80,18 +81,18 @@ public class FireMenu : MonoBehaviour
         isMenu = false;
         Time.timeScale = 1f;
     }
-  public void discoverPopUp()
-{
-    discoveryPopUp.SetActive(true);
-}
+  //public void discoverPopUp()
+//{
+   // /discoveryPopUp.SetActive(true);
+//}
 
-public void Discover()
-{
-    discoveryPopUp.SetActive(false);
-    popUp();
-}
-public void leaveDiscover()
-    {
-        discoveryPopUp.SetActive(false);
-    }
+//public void Discover()
+//{
+    //discoveryPopUp.SetActive(false);
+    //popUp();
+//}
+//public void leaveDiscover()
+  //  {
+    //    discoveryPopUp.SetActive(false);
+    //}
 }
