@@ -10,6 +10,7 @@ TagManager:
   - bullet
   - CheckPoint
   - Boss
+  - Move
   layers:
   - Default
   - TransparentFX
@@ -64,6 +65,9 @@ TagManager:
     locked: 0
   - name: foreground far
     uniqueID: 1692364259
+    locked: 0
+  - name: Move
+    uniqueID: 1505753955
     locked: 0
   m_RenderingLayers:
   - Default

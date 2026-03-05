@@ -47,7 +47,7 @@ public class CameraFollowObject : MonoBehaviour
         {
             elapsedTime += Time.deltaTime;
             yRotation = Mathf.Lerp(startRotation,endRotationAmount, elapsedTime/flipyRotationTime);
-            transform.rotation = Quaternion.Euler(0f,yRotation, 0f);
+            transform.position = new Vector3(yRotation, 0f, 0f);
             yield return null;
         }
 

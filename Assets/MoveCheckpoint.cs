@@ -7,7 +7,7 @@ public class MoveCheckpoint : MonoBehaviour
     private RespawnScript respawn;
     void Awake()
     {
-        respawn = GameObject.FindGameObjectWithTag("Respawn").GetComponent<RespawnScript>();
+        respawn = GameObject.FindGameObjectWithTag("Move").GetComponent<RespawnScript>();
     }
     private void OnTriggerEnter2D(Collider2D other)
     {

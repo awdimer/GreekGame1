@@ -14,10 +14,13 @@ public class Tooltip : MonoBehaviour
     }
     void Update()
     {
-        if (tooltip.activeSelf)
+        if (tooltip != null && tooltip.activeSelf)
         {
             tooltip.transform.position = Input.mousePosition;
         }
+
+
+        
     }
     public void Activate(Item item)
     {
