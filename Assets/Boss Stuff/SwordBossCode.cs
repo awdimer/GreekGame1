@@ -40,7 +40,7 @@ public class SwordBossCode : BossCode
     {
         //detects which range player is in whilst also getting player position
         playerPos = UpdateMethod();
-        Debug.Log("Jumping: " + isJumping + " Attacking: " + isAttacking + " time count " + timePassed);
+        //Debug.Log("Jumping: " + isJumping + " Attacking: " + isAttacking + " time count " + timePassed);
 
         if (isJumping)
         {
