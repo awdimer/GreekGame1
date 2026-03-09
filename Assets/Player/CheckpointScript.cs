@@ -5,7 +5,7 @@ using UnityEngine;
 public class CheckpointScript : MonoBehaviour
 {
     private RespawnScript respawn;
-    void Awake()
+    void Start()
     {
         respawn = GameObject.FindGameObjectWithTag("Respawn").GetComponent<RespawnScript>();
     }
@@ -18,3 +18,4 @@ public class CheckpointScript : MonoBehaviour
         }
     }
 }
+//hello monkeys
