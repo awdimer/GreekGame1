@@ -9,6 +9,8 @@ public class SwordBossCode : BossCode
     [SerializeField] private float jumpDuration;
     [SerializeField] private float timeTillJump;
     [SerializeField] private float jumpAttackCoolDown;
+    [SerializeField] private float jumpAttackRadius;
+    [SerializeField] private GameObject jumpAttackPoint;
     private float timePassed = 0;
 
     private Vector2 jumpStartPos;
@@ -18,7 +20,8 @@ public class SwordBossCode : BossCode
 
     [SerializeField] private float moveSpeed;
     [SerializeField] private GameObject attackPoint;
-    [SerializeField] private float radius;
+    [SerializeField] private float shortAttackRadius;
+    [SerializeField] private float mediumAttackRadius;
     [SerializeField] private int damage;
     [SerializeField] private int stunTime;
     private float stunTimer = 0f;
@@ -29,7 +32,7 @@ public class SwordBossCode : BossCode
     private SwordBossHealth bossHealth;
     private Animator anim;
     [SerializeField] public Animator animator;
-
+    private bool facingRight = false;
 
     private void Awake()
     {
@@ -40,8 +43,8 @@ public class SwordBossCode : BossCode
     {
         //detects which range player is in whilst also getting player position
         playerPos = UpdateMethod();
-        //Debug.Log("Jumping: " + isJumping + " Attacking: " + isAttacking + " time count " + timePassed);
-
+        Debug.Log("Jumping: " + isJumping + " Attacking: " + isAttacking + " time count " + timePassed);
+        FacePlayer(playerPos);
         if (isJumping)
         {
             HandleJump();
@@ -51,27 +54,33 @@ public class SwordBossCode : BossCode
         return;
             if (isInShortRange == true)
             {
+                animator.SetBool("isWalking", false);
                 shortRangeAnimBegin();
                 timePassed = 0;
             }
             else if (isInMediumRange == true)
             {
+                animator.SetBool("isWalking", false);
                 mediumRangeAttack();
                 timePassed = 0;
             }
             else if (isInLongRange == true)
             {
+                
                 longRangeAttack();
                 moveTowardsPlayer(playerPos);
             }
             else if (isAbove == true)
             {
+                animator.SetBool("isWalking", false);
                 upAttack();
             }
             else
             {
+                animator.SetBool("isWalking", true);
                 Debug.Log("Player Outside of range!");
                 moveTowardsPlayer(playerPos);
+                
             }
     }
 
@@ -166,7 +175,7 @@ public class SwordBossCode : BossCode
     
     
 
-    Collider2D[] targets = Physics2D.OverlapCircleAll(attackPoint.transform.position,radius,playerLayer);
+    Collider2D[] targets = Physics2D.OverlapCircleAll(attackPoint.transform.position,shortAttackRadius,playerLayer);
 
     foreach (Collider2D target in targets)
     {
@@ -212,7 +221,7 @@ public class SwordBossCode : BossCode
         isAttacking = true;
         
 
-        Collider2D[] targets = Physics2D.OverlapCircleAll(attackPoint.transform.position,radius,playerLayer);
+        Collider2D[] targets = Physics2D.OverlapCircleAll(jumpAttackPoint.transform.position,jumpAttackRadius,playerLayer);
 
         foreach (Collider2D target in targets)
             {
@@ -251,7 +260,7 @@ public class SwordBossCode : BossCode
         transform.position = jumpTargetPos;
         isJumping = false;
         
-
+        jumpSmashAttack();
         // You can trigger damage here if it's a slam attack
         
 
@@ -270,6 +279,54 @@ public class SwordBossCode : BossCode
 public void ResetAttackState()
 {
     isAttacking = false;
+}
+
+
+public void OnDrawGizmosSelected()
+    {
+
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(attackPoint.transform.position, detectionRadius);
+
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireSphere(attackPoint.transform.position, shortRange);
+        
+        Gizmos.color = Color.green;
+        Gizmos.DrawWireSphere(attackPoint.transform.position, mediumRange);
+        
+        Gizmos.color = Color.blue;
+        Gizmos.DrawWireSphere(attackPoint.transform.position, longRange);
+
+        Gizmos.color = Color.cyan;
+
+        // Draw a ray upward from the boss
+        Vector3 start = transform.position;
+        Vector3 end = transform.position + Vector3.up * xRangeForUpAttack;
+
+        Gizmos.DrawLine(start, end);
+    }
+
+    public void OnDrawGizmos()
+    {
+        Gizmos.DrawWireSphere(attackPoint.transform.position, shortAttackRadius);
+        Gizmos.DrawWireSphere(jumpAttackPoint.transform.position, jumpAttackRadius);
+    }
+
+
+private void FacePlayer(Vector2 playerPos)
+{
+    if (playerPos.x > transform.position.x && !facingRight)
+        Flip();
+    else if (playerPos.x < transform.position.x && facingRight)
+        Flip();
+}
+
+private void Flip()
+{
+    facingRight = !facingRight;
+    Vector3 scale = transform.localScale;
+    scale.x *= -1;
+    transform.localScale = scale;
 }
 
 }

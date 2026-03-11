@@ -127,26 +127,26 @@ public class BossCode : MonoBehaviour
        //return raycastHit.collider != null;
    //}
 
-    public void OnDrawGizmosSelected()
-    {
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, detectionRadius);
+    //public void OnDrawGizmosSelected()
+    //{
+    //    Gizmos.color = Color.red;
+    //    Gizmos.DrawWireSphere(transform.position, detectionRadius);
+//
+    //    Gizmos.color = Color.yellow;
+    //    Gizmos.DrawWireSphere(transform.position, shortRange);
+     //   
+     //   Gizmos.color = Color.green;
+     //   Gizmos.DrawWireSphere(transform.position, mediumRange);
+     //   
+     //   Gizmos.color = Color.blue;
+     //   Gizmos.DrawWireSphere(transform.position, longRange);
 
-        Gizmos.color = Color.yellow;
-        Gizmos.DrawWireSphere(transform.position, shortRange);
-        
-        Gizmos.color = Color.green;
-        Gizmos.DrawWireSphere(transform.position, mediumRange);
-        
-        Gizmos.color = Color.blue;
-        Gizmos.DrawWireSphere(transform.position, longRange);
-
-        Gizmos.color = Color.cyan;
+      //  Gizmos.color = Color.cyan;
 
         // Draw a ray upward from the boss
-        Vector3 start = transform.position;
-        Vector3 end = transform.position + Vector3.up * xRangeForUpAttack;
+       // Vector3 start = transform.position;
+      //  Vector3 end = transform.position + Vector3.up * xRangeForUpAttack;
 
-        Gizmos.DrawLine(start, end);
-    }
+       // Gizmos.DrawLine(start, end);
+    //}
 }
