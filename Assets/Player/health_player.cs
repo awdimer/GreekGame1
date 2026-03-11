@@ -36,5 +36,4 @@ public class health_player : MonoBehaviour
             health = maxHealth;
         }
     }
-
 }
