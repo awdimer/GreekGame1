@@ -140,11 +140,11 @@ public class testPlayerMovement : MonoBehaviour
             StartCoroutine(ParryCoroutine());
             nextReadyCooldownTime = Time.time + parryCooldown;
         }
-        if (Input.GetKeyDown(KeyCode.Space) && Time.time >= nextReadyCooldownTime)
-        {
-            StartCoroutine(dodgeCoroutine());
-            nextReadyCooldownTime = Time.time + dodgeCoolDown;
-        }
+      //  if (Input.GetKeyDown(KeyCode.Space) && Time.time >= nextReadyCooldownTime)
+      //  {
+      //      StartCoroutine(dodgeCoroutine());
+      //      nextReadyCooldownTime = Time.time + dodgeCoolDown;
+       // }
         
         
    }
@@ -298,7 +298,16 @@ public class testPlayerMovement : MonoBehaviour
     {
         if (context.performed)
         {
-            
+            StartCoroutine(dodgeCoroutine());
+            nextReadyCooldownTime = Time.time + dodgeCoolDown;
+        }
+    }
+    public void parryinput(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            StartCoroutine(ParryCoroutine());
+            nextReadyCooldownTime = Time.time + parryCooldown;
         }
     }
     public void sprintinput(InputAction.CallbackContext context)

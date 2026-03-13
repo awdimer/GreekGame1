@@ -1,3 +1,4 @@
+using System.Runtime.ExceptionServices;
 using UnityEngine;
 
 public class BossArena : MonoBehaviour
@@ -10,6 +11,7 @@ public class BossArena : MonoBehaviour
     private BoxCollider2D box;
     private bool playerPresent;
     private bool bossPresent;
+    private int FirstTime = 0;
     private GameObject door1Instance;
     private GameObject door2Instance;
     private GameObject bossInstance;
@@ -40,9 +42,12 @@ public class BossArena : MonoBehaviour
 
     private void SpawnBossArena()
     {
-        door1Instance = Instantiate(doorPrefab, doorSpawnPoint1.position, Quaternion.identity);
-        door2Instance = Instantiate(doorPrefab, doorSpawnPoint2.position, Quaternion.identity);
-        Instantiate(bossPrefab, bossSpawnPoint.position, Quaternion.identity);
+        FirstTime += 1;
+        if(FirstTime == 1){
+            door1Instance = Instantiate(doorPrefab, doorSpawnPoint1.position, Quaternion.identity);
+            door2Instance = Instantiate(doorPrefab, doorSpawnPoint2.position, Quaternion.identity);
+            Instantiate(bossPrefab, bossSpawnPoint.position, Quaternion.identity);
+        }
     }
 
     private void OpenArena()

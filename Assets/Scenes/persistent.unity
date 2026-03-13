@@ -7355,7 +7355,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Priority:
     Enabled: 1
-    m_Value: 30
+    m_Value: 10
   OutputChannel: 1
   StandbyUpdate: 2
   m_StreamingVersion: 20241001
@@ -7450,7 +7450,6 @@ GameObject:
   - component: {fileID: 692776630}
   - component: {fileID: 692776632}
   - component: {fileID: 692776633}
-  - component: {fileID: 692776635}
   m_Layer: 1
   m_Name: fire_0
   m_TagString: Ground
@@ -7601,20 +7600,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &692776635
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 692776629}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b128211184c1346b4b0235df85b9d519, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player: {fileID: 1368975971}
-  respawnPoint: {fileID: 1951414279}
 --- !u!1 &727400298
 GameObject:
   m_ObjectHideFlags: 0
@@ -7934,10 +7919,10 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 63.577995
+  field of view: 60
   orthographic: 0
   orthographic size: 10.827023
-  m_Depth: -1
+  m_Depth: 10
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -7961,7 +7946,7 @@ Transform:
   m_GameObject: {fileID: 849948745}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 4.0406466, y: 8.370229, z: -3.7873}
+  m_LocalPosition: {x: 0.00084495544, y: 4.750871, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -8855,7 +8840,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1024237903}
-  - component: {fileID: 1024237902}
   - component: {fileID: 1024237901}
   - component: {fileID: 1024237904}
   m_Layer: 0
@@ -8899,7 +8883,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.23408064, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -8909,22 +8893,8 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.5318387, y: 1}
   m_EdgeRadius: 0
---- !u!114 &1024237902
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1024237899}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b128211184c1346b4b0235df85b9d519, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player: {fileID: 1368975971}
-  respawnPoint: {fileID: 1024237899}
 --- !u!4 &1024237903
 Transform:
   m_ObjectHideFlags: 0
@@ -9088,8 +9058,8 @@ Transform:
   m_Children:
   - {fileID: 675009969}
   - {fileID: 1777426113}
-  - {fileID: 1115583446}
   - {fileID: 849948749}
+  - {fileID: 1115583446}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1055790079
@@ -9359,7 +9329,7 @@ Transform:
   m_GameObject: {fileID: 1115583445}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 4.0406466, y: 8.370229, z: -3.7873}
+  m_LocalPosition: {x: 0.00084495544, y: 4.750871, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -9420,7 +9390,7 @@ MonoBehaviour:
     m_Bits: 1
   m_VolumeTrigger: {fileID: 0}
   m_VolumeFrameworkUpdateModeOption: 2
-  m_RenderPostProcessing: 0
+  m_RenderPostProcessing: 1
   m_Antialiasing: 0
   m_AntialiasingQuality: 2
   m_StopNaN: 0
@@ -9482,7 +9452,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 63.577995
+  field of view: 60
   orthographic: 0
   orthographic size: 10.827023
   m_Depth: 0
@@ -10840,6 +10810,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: e0f3e0f3-4aba-4a8e-9422-42a28787afee
     m_ActionName: 'Player/sprint[/Keyboard/v]'
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1368975981}
+        m_TargetAssemblyTypeName: testPlayerMovement, Assembly-CSharp
+        m_MethodName: parryinput
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 4ea8d712-fc0b-4d6a-89df-af1e842157a8
+    m_ActionName: 'Player/parry[/Keyboard/c]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: Keyboard&Mouse
   m_DefaultActionMap: Player
@@ -12144,7 +12130,7 @@ MonoBehaviour:
   m_Intensity: 0.61
   m_LightVolumeIntensity: 1
   m_LightVolumeEnabled: 0
-  m_ApplyToSortingLayers: d7a343a4000000000f01d34dff2d1129f9c86e50e36ddf640b61cd88
+  m_ApplyToSortingLayers: 000000000f01d34dff2d1129f9c86e50e36ddf64
   m_LightCookieSprite: {fileID: 0}
   m_DeprecatedPointLightCookieSprite: {fileID: 0}
   m_LightOrder: 0

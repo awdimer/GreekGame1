@@ -315,9 +315,9 @@ public void OnDrawGizmosSelected()
 
 private void FacePlayer(Vector2 playerPos)
 {
-    if (playerPos.x > transform.position.x && !facingRight)
+    if (playerPos.x > transform.position.x+5 && !facingRight)
         Flip();
-    else if (playerPos.x < transform.position.x && facingRight)
+    else if (playerPos.x < transform.position.x-5 && facingRight)
         Flip();
 }
 
