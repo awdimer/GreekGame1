@@ -11,6 +11,7 @@ TagManager:
   - CheckPoint
   - Boss
   - Move
+  - discover
   layers:
   - Default
   - TransparentFX
