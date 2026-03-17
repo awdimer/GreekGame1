@@ -198,7 +198,7 @@ public class testPlayerMovement : MonoBehaviour
           
        }
 
-       if(isDodging == true)
+       if(isDodging == true&& isAttacking == false)
         {
             dodge();
         }
