@@ -16,6 +16,7 @@ public class RespawnScript : MonoBehaviour
     }
     public void RespawnDude()
     {
+        //Debug.Log("heloo");
         player.transform.position = respawnPoint.transform.position;
     }
 }
