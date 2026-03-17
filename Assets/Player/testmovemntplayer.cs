@@ -163,10 +163,10 @@ public class testPlayerMovement : MonoBehaviour
         }
 
     
-       if (lastJumpTime>0 && !isJumping && lastGroundedTime>0 )//check if the player can and wants to jump and runs jump
-           {
-               jump();
-           }
+       if (lastJumpTime > 0 && !isJumping && lastGroundedTime > 0 && !isAttacking && !isDodging && !isParrying)
+        {
+            jump();
+        }
        //start of left right movement
        if( isParrying == false && isDodging == false && isAttacking == false)
        {

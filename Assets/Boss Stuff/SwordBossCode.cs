@@ -19,7 +19,8 @@ public class SwordBossCode : BossCode
     private bool isJumping;
 
     [SerializeField] private float moveSpeed;
-    [SerializeField] private GameObject attackPoint;
+    [SerializeField] private GameObject shortAttackPoint;
+    [SerializeField] private GameObject mediumAttackPoint;
     [SerializeField] private float shortAttackRadius;
     [SerializeField] private float mediumAttackRadius;
     [SerializeField] private int damage;
@@ -116,7 +117,11 @@ public class SwordBossCode : BossCode
     private void mediumRangeAttack()
     {
         //int randomInt = Random.Range(0, 1);
-        
+        if (isAttacking)
+        return;
+
+    isAttacking = true;
+    animator.SetTrigger("mediumRangeAttack");
     }
 
     private void longRangeAttack()
@@ -155,9 +160,36 @@ public class SwordBossCode : BossCode
     //animator.SetTrigger("jumpAttack"); /
     }
 
-    private void bigSwordAttack()
+    public void bigSwordAttack()
     {
-        
+         
+    
+
+    Collider2D[] targets = Physics2D.OverlapCircleAll(mediumAttackPoint.transform.position,mediumAttackRadius,playerLayer);
+
+    foreach (Collider2D target in targets)
+    {
+        testPlayerMovement player = target.GetComponent<testPlayerMovement>();
+        int staminaDamage = player.SwordDamage;
+        if (player == null)
+            continue;
+
+        if (!player.isParrying)
+        {
+            health_player health = target.GetComponent<health_player>();
+            
+            
+
+            if (health != null)
+                health.TakeDamage(damage);
+        }
+        else
+        {
+            // Player parried → knock enemy back away from player
+            bossHealth.DrainStamina(staminaDamage);
+            Debug.Log("Stamina Drained " + staminaDamage);
+        }
+    }
     }
 
     private void upwardSlash()
@@ -175,7 +207,7 @@ public class SwordBossCode : BossCode
     
     
 
-    Collider2D[] targets = Physics2D.OverlapCircleAll(attackPoint.transform.position,shortAttackRadius,playerLayer);
+    Collider2D[] targets = Physics2D.OverlapCircleAll(shortAttackPoint.transform.position,shortAttackRadius,playerLayer);
 
     foreach (Collider2D target in targets)
     {
@@ -205,6 +237,11 @@ public class SwordBossCode : BossCode
     public void endShortRangeAttack()
         {
             StartCoroutine(attackCooldown(1));
+        }
+
+            public void endMediumRangeAttack()
+        {
+            StartCoroutine(attackCooldown(2));
         }
 
    // public void stunned()
@@ -244,8 +281,9 @@ public class SwordBossCode : BossCode
 
     public IEnumerator attackCooldown(int cooldownTime)
     {
-        yield return new WaitForSeconds(cooldownTime);
         animator.SetTrigger("attackEnd");
+        yield return new WaitForSeconds(cooldownTime);
+        
         isAttacking = false;
     }
 
@@ -286,16 +324,16 @@ public void OnDrawGizmosSelected()
     {
 
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(attackPoint.transform.position, detectionRadius);
+        Gizmos.DrawWireSphere(shortAttackPoint.transform.position, detectionRadius);
 
         Gizmos.color = Color.yellow;
-        Gizmos.DrawWireSphere(attackPoint.transform.position, shortRange);
+        Gizmos.DrawWireSphere(shortAttackPoint.transform.position, shortRange);
         
         Gizmos.color = Color.green;
-        Gizmos.DrawWireSphere(attackPoint.transform.position, mediumRange);
+        Gizmos.DrawWireSphere(shortAttackPoint.transform.position, mediumRange);
         
         Gizmos.color = Color.blue;
-        Gizmos.DrawWireSphere(attackPoint.transform.position, longRange);
+        Gizmos.DrawWireSphere(shortAttackPoint.transform.position, longRange);
 
         Gizmos.color = Color.cyan;
 
@@ -308,8 +346,14 @@ public void OnDrawGizmosSelected()
 
     public void OnDrawGizmos()
     {
-        Gizmos.DrawWireSphere(attackPoint.transform.position, shortAttackRadius);
-        Gizmos.DrawWireSphere(jumpAttackPoint.transform.position, jumpAttackRadius);
+        if (shortAttackPoint != null)
+        Gizmos.DrawWireSphere(shortAttackPoint.transform.position, shortAttackRadius);
+
+        if (mediumAttackPoint != null)
+            Gizmos.DrawWireSphere(mediumAttackPoint.transform.position, mediumAttackRadius);
+
+        if (jumpAttackPoint != null)
+            Gizmos.DrawWireSphere(jumpAttackPoint.transform.position, jumpAttackRadius);
     }
 
 

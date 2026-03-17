@@ -11,7 +11,7 @@ public class addtrackedobject : MonoBehaviour
         GameObject boss = GameObject.FindWithTag("Boss");
         Debug.Log(GetComponent<CinemachineTargetGroup>());
 
-        GameObject.FindWithTag("Boss").GetComponent<CinemachineTargetGroup>().AddEnemyToList(gameObject);
+        //GameObject.FindWithTag("Boss").GetComponent<CinemachineTargetGroup>().AddEnemyToList(gameObject);
     }
 
     // Update is called once per frame
