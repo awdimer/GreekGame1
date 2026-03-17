@@ -70,16 +70,20 @@ public class enemy_mov : MonoBehaviour
         }
 
         detectPlayer();
+
+        bool isMoving = rb.linearVelocity.x != 0 && isGrounded() && !attackingplayer && !isGettingAttacked;
+
+        anim.SetBool("isWalking", isMoving);
     }
 
     // NEW: Automatically face left/right
     private void FaceDirection(Vector2 direction)
-    {
-        if (direction.x > 0.01f)
-            transform.localScale = new Vector3(1, 1, 1);   // face right
-        else if (direction.x < -0.01f)
-            transform.localScale = new Vector3(-1, 1, 1);  // face left
-    }
+{
+    if (direction.x > 0.01f)
+        transform.localScale = new Vector3(-1, 1, 1);   // face right (sprite default is left)
+    else if (direction.x < -0.01f)
+        transform.localScale = new Vector3(1, 1, 1);    // face left
+}
 
     private void Patrol()
     {
