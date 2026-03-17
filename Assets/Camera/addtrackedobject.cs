@@ -1,22 +1,26 @@
 using UnityEngine;
 using Unity.Cinemachine;
+using System.Linq.Expressions;
+
 
 
 public class addtrackedobject : MonoBehaviour
 {
-
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    void Awake()
     {
-        GameObject boss = GameObject.FindWithTag("Boss");
-        Debug.Log(GetComponent<CinemachineTargetGroup>());
-
-        //GameObject.FindWithTag("Boss").GetComponent<CinemachineTargetGroup>().AddEnemyToList(gameObject);
+        GameObject[] boss = GameObject.FindGameObjectsWithTag("Boss");
     }
+    void Start()
+    {    
+        GetComponent<CinemachineTargetGroup>().AddMember(transform, 1,1);
+    } 
 
-    // Update is called once per frame
+
     void Update()
     {
-    
+        //if(boss == null)
+       // {
+          //  GetComponent<CinemachineTargetGroup>().RemoveMember(transform);
+        //}
     }
 }
