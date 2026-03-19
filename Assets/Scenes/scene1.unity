@@ -21495,6 +21495,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6658000051023176513, guid: e0807cf9932c1465a929271f17ce6d3e, type: 3}
+      propertyPath: maxStamina
+      value: 50
+      objectReference: {fileID: 0}
     - target: {fileID: 8031567491734391223, guid: e0807cf9932c1465a929271f17ce6d3e, type: 3}
       propertyPath: m_Name
       value: SwordBoss

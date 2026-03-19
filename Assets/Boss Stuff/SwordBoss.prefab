@@ -348,7 +348,7 @@ MonoBehaviour:
   maxHealth: 100
   health: 0
   currentHealth: 0
-  maxStamina: 10
+  maxStamina: 50
   stamina: 0
   currentStamina: 0
   staminaRegen: 0
