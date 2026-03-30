@@ -71,9 +71,15 @@ public class enemy_mov : MonoBehaviour
 
         detectPlayer();
 
-        bool isMoving = rb.linearVelocity.x != 0 && isGrounded() && !attackingplayer && !isGettingAttacked;
+        bool isMoving =
+    isPatrolling &&
+    isGrounded() &&
+    !attackingplayer &&
+    !isGettingAttacked &&
+    KBcounter <= 0 &&
+    lostPlayerTimer <= 0;
 
-        anim.SetBool("isWalking", isMoving);
+anim.SetBool("isWalking", isMoving);
     }
 
     // NEW: Automatically face left/right
@@ -98,7 +104,7 @@ public class enemy_mov : MonoBehaviour
             moveSpeed * Time.deltaTime
         );
 
-        if (Vector2.Distance(transform.position, targetPos) < .2f)
+        if (Vector2.Distance(transform.position, targetPos) < .5f)
         {
             patrolDestination = (patrolDestination == 0 ? 1 : 0);
         }
