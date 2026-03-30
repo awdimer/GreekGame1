@@ -44,7 +44,6 @@ public class SwordBossCode : BossCode
     {
         //detects which range player is in whilst also getting player position
         playerPos = UpdateMethod();
-        Debug.Log("Jumping: " + isJumping + " Attacking: " + isAttacking + " time count " + timePassed);
         FacePlayer(playerPos);
         if (isJumping)
         {
@@ -79,7 +78,6 @@ public class SwordBossCode : BossCode
             else
             {
                 animator.SetBool("isWalking", true);
-                Debug.Log("Player Outside of range!");
                 moveTowardsPlayer(playerPos);
                 
             }

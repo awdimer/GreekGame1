@@ -12,6 +12,7 @@ TagManager:
   - Boss
   - Move
   - discover
+  - targetgroup
   layers:
   - Default
   - TransparentFX

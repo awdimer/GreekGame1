@@ -24,7 +24,6 @@ public class BossCode : MonoBehaviour
     void Start()
     {
         boxCollider = GetComponent<BoxCollider2D>();
-        Debug.Log("Boss started");
     }
     void Update()
     {

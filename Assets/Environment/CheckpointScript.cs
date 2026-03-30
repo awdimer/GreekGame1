@@ -1,9 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Unity.Cinemachine;
 
 public class CheckpointScript : MonoBehaviour
 {
+    [SerializeField] public CinemachineCamera spawnCamera;
     private RespawnScript respawn;
     void Start()
     {
@@ -15,6 +17,8 @@ public class CheckpointScript : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             respawn.respawnPoint = this.gameObject;
+            respawn.cameraOnSpawn = spawnCamera;
         }
     }
+
 }

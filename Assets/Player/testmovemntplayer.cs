@@ -79,6 +79,8 @@ public class testPlayerMovement : MonoBehaviour
        ///grabs references for rigidbody from game object, so it can be used in code
        rb = GetComponent<Rigidbody2D>();
        boxCollider = GetComponent<BoxCollider2D>();
+       decceleration = startDecceleration;
+
        
    }
     
@@ -140,12 +142,7 @@ public class testPlayerMovement : MonoBehaviour
             StartCoroutine(ParryCoroutine());
             nextReadyCooldownTime = Time.time + parryCooldown;
         }
-      //  if (Input.GetKeyDown(KeyCode.Space) && Time.time >= nextReadyCooldownTime)
-      //  {
-      //      StartCoroutine(dodgeCoroutine());
-      //      nextReadyCooldownTime = Time.time + dodgeCoolDown;
-       // }
-        
+
         
    }
    void FixedUpdate()
@@ -462,15 +459,7 @@ public class testPlayerMovement : MonoBehaviour
     public void dodge()
     {
         
-        float dodgeDirection = 0;
-        if (isFacingRight)
-           {
-            dodgeDirection = 1;
-           }
-           if (!isFacingRight)
-           {
-            dodgeDirection = -1;
-           }
+        float dodgeDirection = isFacingRight ? 1 : -1;
         rb.linearVelocity = new Vector2(dodgeDirection * dodgePower, rb.linearVelocity.y);
     }
 
@@ -489,6 +478,7 @@ public class testPlayerMovement : MonoBehaviour
     animator.SetBool("isDodging", false);
     animator.SetBool("isWalking",true);
     isDodging = false;
+
     }
 
    

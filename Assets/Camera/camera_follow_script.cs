@@ -15,6 +15,7 @@ public class CameraFollowObject : MonoBehaviour
     {
         Player = playerTransform.gameObject.GetComponent<testPlayerMovement>();
         isFacingRight = Player.isFacingRight;
+        transform.position = playerTransform.position;
     }
 
 
