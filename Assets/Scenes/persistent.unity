@@ -2463,7 +2463,7 @@ ParticleSystemRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 647592689
   m_SortingLayer: 1
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_RenderMode: 0
   m_MeshDistribution: 0
   m_SortMode: 0
@@ -7237,7 +7237,7 @@ Transform:
   m_GameObject: {fileID: 666063498}
   serializedVersion: 2
   m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 120.132, y: 0.796, z: -0}
+  m_LocalPosition: {x: 124.66, y: 0.796, z: -0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -7634,7 +7634,7 @@ Transform:
   m_GameObject: {fileID: 692776629}
   serializedVersion: 2
   m_LocalRotation: {x: 0.13009664, y: -0, z: -0, w: 0.9915014}
-  m_LocalPosition: {x: 26.234108, y: -0.032544374, z: 0}
+  m_LocalPosition: {x: 26.153, y: -0.243, z: -0.056}
   m_LocalScale: {x: 0.18621635, y: 0.18739992, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -9128,7 +9128,7 @@ Transform:
   m_GameObject: {fileID: 1024237899}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 120.88, y: 0.06, z: 0}
+  m_LocalPosition: {x: 125.17, y: 0.06, z: 0}
   m_LocalScale: {x: 3.4375, y: 64, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -16854,7 +16854,7 @@ Transform:
   m_GameObject: {fileID: 1551817507}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 26.23, y: -0.09, z: 0}
+  m_LocalPosition: {x: 124.64, y: -0.01, z: 0}
   m_LocalScale: {x: 0.18144195, y: 0.16455865, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
