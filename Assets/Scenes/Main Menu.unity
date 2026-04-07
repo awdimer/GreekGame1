@@ -1315,7 +1315,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Greek Game (Placeholder)
+  m_text: "\t(Placeholder)"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 34954fc9cd36841798287a8bbd583831, type: 2}
   m_sharedMaterial: {fileID: -739352865010182651, guid: 34954fc9cd36841798287a8bbd583831, type: 2}
@@ -2729,6 +2729,7 @@ MonoBehaviour:
   - {fileID: 252919896}
   persistentGameplay: persistent
   room1: scene1
+  room2: scene2
 --- !u!4 &2087642283
 Transform:
   m_ObjectHideFlags: 0

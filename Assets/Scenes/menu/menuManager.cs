@@ -11,6 +11,7 @@ public class menuManager : MonoBehaviour
     [SerializeField] private GameObject[] objectsToHide;
     [SerializeField] private string persistentGameplay = "persistent";
     [SerializeField] private string room1 = "room1";
+    [SerializeField] private string room2 = "room2";
     private List<AsyncOperation> scenesToLoad = new List<AsyncOperation>();
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     private void Awake()
@@ -23,6 +24,7 @@ public class menuManager : MonoBehaviour
         HideMenu();
         scenesToLoad.Add(SceneManager.LoadSceneAsync(persistentGameplay));
         scenesToLoad.Add(SceneManager.LoadSceneAsync(room1,LoadSceneMode.Additive));
+        scenesToLoad.Add(SceneManager.LoadSceneAsync(room2,LoadSceneMode.Additive));
         StartCoroutine(progressLoadingBar());
     }
 
