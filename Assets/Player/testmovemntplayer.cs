@@ -88,7 +88,7 @@ public class testPlayerMovement : MonoBehaviour
     {
         TurnCheck();
         cameraFollowObject = cameraFollowGO.GetComponent<CameraFollowObject>();
-        
+        FindObjectOfType<AudioManager>().Play("Wind");
     }
 
 #endregion
