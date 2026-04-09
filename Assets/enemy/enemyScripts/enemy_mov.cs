@@ -20,6 +20,8 @@ public class enemy_mov : MonoBehaviour
     [SerializeField] private LayerMask players;
     [SerializeField] private int damage;
 
+    private enemyHealth EnemyHealth;
+
     private bool attackingplayer = false;
     private bool attacking = false;
 
@@ -45,10 +47,15 @@ public class enemy_mov : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         box = GetComponent<BoxCollider2D>();
         anim = GetComponent<Animator>();
+        EnemyHealth = GetComponent<enemyHealth>();
     }
 
     void Update()
     {
+        if(!EnemyHealth.isStunned)
+        {
+            
+        
         // PATROLLING
         if (isPatrolling && KBcounter <= 0 && isGrounded() && lostPlayerTimer <= 0 && !attackingplayer)
         {
@@ -67,6 +74,7 @@ public class enemy_mov : MonoBehaviour
                 isGettingAttacked = false;
                 isPatrolling = true;
             }
+        }
         }
 
         detectPlayer();
@@ -237,7 +245,7 @@ anim.SetBool("isWalking", isMoving);
     foreach (Collider2D target in targets)
     {
         testPlayerMovement player = target.GetComponent<testPlayerMovement>();
-
+        int staminaDamage = player.SwordDamage;
         if (player == null)
             continue;
 
@@ -252,6 +260,7 @@ anim.SetBool("isWalking", isMoving);
         {
             // Player parried → knock enemy back away from player
             knockBack(player.transform.position);
+            EnemyHealth.DrainStamina(staminaDamage);
         }
     }
 }
@@ -263,6 +272,14 @@ anim.SetBool("isWalking", isMoving);
         anim.SetTrigger("attackEnd");
         
     }
+        public void ResetState()
+        {
+            attacking = false;
+            attackingplayer = false;
+            isPatrolling = true;
+            lostPlayerTimer = 0f;
+        }
+   
 
     private void OnDrawGizmos()
     {

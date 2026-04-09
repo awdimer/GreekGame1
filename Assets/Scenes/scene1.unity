@@ -9811,29 +9811,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5133540261977589906, guid: 8f23f0d532a874a32a9ff9a5d3d1aeb4, type: 3}
-      propertyPath: m_SpriteTilingProperty.pivot.x
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 5133540261977589906, guid: 8f23f0d532a874a32a9ff9a5d3d1aeb4, type: 3}
-      propertyPath: m_SpriteTilingProperty.oldSize.x
-      value: 0.55
-      objectReference: {fileID: 0}
-    - target: {fileID: 5133540261977589906, guid: 8f23f0d532a874a32a9ff9a5d3d1aeb4, type: 3}
-      propertyPath: m_SpriteTilingProperty.oldSize.y
-      value: 2.185
-      objectReference: {fileID: 0}
     - target: {fileID: 6551099718973725716, guid: 8f23f0d532a874a32a9ff9a5d3d1aeb4, type: 3}
       propertyPath: m_Name
       value: enemy (1)
-      objectReference: {fileID: 0}
-    - target: {fileID: 7797649401743032496, guid: 8f23f0d532a874a32a9ff9a5d3d1aeb4, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: -4902304416594315459, guid: b14ba2464d55dbc4996269536f543b52, type: 3}
-    - target: {fileID: 8497362513660571584, guid: 8f23f0d532a874a32a9ff9a5d3d1aeb4, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.05
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -28030,3 +28010,5 @@ SceneRoots:
   - {fileID: 1488328556}
   - {fileID: 778940137}
   - {fileID: 2067628991}
+  - {fileID: 508205638}
+  - {fileID: 1378161144}
