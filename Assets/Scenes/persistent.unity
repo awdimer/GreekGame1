@@ -8088,7 +8088,7 @@ Transform:
   m_GameObject: {fileID: 849948745}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.00014019012, y: 9.732848, z: 0}
+  m_LocalPosition: {x: 0.00027370453, y: 9.732836, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -15855,7 +15855,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   velPower: 0.9
-  walkSpeed: 10
+  walkSpeed: 25
   Sprintspeed: 10
   acceleration: 10
   startDecceleration: 0
@@ -17782,7 +17782,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1696005986
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17798,8 +17798,9 @@ MonoBehaviour:
   sounds:
   - name: Wind
     clip: {fileID: 8300000, guid: 11f5fdade12a74751ad903b778745aef, type: 3}
-    volume: 1
+    volume: 0.612
     pitch: 1.69
+    loop: 0
     source: {fileID: 0}
 --- !u!4 &1696005987
 Transform:
@@ -18514,7 +18515,7 @@ Transform:
   m_GameObject: {fileID: 1951414279}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 848.6, y: 23.9, z: 0}
+  m_LocalPosition: {x: 631.96, y: 51.14, z: 0}
   m_LocalScale: {x: 1, y: 64, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -19606,3 +19607,4 @@ SceneRoots:
   - {fileID: 1266313948}
   - {fileID: 562463882}
   - {fileID: 1271416776}
+  - {fileID: 1696005987}
