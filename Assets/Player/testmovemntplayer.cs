@@ -6,6 +6,7 @@ using UnityEngine.InputSystem;
 
 
 
+
 public class testPlayerMovement : MonoBehaviour
 {
 #region VARIABLES
@@ -288,6 +289,8 @@ public class testPlayerMovement : MonoBehaviour
         if (context.performed)
         {
             animator.SetBool("isAttacking", true);
+            FindObjectOfType<AudioManager>().Play("sword slash");
+
             isAttacking = true;
         }
     }
