@@ -4,7 +4,7 @@ public class AttackBoxScript : MonoBehaviour
 {
     private BoxCollider2D box;
 
-    [SerializeField] int damage = 10;
+    [SerializeField] int damage;
 
     private enemyHealth EnemyHealth;
     private enemy_mov Enemy_Mov;
