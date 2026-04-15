@@ -430,6 +430,9 @@ MonoBehaviour:
   playerLayer:
     serializedVersion: 2
     m_Bits: 256
+  enemyLayer:
+    serializedVersion: 2
+    m_Bits: 512
   enemyAttackPoint: {fileID: 5890880258375592703}
   radius: 3
   players:

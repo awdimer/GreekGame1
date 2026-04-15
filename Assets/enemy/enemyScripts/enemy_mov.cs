@@ -13,7 +13,7 @@ public class enemy_mov : MonoBehaviour
     [SerializeField] private float range;
     [SerializeField] private LayerMask playerLayer;
 
-    [SerializeField] private float enemyRange;
+    //[SerializeField] private float enemyRange;
     [SerializeField] private LayerMask enemyLayer;
 
     [SerializeField] private GameObject enemyAttackPoint;
@@ -172,7 +172,7 @@ public class enemy_mov : MonoBehaviour
 
     private void SeparateFromEnemies()
 {
-    Collider2D[] nearbyEnemies = Physics2D.OverlapCircleAll(transform.position, 1f, enemyLayer);
+    Collider2D[] nearbyEnemies = Physics2D.OverlapCircleAll(transform.position, 0.75f, enemyLayer);
 
     foreach (Collider2D enemy in nearbyEnemies)
     {
