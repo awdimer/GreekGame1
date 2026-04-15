@@ -261,6 +261,7 @@ anim.SetBool("isWalking", isMoving);
             // Player parried → knock enemy back away from player
             knockBack(player.transform.position);
             EnemyHealth.DrainStamina(staminaDamage);
+            FindObjectOfType<AudioManager>().Play("parry");
         }
     }
 }

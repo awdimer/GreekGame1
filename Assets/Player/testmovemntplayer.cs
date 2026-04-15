@@ -7,6 +7,7 @@ using UnityEngine.InputSystem;
 
 
 
+
 public class testPlayerMovement : MonoBehaviour
 {
 #region VARIABLES
@@ -26,6 +27,7 @@ public class testPlayerMovement : MonoBehaviour
    [SerializeField] private float coyoteTime;
    [SerializeField] private float jumpCutMultipliery;
    [SerializeField] private float jumpCutMultiplierx;
+   [SerializeField] private float wallSlidespeed;
 
    [SerializeField] private LayerMask groundLayer;
    [SerializeField] private LayerMask wallLayer;
@@ -35,12 +37,14 @@ public class testPlayerMovement : MonoBehaviour
    [SerializeField] public Animator animator;
 
    private float wallJumpCooldown;
+   private bool isWallSliding;
    private float moveSpeed;
    public bool knockFromRight;
    private float lastGroundedTime;
    private float lastJumpTime;
    private bool isSprinting;
    private bool isJumping;
+   private bool isWallJumping;
    public bool isFacingRight = true;
    private bool isOnWall;
     private float decceleration;
@@ -122,12 +126,15 @@ public class testPlayerMovement : MonoBehaviour
        {
            lastGroundedTime = coyoteTime;
            isJumping = false;
+           isWallJumping = false;
        }
        if (Input.GetKeyUp(KeyCode.W) || Input.GetKeyUp(KeyCode.UpArrow))// if the jump button is released the player will do a jump cut
        {
            if (rb.linearVelocity.y > 0 && isJumping)
            {
                rb.AddForce(Vector2.down * rb.linearVelocity.y * (1 - jumpCutMultipliery), ForceMode2D.Impulse);
+           }
+           if(rb.linearVelocity.y > 0 && rb.linearVelocity.x != 0 && isWallJumping){
                 if (isFacingRight)
                 {
                     rb.AddForce(Vector2.right * rb.linearVelocity.x * (1 - jumpCutMultiplierx), ForceMode2D.Impulse);
@@ -136,7 +143,8 @@ public class testPlayerMovement : MonoBehaviour
                 {
                     rb.AddForce(Vector2.left * rb.linearVelocity.x * (1 - jumpCutMultiplierx), ForceMode2D.Impulse);
                 }
-          }
+           }
+          
        }
        if (Input.GetKeyDown(KeyCode.E) && Time.time >= nextReadyCooldownTime)
         {
@@ -217,6 +225,7 @@ public class testPlayerMovement : MonoBehaviour
        {
            wallJump();
        }
+       //wallSlide(); 
 
        
 
@@ -271,6 +280,20 @@ public class testPlayerMovement : MonoBehaviour
 
 
    }
+  // private void wallSlide() // applys jump force
+   //{
+     //  if (onWall() && !isGrounded())
+     //   {
+     //       isWallSliding = true;
+    //        rb.linearVelocity = new Vector2 (rb.linearVelocity.x,Math.Clamp(rb.linearVelocity.y,-wallSlidespeed,float.MaxValue));
+    //    }
+    //    else
+    //    {
+     //       isWallSliding = false;
+     //   }
+
+
+   //}
    public void Move(InputAction.CallbackContext context)
     {
         moveInput.x = context.ReadValue<Vector2>().x;
@@ -289,8 +312,6 @@ public class testPlayerMovement : MonoBehaviour
         if (context.performed)
         {
             animator.SetBool("isAttacking", true);
-            FindObjectOfType<AudioManager>().Play("sword slash");
-
             isAttacking = true;
         }
     }
@@ -372,7 +393,7 @@ public class testPlayerMovement : MonoBehaviour
    {
        if (onWall() && !isGrounded())
        {
-           isJumping = true;
+           isWallJumping = true;
            rb.AddForce(Vector2.up * wallJumpForcey, ForceMode2D.Impulse);
            if (isFacingRight)
            {

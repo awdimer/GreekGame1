@@ -480,7 +480,7 @@ GameObject:
   - component: {fileID: 26969075}
   m_Layer: 6
   m_Name: Square
-  m_TagString: Ground
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -27245,10 +27245,4 @@ SceneRoots:
   - {fileID: 1187045449}
   - {fileID: 1943648278}
   - {fileID: 1749644539}
-  - {fileID: 1861061122}
-  - {fileID: 2035995918}
-  - {fileID: 1488328556}
   - {fileID: 778940137}
-  - {fileID: 2067628991}
-  - {fileID: 508205638}
-  - {fileID: 1378161144}

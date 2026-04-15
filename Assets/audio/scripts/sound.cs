@@ -1,5 +1,6 @@
 using System.Diagnostics;
 using System.Security.AccessControl;
+using System.Security.Claims;
 using UnityEngine;
 using UnityEngine.Audio;
 [System.Serializable]
@@ -13,7 +14,7 @@ public class Sound
     [Range(.1f, 3f)]
     public float pitch; 
     public bool loop;
-    public bool ran;
+   
     [HideInInspector]
     public AudioSource source;
 }

@@ -8088,7 +8088,7 @@ Transform:
   m_GameObject: {fileID: 849948745}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.00027370453, y: 9.732836, z: 0}
+  m_LocalPosition: {x: -0.0023584366, y: 11.715889, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -15637,6 +15637,7 @@ GameObject:
   - component: {fileID: 1368975972}
   - component: {fileID: 1368975979}
   - component: {fileID: 1368975980}
+  - component: {fileID: 1368975983}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -15867,6 +15868,7 @@ MonoBehaviour:
   coyoteTime: 0.5
   jumpCutMultipliery: 0
   jumpCutMultiplierx: 0.5
+  wallSlidespeed: 0
   groundLayer:
     serializedVersion: 2
     m_Bits: 64
@@ -16070,6 +16072,18 @@ MonoBehaviour:
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!114 &1368975983
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1368975971}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9617d33d4ea984160a4b02ffdc63e987, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1402082340
 GameObject:
   m_ObjectHideFlags: 0
@@ -17776,14 +17790,13 @@ GameObject:
   m_Component:
   - component: {fileID: 1696005987}
   - component: {fileID: 1696005986}
-  - component: {fileID: 1696005988}
   m_Layer: 0
   m_Name: AudioManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1696005986
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17797,10 +17810,73 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sounds:
+  - name: sword slash
+    clip:
+    - {fileID: 8300000, guid: 6dfdd856244124d19b3b7a5f7378d1b5, type: 3}
+    volume: 0.823
+    pitch: 1.702
+    loop: 0
+    source: {fileID: 0}
   - name: Wind
-    clip: {fileID: 8300000, guid: 11f5fdade12a74751ad903b778745aef, type: 3}
-    volume: 0.612
-    pitch: 1.69
+    clip:
+    - {fileID: 8300000, guid: 11f5fdade12a74751ad903b778745aef, type: 3}
+    volume: 0.355
+    pitch: 1.535
+    loop: 1
+    source: {fileID: 0}
+  - name: sword windup
+    clip:
+    - {fileID: 8300000, guid: de223f5dc93de4e53a11fd4bbaade2ae, type: 3}
+    volume: 0.461
+    pitch: 1.515
+    loop: 0
+    source: {fileID: 0}
+  - name: walk
+    clip:
+    - {fileID: 8300000, guid: 9de5c013c2fbb481e8c9e2204f1c2f86, type: 3}
+    - {fileID: 8300000, guid: 4b31976b4430241e98a502c675359ce5, type: 3}
+    - {fileID: 8300000, guid: d4a42fbbd649e4bb9a63b641e302ae13, type: 3}
+    - {fileID: 8300000, guid: 5157e4f497fe34d83a0fced943e2f9a9, type: 3}
+    - {fileID: 8300000, guid: 83b17019123624da68c5a0af56e241ea, type: 3}
+    - {fileID: 8300000, guid: 00bbc766515c942478eee1f1aa9ad407, type: 3}
+    - {fileID: 8300000, guid: 991e8ab19931340e1b8187adfb9fdae5, type: 3}
+    - {fileID: 8300000, guid: 17ffc7b53300c44f49ce1f48e48ef54f, type: 3}
+    - {fileID: 8300000, guid: cdf5fc72a9937472e99e101bd7c6529e, type: 3}
+    - {fileID: 8300000, guid: 68ff1449781784ec8baf333a9e5fb889, type: 3}
+    - {fileID: 8300000, guid: 15b794c575a8d4c7891672b1e5b8d49e, type: 3}
+    - {fileID: 8300000, guid: 123cd5e633ca84b86aebd3079690a2b6, type: 3}
+    - {fileID: 8300000, guid: 9472cc92adf5141db9bf1df7b55e9f85, type: 3}
+    - {fileID: 8300000, guid: cd4accaef9c404beda621d51c100e35c, type: 3}
+    - {fileID: 8300000, guid: 6ee4c19743b79443480f590917e3a549, type: 3}
+    - {fileID: 8300000, guid: 1e9c152c9ca9a4eb3b3620b3fb7cac15, type: 3}
+    - {fileID: 8300000, guid: b0feff056db0640e0b4527f4b152fe9f, type: 3}
+    - {fileID: 8300000, guid: 3975acfe27c7a4f02b4994189faf29ff, type: 3}
+    - {fileID: 8300000, guid: ae8cc9d57187f451685da20d911c95f6, type: 3}
+    - {fileID: 8300000, guid: a0ddeeb4327264f2d9e642daa2feb9bd, type: 3}
+    - {fileID: 8300000, guid: b79c0ff5fb891488c88c2a5dc954eb51, type: 3}
+    volume: 0.942
+    pitch: 1.535
+    loop: 0
+    source: {fileID: 0}
+  - name: jumpup
+    clip:
+    - {fileID: 8300000, guid: e8f04f2d566bf47b8b0de77f30031c37, type: 3}
+    volume: 0.71
+    pitch: 1.11
+    loop: 0
+    source: {fileID: 0}
+  - name: jumpland
+    clip:
+    - {fileID: 8300000, guid: e8f04f2d566bf47b8b0de77f30031c37, type: 3}
+    volume: 0.43
+    pitch: 0.357
+    loop: 0
+    source: {fileID: 0}
+  - name: jumpland
+    clip:
+    - {fileID: 8300000, guid: 123dbdec9a9894ecebcc91a3fb608278, type: 3}
+    volume: 0.669
+    pitch: 1.07
     loop: 0
     source: {fileID: 0}
 --- !u!4 &1696005987
@@ -17818,103 +17894,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!82 &1696005988
-AudioSource:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1696005985}
-  m_Enabled: 0
-  serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 24300002, guid: e7186ddb44d6d4914b45a6ca5a20d509, type: 2}
-  m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 8300000, guid: 6dfdd856244124d19b3b7a5f7378d1b5, type: 3}
-  m_PlayOnAwake: 1
-  m_Volume: 1
-  m_Pitch: 1
-  Loop: 1
-  Mute: 0
-  Spatialize: 0
-  SpatializePostEffects: 0
-  Priority: 128
-  DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 500
-  Pan2D: 0
-  rolloffMode: 0
-  BypassEffects: 0
-  BypassListenerEffects: 0
-  BypassReverbZones: 0
-  rolloffCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  panLevelCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  spreadCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  reverbZoneMixCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
 --- !u!1 &1727819779
 GameObject:
   m_ObjectHideFlags: 0
@@ -19706,4 +19685,3 @@ SceneRoots:
   - {fileID: 1266313948}
   - {fileID: 562463882}
   - {fileID: 1271416776}
-  - {fileID: 1696005987}

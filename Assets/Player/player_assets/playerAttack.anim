@@ -22,6 +22,8 @@ AnimationClip:
     curve:
     - time: 0
       value: {fileID: -1196731367554836807, guid: 1b747f1ed4d117149952db834149eb51, type: 3}
+    - time: 0.2
+      value: {fileID: -1196731367554836807, guid: 1b747f1ed4d117149952db834149eb51, type: 3}
     - time: 0.21666667
       value: {fileID: -2774495233609540829, guid: 1b747f1ed4d117149952db834149eb51, type: 3}
     - time: 0.36666667
@@ -61,6 +63,7 @@ AnimationClip:
       isSerializeReferenceCurve: 0
     pptrCurveMapping:
     - {fileID: -1196731367554836807, guid: 1b747f1ed4d117149952db834149eb51, type: 3}
+    - {fileID: -1196731367554836807, guid: 1b747f1ed4d117149952db834149eb51, type: 3}
     - {fileID: -2774495233609540829, guid: 1b747f1ed4d117149952db834149eb51, type: 3}
     - {fileID: -3409492017464319183, guid: 1b747f1ed4d117149952db834149eb51, type: 3}
     - {fileID: 2300310879225710764, guid: 1b747f1ed4d117149952db834149eb51, type: 3}
@@ -94,6 +97,20 @@ AnimationClip:
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
   m_Events:
+  - time: 0.2
+    functionName: playSwordWindUp
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 0.43333334
+    functionName: playSwordSlash
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
   - time: 0.6
     functionName: attack
     data: 
