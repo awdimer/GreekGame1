@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class enemy_mov : MonoBehaviour
@@ -14,6 +12,9 @@ public class enemy_mov : MonoBehaviour
     private Vector3[] directions = new Vector3[2];
     [SerializeField] private float range;
     [SerializeField] private LayerMask playerLayer;
+
+    [SerializeField] private float enemyRange;
+    [SerializeField] private LayerMask enemyLayer;
 
     [SerializeField] private GameObject enemyAttackPoint;
     [SerializeField] private float radius;
@@ -42,6 +43,8 @@ public class enemy_mov : MonoBehaviour
     public bool knockFromRight;
     private bool isGettingAttacked = false;
 
+    private bool isFacingLeft = true;
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -56,47 +59,51 @@ public class enemy_mov : MonoBehaviour
         {
             
         
-        // PATROLLING
-        if (isPatrolling && KBcounter <= 0 && isGrounded() && lostPlayerTimer <= 0 && !attackingplayer)
-        {
-            Patrol();
-        }
-        else if (isPatrolling && KBcounter <= 0 && !isGrounded())
-        {
-            rb.linearVelocity = new Vector2(rb.linearVelocity.x, -gravityForce);
-        }
-        else if (isGettingAttacked)
-        {
-            KBcounter -= Time.deltaTime;
-
-            if (KBcounter <= 0)
+            // PATROLLING
+            if (isPatrolling && KBcounter <= 0 && isGrounded() && lostPlayerTimer <= 0 && !attackingplayer)
             {
-                isGettingAttacked = false;
-                isPatrolling = true;
+                Patrol();
             }
+            else if (isPatrolling && KBcounter <= 0 && !isGrounded())
+            {
+                rb.linearVelocity = new Vector2(rb.linearVelocity.x, -gravityForce);
+            }
+            else if (isGettingAttacked)
+            {
+                KBcounter -= Time.deltaTime;
+
+                if (KBcounter <= 0)
+                {
+                    isGettingAttacked = false;
+                    isPatrolling = true;
+                }
+            }
+            
         }
-        }
+
+        SeparateFromEnemies();
 
         detectPlayer();
 
-        bool isMoving =
-    isPatrolling &&
-    isGrounded() &&
-    !attackingplayer &&
-    !isGettingAttacked &&
-    KBcounter <= 0 &&
-    lostPlayerTimer <= 0;
+        bool isMoving = isPatrolling && isGrounded() && !attackingplayer && !isGettingAttacked && KBcounter <= 0 && lostPlayerTimer <= 0;
 
-anim.SetBool("isWalking", isMoving);
+        anim.SetBool("isWalking", isMoving);
+
     }
 
     // NEW: Automatically face left/right
     private void FaceDirection(Vector2 direction)
 {
     if (direction.x > 0.01f)
-        transform.localScale = new Vector3(-1, 1, 1);   // face right (sprite default is left)
+    {
+        transform.localScale = new Vector3(-1, 1, 1); // face right (sprite default is left)
+        isFacingLeft = false;   
+    }
     else if (direction.x < -0.01f)
-        transform.localScale = new Vector3(1, 1, 1);    // face left
+    {
+        transform.localScale = new Vector3(1, 1, 1);  // face left
+        isFacingLeft = true;  
+    }
 }
 
     private void Patrol()
@@ -106,16 +113,14 @@ anim.SetBool("isWalking", isMoving);
 
         FaceDirection(moveDirection);
 
-        transform.position = Vector2.MoveTowards(
-            transform.position,
-            targetPos,
-            moveSpeed * Time.deltaTime
-        );
+        
+        transform.position = Vector2.MoveTowards(transform.position,targetPos,moveSpeed * Time.deltaTime);
 
         if (Vector2.Distance(transform.position, targetPos) < .5f)
         {
             patrolDestination = (patrolDestination == 0 ? 1 : 0);
         }
+        
     }
 
     // APPLY KNOCKBACK
@@ -165,14 +170,23 @@ anim.SetBool("isWalking", isMoving);
         return false;
     }
 
+    private void SeparateFromEnemies()
+{
+    Collider2D[] nearbyEnemies = Physics2D.OverlapCircleAll(transform.position, 1f, enemyLayer);
+
+    foreach (Collider2D enemy in nearbyEnemies)
+    {
+        if (enemy.gameObject == gameObject) continue;
+
+        Vector2 direction = (transform.position - enemy.transform.position).normalized;
+        rb.AddForce(direction * 2f, ForceMode2D.Force);
+    }
+}
+
     // NEW: Use overlap circle to detect if player is in attack radius
     private bool PlayerInsideAttackRadius()
     {
-        Collider2D hit = Physics2D.OverlapCircle(
-            enemyAttackPoint.transform.position,
-            radius,
-            players
-        );
+        Collider2D hit = Physics2D.OverlapCircle(enemyAttackPoint.transform.position,radius,players);
 
         return hit != null;
     }
