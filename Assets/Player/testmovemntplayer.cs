@@ -472,8 +472,9 @@ public class testPlayerMovement : MonoBehaviour
 
     public void ReflectBullet(Vector2 ogVelocity)
 {
+    Vector3 bulletSpawn = new Vector3(attackPoint.transform.position.x + 1, attackPoint.transform.position.y,attackPoint.transform.position.z);
     // Spawn new bullet
-    GameObject reflected = Instantiate(bulletPrefab, attackPoint.transform.position, Quaternion.identity);
+    GameObject reflected = Instantiate(bulletPrefab, bulletSpawn, Quaternion.identity);
 
     // Send it exactly opposite
     PlayerBullet pb = reflected.GetComponent<PlayerBullet>();

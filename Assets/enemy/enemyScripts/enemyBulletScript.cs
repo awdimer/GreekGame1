@@ -10,6 +10,7 @@ public class EnemyBulletScript : MonoBehaviour
     private Rigidbody2D rb;
     private GameObject player;
     [SerializeField] private GameObject bullet;
+    private bool hasHit = false;
     
 
     void Start()
@@ -22,6 +23,10 @@ public class EnemyBulletScript : MonoBehaviour
 
         Vector3 targetPos = player.GetComponent<Collider2D>().bounds.center;
         Vector3 direction = targetPos - transform.position;
+
+        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        transform.rotation = Quaternion.AngleAxis(angle + 180f, Vector3.forward);
+        
         initialVelocity = direction.normalized * force;
         rb.linearVelocity = initialVelocity;
 
@@ -31,6 +36,8 @@ public class EnemyBulletScript : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
        if (!collision.gameObject.CompareTag("Player")) return;
+
+       hasHit = true;
 
     testPlayerMovement playerMovement = collision.gameObject.GetComponent<testPlayerMovement>();
 
