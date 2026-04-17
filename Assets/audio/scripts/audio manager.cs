@@ -5,6 +5,7 @@ using UnityEngine.Audio;
 public class AudioManager : MonoBehaviour
 {
     public Sound[] sounds;
+    public Sound[] music;
     private bool rand;
     void Awake()
     {
@@ -19,6 +20,7 @@ public class AudioManager : MonoBehaviour
 
             
         }
+
     }
 
     void Update()
@@ -31,4 +33,5 @@ public class AudioManager : MonoBehaviour
         s.source.clip = s.clip[UnityEngine.Random.Range(0, s.clip.Length)];
         s.source.Play();
     }
+
 }

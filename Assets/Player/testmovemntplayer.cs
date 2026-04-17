@@ -3,6 +3,7 @@
 using UnityEngine;
 using System.Collections;
 using UnityEngine.InputSystem;
+using System;
 
 
 
@@ -169,7 +170,7 @@ public class testPlayerMovement : MonoBehaviour
         }
 
     
-       if (lastJumpTime > 0 && !isJumping && lastGroundedTime > 0 && !isAttacking && !isDodging && !isParrying)
+       if (lastJumpTime > 0 && !isJumping && lastGroundedTime > 0 && !isAttacking && !isDodging && !isParrying&& !isOnWall)
         {
             jump();
         }
@@ -225,7 +226,7 @@ public class testPlayerMovement : MonoBehaviour
        {
            wallJump();
        }
-       //wallSlide(); 
+       wallSlide(); 
 
        
 
@@ -280,20 +281,21 @@ public class testPlayerMovement : MonoBehaviour
 
 
    }
-  // private void wallSlide() // applys jump force
-   //{
-     //  if (onWall() && !isGrounded())
-     //   {
-     //       isWallSliding = true;
-    //        rb.linearVelocity = new Vector2 (rb.linearVelocity.x,Math.Clamp(rb.linearVelocity.y,-wallSlidespeed,float.MaxValue));
-    //    }
-    //    else
-    //    {
-     //       isWallSliding = false;
-     //   }
+   private void wallSlide() // applys jump force
+   {
+       if (onWall() && !isGrounded())
+        {
+            isWallSliding = true;
+            
+            rb.AddForce(Vector2.down * wallSlidespeed, ForceMode2D.Impulse);
+        }
+        else
+        {
+            isWallSliding = false;
+        }
 
 
-   //}
+   }
    public void Move(InputAction.CallbackContext context)
     {
         moveInput.x = context.ReadValue<Vector2>().x;
@@ -305,6 +307,24 @@ public class testPlayerMovement : MonoBehaviour
         {
             lastJumpTime = jumpBufferTime;
             
+        }
+
+        if (context.canceled)
+        {
+            if (rb.linearVelocity.y > 0 && isJumping && !isWallJumping)
+           {
+               rb.AddForce(Vector2.down * rb.linearVelocity.y * (1 - jumpCutMultipliery), ForceMode2D.Impulse);
+           }
+           if(rb.linearVelocity.y > 0 && rb.linearVelocity.x != 0 && isWallJumping){
+                if (isFacingRight)
+                {
+                    rb.AddForce(Vector2.right * rb.linearVelocity.x * (1 - jumpCutMultiplierx), ForceMode2D.Impulse);
+                }
+                else
+                {
+                    rb.AddForce(Vector2.left * rb.linearVelocity.x * (1 - jumpCutMultiplierx), ForceMode2D.Impulse);
+                }
+           }
         }
     }
     public void attackinput(InputAction.CallbackContext context)
