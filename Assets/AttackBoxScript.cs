@@ -40,12 +40,11 @@ public class AttackBoxScript : MonoBehaviour
     {
         if (hasHit) return;
 
-        // Only react if it's actually the player
-        testPlayerMovement player = other.GetComponentInParent<testPlayerMovement>();
-        if (player == null) return;
-
-        hasHit = true;
-        attack(other);
+        if (other.CompareTag("Player"))
+        {
+            hasHit = true;
+            attack(other);
+        }
     }
 
     public void attack(Collider2D Target)
