@@ -8394,7 +8394,7 @@ Transform:
   m_GameObject: {fileID: 849948745}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.00019836426, y: 13.73302, z: 0}
+  m_LocalPosition: {x: -0.0003643036, y: 13.73302, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -18287,6 +18287,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1696005987}
   - component: {fileID: 1696005986}
+  - component: {fileID: 1696005988}
   m_Layer: 0
   m_Name: AudioManager
   m_TagString: Untagged
@@ -18314,6 +18315,7 @@ MonoBehaviour:
     pitch: 1.702
     loop: 0
     source: {fileID: 0}
+    isPlaying: 0
   - name: Wind
     clip:
     - {fileID: 8300000, guid: 11f5fdade12a74751ad903b778745aef, type: 3}
@@ -18321,6 +18323,7 @@ MonoBehaviour:
     pitch: 1.535
     loop: 1
     source: {fileID: 0}
+    isPlaying: 0
   - name: sword windup
     clip:
     - {fileID: 8300000, guid: de223f5dc93de4e53a11fd4bbaade2ae, type: 3}
@@ -18328,6 +18331,7 @@ MonoBehaviour:
     pitch: 1.515
     loop: 0
     source: {fileID: 0}
+    isPlaying: 0
   - name: walk
     clip:
     - {fileID: 8300000, guid: 9de5c013c2fbb481e8c9e2204f1c2f86, type: 3}
@@ -18355,6 +18359,7 @@ MonoBehaviour:
     pitch: 1.535
     loop: 0
     source: {fileID: 0}
+    isPlaying: 0
   - name: jumpup
     clip:
     - {fileID: 8300000, guid: e8f04f2d566bf47b8b0de77f30031c37, type: 3}
@@ -18362,6 +18367,7 @@ MonoBehaviour:
     pitch: 1.11
     loop: 0
     source: {fileID: 0}
+    isPlaying: 0
   - name: jumpland
     clip:
     - {fileID: 8300000, guid: e8f04f2d566bf47b8b0de77f30031c37, type: 3}
@@ -18369,6 +18375,7 @@ MonoBehaviour:
     pitch: 0.357
     loop: 0
     source: {fileID: 0}
+    isPlaying: 0
   - name: jumpland
     clip:
     - {fileID: 8300000, guid: 123dbdec9a9894ecebcc91a3fb608278, type: 3}
@@ -18376,7 +18383,7 @@ MonoBehaviour:
     pitch: 1.07
     loop: 0
     source: {fileID: 0}
-  music: []
+    isPlaying: 0
 --- !u!4 &1696005987
 Transform:
   m_ObjectHideFlags: 0
@@ -18392,6 +18399,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1696005988
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1696005985}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8478d307330534b9981fbe9a486a868b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  area: []
 --- !u!1 &1727819779
 GameObject:
   m_ObjectHideFlags: 0
