@@ -6,15 +6,14 @@ public class music_manager : MonoBehaviour
     public music_area[] area;
     private music_area a;
     private Sound songToPlay;
-    private bool isplayingSong = false;
+    public bool isplayingSong = false;
     
     private bool rand;
     void Awake()
     {
-        music_area a = area[0];
         foreach (music_area i in area){
             
-            foreach (Sound s in a.music)
+            foreach (Sound s in i.music)
             {
                 s.source = gameObject.AddComponent<AudioSource>();
                 s.source.clip = s.clip[UnityEngine.Random.Range(0, s.clip.Length)];
@@ -22,10 +21,11 @@ public class music_manager : MonoBehaviour
                 s.source.pitch = s.pitch;
             }
         }
+        music_area a = area[0];
     }
     public void musicToPlay()
     {
-        
+        Debug.Log(a);
         songToPlay = a.music[UnityEngine.Random.Range(0, a.music.Length)];
 ;
         StartCoroutine(MusicCoroutine(songToPlay));
