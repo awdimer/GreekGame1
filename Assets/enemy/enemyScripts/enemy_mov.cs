@@ -23,6 +23,7 @@ public class enemy_mov : MonoBehaviour
 
     private enemyHealth EnemyHealth;
 
+    private AttackBoxScript attackBoxScript;
     private bool attackingplayer = false;
     private bool attacking = false;
 
@@ -51,6 +52,7 @@ public class enemy_mov : MonoBehaviour
         box = GetComponent<BoxCollider2D>();
         anim = GetComponent<Animator>();
         EnemyHealth = GetComponent<enemyHealth>();
+        attackBoxScript = GetComponentInChildren<AttackBoxScript>();
     }
 
     void Update()
@@ -254,30 +256,30 @@ public class enemy_mov : MonoBehaviour
 {
     attackingplayer = true;
 
-    Collider2D[] targets = Physics2D.OverlapCircleAll(enemyAttackPoint.transform.position,radius,players);
+    //Collider2D[] targets = Physics2D.OverlapCircleAll(enemyAttackPoint.transform.position,radius,players);
 
-    foreach (Collider2D target in targets)
-    {
-        testPlayerMovement player = target.GetComponent<testPlayerMovement>();
-        int staminaDamage = player.SwordDamage;
-        if (player == null)
-            continue;
+    //foreach (Collider2D target in targets)
+    //{
+      //  testPlayerMovement player = target.GetComponent<testPlayerMovement>();
+       // int staminaDamage = player.SwordDamage;
+       // if (player == null)
+       //     continue;
 
-        if (!player.isParrying)
-        {
-            health_player health = target.GetComponent<health_player>();
+       // if (!player.isParrying)
+       // {
+          //  health_player health = target.GetComponent<health_player>();
 
-            if (health != null)
-                health.TakeDamage(damage);
-        }
-        else
-        {
+       //     if (health != null)
+           //     health.TakeDamage(damage);
+       // }
+       // else
+       // {
             // Player parried → knock enemy back away from player
-            knockBack(player.transform.position);
-            EnemyHealth.DrainStamina(staminaDamage);
-            FindObjectOfType<AudioManager>().Play("parry");
-        }
-    }
+          //  knockBack(player.transform.position);
+          //  EnemyHealth.DrainStamina(staminaDamage);
+          //  FindObjectOfType<AudioManager>().Play("parry");
+       // }
+    //}
 }
 
 
@@ -300,5 +302,13 @@ public class enemy_mov : MonoBehaviour
     {
         if (enemyAttackPoint != null)
             Gizmos.DrawWireSphere(enemyAttackPoint.transform.position, radius);
+    }
+
+
+
+
+    public void callHitBox()
+    {
+       attackBoxScript.EnableHitbox();
     }
 }

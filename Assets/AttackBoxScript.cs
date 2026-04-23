@@ -9,13 +9,13 @@ public class AttackBoxScript : MonoBehaviour
     private enemyHealth EnemyHealth;
     private enemy_mov Enemy_Mov;
 
-    private bool hasHit = false;
+    public bool hasHit = false;
 
     void Start()
     {
         box = GetComponent<BoxCollider2D>();
 
-        // Get scripts from parent (enemy)
+        // Get scripts from paret (enemy)
         EnemyHealth = GetComponentInParent<enemyHealth>();
         Enemy_Mov = GetComponentInParent<enemy_mov>();
 
@@ -26,6 +26,7 @@ public class AttackBoxScript : MonoBehaviour
     // Called from animation
     public void EnableHitbox()
     {
+        Debug.Log("EnableHitbox called");
         hasHit = false;
         box.enabled = true;
     }
@@ -38,12 +39,14 @@ public class AttackBoxScript : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
+        Debug.Log("Hit something: " + other.name);
         if (hasHit) return;
 
         if (other.CompareTag("Player"))
         {
             hasHit = true;
             attack(other);
+            
         }
     }
 
