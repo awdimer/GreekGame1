@@ -4,19 +4,24 @@ using UnityEngine.InputSystem;
 
 public class enemyHealth : MonoBehaviour
 {
-    [SerializeField] private int maxHealth;
-    [SerializeField] private int health;
+    [SerializeField] private float maxHealth;
+    [SerializeField] private float health;
     [SerializeField] private float currentHealth;
 
     [SerializeField] private int maxStamina;
     [SerializeField] private int stamina;
     [SerializeField] private float currentStamina;
+    private healthbar enemyhealthbar; 
+
 
     public bool isStunned = false;
     [SerializeField] public int stunnedTime;
     private Animator anim;
     
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    private void Awake()
+    {
+        enemyhealthbar = GetComponentInChildren<healthbar>();
+    }
     void Start()
     {
         anim = GetComponent<Animator>();
@@ -39,6 +44,8 @@ public class enemyHealth : MonoBehaviour
         {
             anim.SetTrigger("die");
         }
+        enemyhealthbar.UpdateHealthBar(health,maxHealth);
+
     }
     
     public void die()
@@ -82,7 +89,7 @@ public class enemyHealth : MonoBehaviour
     enemy_mov enemyAI = GetComponent<enemy_mov>();
     if (enemyAI != null)
     {
-        enemyAI.ResetState(); // 👈 NEW
+        enemyAI.ResetState(); 
     }
 }
 }

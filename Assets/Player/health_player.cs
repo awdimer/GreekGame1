@@ -1,7 +1,6 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-
 using UnityEngine;
 
 public class health_player : MonoBehaviour
@@ -10,7 +9,9 @@ public class health_player : MonoBehaviour
     private testPlayerMovement TestPlayerMovement;
     public int maxHealth = 100;
     public int health;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    [SerializeField] private healthbar playerhealthbar; 
+
+
     void Start()
     {
         health = maxHealth;
@@ -35,5 +36,6 @@ public class health_player : MonoBehaviour
             OnPlayerDeath?.Invoke();
             health = maxHealth;
         }
+        playerhealthbar.UpdateHealthBar(health,maxHealth);
     }
 }

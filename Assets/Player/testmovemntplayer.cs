@@ -101,6 +101,7 @@ public class testPlayerMovement : MonoBehaviour
 #region UPDATES
    private void Update()
    {
+        Debug.Log(isGrounded());
         animator.SetBool("grounded",isGrounded());
         animator.SetFloat("speed", Mathf.Abs(rb.linearVelocity.x));
 

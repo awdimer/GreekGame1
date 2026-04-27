@@ -4,6 +4,7 @@ public class SwordBossHealth : BossHealthCode
 {
 
     private SwordBossCode bossMov;
+    
 
     private void Awake()
     {
