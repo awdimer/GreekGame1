@@ -110,8 +110,8 @@ ScriptedImporter:
       serializedVersion: 2
       x: 4
       y: 4
-      width: 1147
-      height: 1866
+      width: 4100
+      height: 4300
     spriteID: 1a6cf0b6eb056da4cb4e75cd296589ea
     spriteBone: []
     spriteOutline: []
@@ -120,8 +120,8 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 3, y: 2}
-    spritePosition: {x: 1458, y: 203}
+    uvTransform: {x: 4, y: 4}
+    spritePosition: {x: 0, y: 0}
   spriteImportData: []
   rigSpriteImportData: []
   sharedRigSpriteImportData: []
@@ -182,7 +182,7 @@ ScriptedImporter:
   spriteCategoryList:
     categories: []
   spritePackingTag: 
-  resliceFromLayer: 0
+  resliceFromLayer: 1
   pSDLayerImportSetting:
   - spriteId: 1a6cf0b6eb056da4cb4e75cd296589ea
     name: Group 2
@@ -205,6 +205,12 @@ ScriptedImporter:
   - spriteId: d89db35f6cb53ba449eee7da2930e85b
     name: Background
     layerId: 1
+    flatten: 0
+    isGroup: 0
+    importLayer: 0
+  - spriteId: c62cd604f1433cf4cb6597ced6ad0367
+    name: ground
+    layerId: 145
     flatten: 0
     isGroup: 0
     importLayer: 0
@@ -466,6 +472,26 @@ ScriptedImporter:
     spriteID: c567eda6b33f9b5448df5b6f66cbb057
     layerID: 54
     mosaicPosition: {x: 1850, y: 4}
+    flatten: 0
+    isImported: 0
+    isVisible: 1
+  - name: Layer 1
+    spriteName: 
+    isGroup: 0
+    parentIndex: 0
+    spriteID: 42c054ae34da8404a99931552053d646
+    layerID: 146
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 1
+  - name: ground
+    spriteName: ground
+    isGroup: 0
+    parentIndex: -1
+    spriteID: c62cd604f1433cf4cb6597ced6ad0367
+    layerID: 145
+    mosaicPosition: {x: 4, y: 4}
     flatten: 0
     isImported: 0
     isVisible: 1
