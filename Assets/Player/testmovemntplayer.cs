@@ -67,6 +67,10 @@ public class testPlayerMovement : MonoBehaviour
     [SerializeField] float dodgeTime;
     [SerializeField] float dodgeCoolDown;
     [SerializeField] private float dodgePower;
+    [SerializeField] public float maxStamina;
+    [SerializeField] private float staminaDrainRate_running;
+    [SerializeField] private float staminaDrainRate_attack;
+    [SerializeField] private float staminaRegenRate;
     public bool isParrying = false;
     public bool isDodging = false;
     private float nextReadyCooldownTime;
@@ -78,15 +82,20 @@ public class testPlayerMovement : MonoBehaviour
    private bool isFalling;
 
    private bool isAttacking;
+   [HideInInspector]public float stamina;
+   
+
 #endregion
 #region AWAKE
    private void Awake()
    {
        ///grabs references for rigidbody from game object, so it can be used in code
-       rb = GetComponent<Rigidbody2D>();
-       boxCollider = GetComponent<BoxCollider2D>();
-       decceleration = startDecceleration;
-
+        rb = GetComponent<Rigidbody2D>();
+        boxCollider = GetComponent<BoxCollider2D>();
+        decceleration = startDecceleration;
+        stamina = maxStamina;
+        moveSpeed = walkSpeed;
+        
        
    }
     
@@ -101,7 +110,7 @@ public class testPlayerMovement : MonoBehaviour
 #region UPDATES
    private void Update()
    {
-        Debug.Log(isGrounded());
+
         animator.SetBool("grounded",isGrounded());
         animator.SetFloat("speed", Mathf.Abs(rb.linearVelocity.x));
 
@@ -158,17 +167,28 @@ public class testPlayerMovement : MonoBehaviour
    }
    void FixedUpdate()
    {
-    if(isSprinting==true)
+
+    if(isSprinting==true && rb.linearVelocity.x!=0)
+    {
+        animator.SetBool("isWalking", false);
+        if (stamina <= 0)
         {
-            animator.SetBool("isWalking", false);
-            
-            moveSpeed = walkSpeed + Sprintspeed;
+            isSprinting = false;
+            moveSpeed = walkSpeed;
         }
         else
         {
-            
-            moveSpeed = walkSpeed;
+            stamina -= staminaDrainRate_running;
         }
+    }
+    else
+    {
+        if(stamina < maxStamina)
+            {
+                stamina += staminaRegenRate;
+
+            }
+    }
 
     
        if (lastJumpTime > 0 && !isJumping && lastGroundedTime > 0 && !isAttacking && !isDodging && !isParrying&& !isOnWall)
@@ -358,6 +378,8 @@ public class testPlayerMovement : MonoBehaviour
         {
             
             isSprinting = true; 
+            moveSpeed = walkSpeed + Sprintspeed;
+            
             
         }
             
@@ -367,6 +389,7 @@ public class testPlayerMovement : MonoBehaviour
         {
            
             isSprinting = false; 
+            moveSpeed = walkSpeed;
             
         }
     }
@@ -453,7 +476,7 @@ public class testPlayerMovement : MonoBehaviour
     public void attack()
 {
     isAttacking = true;
-
+    stamina = stamina - staminaDrainRate_attack;
     // -------- ENEMIES --------
     Collider2D[] enemiesHit = Physics2D.OverlapCircleAll(attackPoint.transform.position,radius,enemies);
 
