@@ -43,6 +43,7 @@ public class testPlayerMovement : MonoBehaviour
    public bool knockFromRight;
    private float lastGroundedTime;
    private float lastJumpTime;
+   private float staminaDelayTime;
    private bool isSprinting;
    private bool isJumping;
    private bool isWallJumping;
@@ -70,7 +71,9 @@ public class testPlayerMovement : MonoBehaviour
     [SerializeField] public float maxStamina;
     [SerializeField] private float staminaDrainRate_running;
     [SerializeField] private float staminaDrainRate_attack;
+    [SerializeField] private float staminaDrainRate_jump;
     [SerializeField] private float staminaRegenRate;
+    [SerializeField] private float staminaPauseTime;
     public bool isParrying = false;
     public bool isDodging = false;
     private float nextReadyCooldownTime;
@@ -124,6 +127,7 @@ public class testPlayerMovement : MonoBehaviour
        lastGroundedTime -= Time.deltaTime;
        lastJumpTime -= Time.deltaTime;
        wallJumpCooldown += Time.deltaTime;
+       staminaDelayTime -= Time.deltaTime;
 
 
        moveInput.y = Input.GetAxisRaw("Vertical");
@@ -175,6 +179,7 @@ public class testPlayerMovement : MonoBehaviour
         {
             isSprinting = false;
             moveSpeed = walkSpeed;
+            staminaDelayTime=staminaPauseTime;
         }
         else
         {
@@ -183,8 +188,13 @@ public class testPlayerMovement : MonoBehaviour
     }
     else
     {
-        if(stamina < maxStamina)
+    
+        if(stamina < maxStamina && staminaDelayTime<0&& isGrounded())
             {
+                if (stamina < 0)
+                {
+                    stamina=0;
+                }
                 stamina += staminaRegenRate;
 
             }
@@ -296,9 +306,11 @@ public class testPlayerMovement : MonoBehaviour
 #region JUMP
    private void jump() // applys jump force
    {
-       isJumping = true;
-       animator.SetTrigger("jump");
-       rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+        isJumping = true;
+        animator.SetTrigger("jump");
+        rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+        stamina = stamina - staminaDrainRate_jump;
+        staminaDelayTime=staminaPauseTime;   
 
 
    }
@@ -327,7 +339,6 @@ public class testPlayerMovement : MonoBehaviour
         if (context.performed)
         {
             lastJumpTime = jumpBufferTime;
-            
         }
 
         if (context.canceled)
@@ -390,7 +401,7 @@ public class testPlayerMovement : MonoBehaviour
            
             isSprinting = false; 
             moveSpeed = walkSpeed;
-            
+            staminaDelayTime=staminaPauseTime;
         }
     }
     
@@ -477,6 +488,7 @@ public class testPlayerMovement : MonoBehaviour
 {
     isAttacking = true;
     stamina = stamina - staminaDrainRate_attack;
+    staminaDelayTime=staminaPauseTime;
     // -------- ENEMIES --------
     Collider2D[] enemiesHit = Physics2D.OverlapCircleAll(attackPoint.transform.position,radius,enemies);
 

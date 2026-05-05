@@ -1676,6 +1676,59 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 8283836238346913267, guid: 622fb163008174eb0b2bb7222d247042, type: 3}
   m_PrefabInstance: {fileID: 462234681}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &465605995
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 465605997}
+  - component: {fileID: 465605996}
+  m_Layer: 0
+  m_Name: cameramanager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &465605996
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 465605995}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f753839e350020542aec20fb21870106, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  allVirtualCameras:
+  - {fileID: 1777426112}
+  - {fileID: 675009971}
+  fallPanAmount: 0.25
+  fallYPanTime: 0.35
+  fallSpeedyDampingChangeThreshold: -15
+  targets:
+  - {fileID: 1368975977}
+  currentCamera: {fileID: 1777426112}
+--- !u!4 &465605997
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 465605995}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 129, y: 22, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &476614542
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2193,7 +2246,7 @@ MonoBehaviour:
   transition: {fileID: 869478828}
   transitiontime: 1.5
   cameraOnSpawn: {fileID: 0}
-  cameraManager: {fileID: 0}
+  cameraManager: {fileID: 465605996}
 --- !u!4 &507359346
 Transform:
   m_ObjectHideFlags: 0
@@ -16239,10 +16292,12 @@ MonoBehaviour:
   dodgeTime: 0.5
   dodgeCoolDown: 1.25
   dodgePower: 12
-  maxStamina: 300
+  maxStamina: 300000
   staminaDrainRate_running: 1
-  staminaDrainRate_attack: 20
+  staminaDrainRate_attack: 50
+  staminaDrainRate_jump: 50
   staminaRegenRate: 2
+  staminaPauseTime: 0.5
   isParrying: 0
   isDodging: 0
   stamina: 100
@@ -17885,7 +17940,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b303f53b7ec4c4f1593ac470bd991b04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnCamera: {fileID: 0}
+  spawnCamera: {fileID: 1777426112}
 --- !u!61 &1673604799
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -19104,7 +19159,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   LevelTwoStartThing: {fileID: 1673604797}
-  spawnCamera: {fileID: 0}
+  spawnCamera: {fileID: 1777426112}
 --- !u!1 &1984585580
 GameObject:
   m_ObjectHideFlags: 0
@@ -19973,6 +20028,7 @@ CanvasRenderer:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
+  - {fileID: 465605997}
   - {fileID: 507359346}
   - {fileID: 1696005987}
   - {fileID: 692776631}
