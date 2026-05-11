@@ -40,7 +40,7 @@ ScriptedImporter:
     spriteMeshType: 1
     alignment: 0
     spritePivot: {x: 0.5, y: 0.5}
-    spritePixelsToUnits: 100
+    spritePixelsToUnits: 200
     spriteBorder: {x: 0, y: 0, z: 0, w: 0}
     spriteGenerateFallbackPhysicsShape: 0
     generateCubemap: 6
@@ -100,7 +100,7 @@ ScriptedImporter:
     spritePosition: {x: 0, y: 0}
   multiSpriteImportData: []
   layeredSpriteImportData:
-  - name: Group 2 copy 7
+  - name: 8
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
@@ -122,7 +122,7 @@ ScriptedImporter:
     tessellationDetail: 0
     uvTransform: {x: 4, y: 4}
     spritePosition: {x: 0, y: 0}
-  - name: Group 2 copy 6
+  - name: 7
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
@@ -144,7 +144,7 @@ ScriptedImporter:
     tessellationDetail: 0
     uvTransform: {x: 4, y: 4312}
     spritePosition: {x: 0, y: 0}
-  - name: Group 2 copy 5
+  - name: 6
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
@@ -166,7 +166,7 @@ ScriptedImporter:
     tessellationDetail: 0
     uvTransform: {x: 4, y: 8620}
     spritePosition: {x: 0, y: 0}
-  - name: Group 2 copy 4
+  - name: 5
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
@@ -188,7 +188,7 @@ ScriptedImporter:
     tessellationDetail: 0
     uvTransform: {x: 4112, y: 4}
     spritePosition: {x: 0, y: 0}
-  - name: Group 2 copy 3
+  - name: 4
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
@@ -210,7 +210,7 @@ ScriptedImporter:
     tessellationDetail: 0
     uvTransform: {x: 4112, y: 4312}
     spritePosition: {x: 0, y: 0}
-  - name: Group 2 copy 2
+  - name: 3
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
@@ -232,7 +232,7 @@ ScriptedImporter:
     tessellationDetail: 0
     uvTransform: {x: 4112, y: 8620}
     spritePosition: {x: 0, y: 0}
-  - name: Group 2 copy
+  - name: 2
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
@@ -254,7 +254,7 @@ ScriptedImporter:
     tessellationDetail: 0
     uvTransform: {x: 8220, y: 4}
     spritePosition: {x: 0, y: 0}
-  - name: Group 2
+  - name: 1
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
@@ -399,8 +399,8 @@ ScriptedImporter:
     isGroup: 0
     importLayer: 0
   psdLayers:
-  - name: Group 2 copy 7
-    spriteName: Group 2 copy 7
+  - name: 8
+    spriteName: 8
     isGroup: 1
     parentIndex: -1
     spriteID: a3b7f8185ffaac34797e898a07694dc7
@@ -408,7 +408,7 @@ ScriptedImporter:
     mosaicPosition: {x: 4, y: 4}
     flatten: 1
     isImported: 1
-    isVisible: 1
+    isVisible: 0
   - name: Layer 8
     spriteName: Layer 8
     isGroup: 0
@@ -669,8 +669,8 @@ ScriptedImporter:
     flatten: 0
     isImported: 0
     isVisible: 1
-  - name: Group 2 copy 6
-    spriteName: Group 2 copy 6
+  - name: 7
+    spriteName: 7
     isGroup: 1
     parentIndex: -1
     spriteID: 6255d35077b097e46b0042dfd5e346fc
@@ -939,8 +939,8 @@ ScriptedImporter:
     flatten: 0
     isImported: 0
     isVisible: 1
-  - name: Group 2 copy 5
-    spriteName: Group 2 copy 5
+  - name: 6
+    spriteName: 6
     isGroup: 1
     parentIndex: -1
     spriteID: 2a16228a8f439ad45824e2ea433b42f2
@@ -1209,8 +1209,8 @@ ScriptedImporter:
     flatten: 0
     isImported: 0
     isVisible: 1
-  - name: Group 2 copy 4
-    spriteName: Group 2 copy 4
+  - name: 5
+    spriteName: 5
     isGroup: 1
     parentIndex: -1
     spriteID: 6d2d716aa3475724199a9be352f77773
@@ -1479,8 +1479,8 @@ ScriptedImporter:
     flatten: 0
     isImported: 0
     isVisible: 1
-  - name: Group 2 copy 3
-    spriteName: Group 2 copy 3
+  - name: 4
+    spriteName: 4
     isGroup: 1
     parentIndex: -1
     spriteID: 2584671eea00598438de792822b791d3
@@ -1749,8 +1749,8 @@ ScriptedImporter:
     flatten: 0
     isImported: 0
     isVisible: 1
-  - name: Group 2 copy 2
-    spriteName: Group 2 copy 2
+  - name: 3
+    spriteName: 3
     isGroup: 1
     parentIndex: -1
     spriteID: 9f89ab1e2e75f2e4d81ddd788490b274
@@ -1999,8 +1999,8 @@ ScriptedImporter:
     flatten: 0
     isImported: 0
     isVisible: 1
-  - name: Group 2 copy
-    spriteName: Group 2 copy
+  - name: 2
+    spriteName: 2
     isGroup: 1
     parentIndex: -1
     spriteID: 2f2051204eb4cce45a9f82fdbb55bc15
@@ -2249,8 +2249,8 @@ ScriptedImporter:
     flatten: 0
     isImported: 0
     isVisible: 1
-  - name: Group 2
-    spriteName: Group 2
+  - name: 1
+    spriteName: 1
     isGroup: 1
     parentIndex: -1
     spriteID: befe7b329a0eec14c95869a7832d057f
@@ -2258,7 +2258,7 @@ ScriptedImporter:
     mosaicPosition: {x: 8220, y: 4312}
     flatten: 1
     isImported: 1
-    isVisible: 0
+    isVisible: 1
   - name: Layer 1
     spriteName: Layer 1
     isGroup: 0

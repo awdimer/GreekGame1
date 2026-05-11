@@ -40,7 +40,7 @@ ScriptedImporter:
     spriteMeshType: 1
     alignment: 0
     spritePivot: {x: 0.5, y: 0.5}
-    spritePixelsToUnits: 100
+    spritePixelsToUnits: 200
     spriteBorder: {x: 0, y: 0, z: 0, w: 0}
     spriteGenerateFallbackPhysicsShape: 0
     generateCubemap: 6
@@ -100,7 +100,7 @@ ScriptedImporter:
     spritePosition: {x: 0, y: 0}
   multiSpriteImportData: []
   layeredSpriteImportData:
-  - name: Group 2
+  - name: 1
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
@@ -215,8 +215,8 @@ ScriptedImporter:
     isGroup: 0
     importLayer: 0
   psdLayers:
-  - name: Group 2
-    spriteName: Group 2
+  - name: 1
+    spriteName: 1
     isGroup: 1
     parentIndex: -1
     spriteID: 1a6cf0b6eb056da4cb4e75cd296589ea
