@@ -85,6 +85,8 @@ public class testPlayerMovement : MonoBehaviour
    private bool isFalling;
 
    private bool isAttacking;
+   private bool isAttacking2;
+   private bool comboQueued;
    [HideInInspector]public float stamina;
    
 
@@ -361,10 +363,21 @@ public class testPlayerMovement : MonoBehaviour
     }
     public void attackinput(InputAction.CallbackContext context)
     {
-        if (context.performed)
+            if (context.performed)
         {
-            animator.SetBool("isAttacking", true);
-            isAttacking = true;
+            // FIRST ATTACK
+            if (!isAttacking)
+            {
+                animator.SetBool("isAttacking", true);
+
+                isAttacking = true;
+            }
+
+            // QUEUE SECOND ATTACK
+            else if (isAttacking && !isAttacking2)
+            {
+                attackInputManager();
+            }
         }
     }
     public void dodgeinput(InputAction.CallbackContext context)
@@ -477,12 +490,36 @@ public class testPlayerMovement : MonoBehaviour
         isParrying = false;
     }
 
-    public void endAttack()
+    public void endAttack1()
+{
+    // IF PLAYER QUEUED COMBO
+    if (comboQueued)
     {
-        animator.SetBool("isAttacking", false);
-        isAttacking = false;
+        comboQueued = false;
 
+        isAttacking2 = true;
+
+        // START SECOND ATTACK
+        animator.SetBool("isAttacking2", true);
     }
+    else
+    {
+        // END ATTACK CHAIN
+        animator.SetBool("isAttacking", false);
+
+        isAttacking = false;
+    }
+}
+
+    public void endAttack2()
+{
+    animator.SetBool("isAttacking", false);
+    animator.SetBool("isAttacking2", false);
+
+    isAttacking = false;
+    isAttacking2 = false;
+    comboQueued = false;
+}
 
     public void attack()
 {
@@ -563,7 +600,13 @@ public class testPlayerMovement : MonoBehaviour
     }
 
 
-
+    public void attackInputManager()
+{
+    if (isAttacking && !isAttacking2)
+    {
+        comboQueued = true;
+    }
+}
    
 
     
