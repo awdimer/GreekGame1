@@ -21,13 +21,12 @@ public class music_manager : MonoBehaviour
                 s.source.pitch = s.pitch;
             }
         }
-        music_area a = area[0];
+         a = area[0];
     }
     public void musicToPlay()
     {
-        Debug.Log(a);
-        songToPlay = a.music[UnityEngine.Random.Range(0, a.music.Length)];
-;
+        
+        songToPlay = area[0].music[UnityEngine.Random.Range(0, a.music.Length)];
         StartCoroutine(MusicCoroutine(songToPlay));
 
     }
@@ -38,17 +37,18 @@ public class music_manager : MonoBehaviour
         {
             musicToPlay();
         }
+        Debug.Log(songToPlay.source.isPlaying);
     }
     public void PlayMusic ()
     {
     }
     private IEnumerator MusicCoroutine(Sound songToPlay)
     {
-        Sound s = songToPlay;
         isplayingSong = true;
-        s.source.clip = s.clip[UnityEngine.Random.Range(0, s.clip.Length)];
-        s.source.Play();
-        yield return new WaitWhile(() => s.isPlaying );
+
+        songToPlay.source.Play();
+        yield return new WaitWhile(() => songToPlay.source.isPlaying );
+        Debug.Log("songToPlay.source.isPlaying");
         isplayingSong = false;
 
     }
